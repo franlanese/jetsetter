@@ -1,0 +1,108 @@
+
+[
+  {
+    "id": "JSA-8431",
+    "date": "2025-08-15",
+    "origin": {
+      "code": "AEP",
+      "name": "Aeroparque Jorge Newbery",
+      "city": "Buenos Aires"
+    },
+    "destination": {
+      "code": "BRC",
+      "name": "Aeropuerto Internacional de Bariloche",
+      "city": "San Carlos de Bariloche"
+    },
+    "aircraft": {
+      "model": "Gulfstream G650",
+      "registration": "LV-GFF"
+    },
+    "flight_duration": "2h 15m",
+    "status": "Completado",
+    "cost_usd": 35000
+  },
+  {
+    "id": "JSA-8204",
+    "date": "2025-07-22",
+    "origin": {
+      "code": "MDZ",
+      "name": "Aeropuerto Internacional El Plumerillo",
+      "city": "Mendoza"
+    },
+    "destination": {
+      "code": "AEP",
+      "name": "Aeroparque Jorge Newbery",
+      "city": "Buenos Aires"
+    },
+    "aircraft": {
+      "model": "Embraer Phenom 300E",
+      "registration": "LV-PHN"
+    },
+    "flight_duration": "1h 40m",
+    "status": "Completado",
+    "cost_usd": 22000
+  },
+  {
+    "id": "JSA-7998",
+    "date": "2025-06-05",
+    "origin": {
+      "code": "EZE",
+      "name": "Aeropuerto Internacional Ministro Pistarini",
+      "city": "Buenos Aires"
+    },
+    "destination": {
+      "code": "USH",
+      "name": "Aeropuerto Internacional de Ushuaia",
+      "city": "Ushuaia"
+    },
+    "aircraft": {
+      "model": "Bombardier Global 6000",
+      "registration": "LV-BGL"
+    },
+    "flight_duration": "3h 30m",
+    "status": "Completado",
+    "cost_usd": 52000
+  },
+  {
+    "id": "JSA-7912",
+    "date": "2025-05-18",
+    "origin": {
+      "code": "COR",
+      "name": "Aeropuerto Internacional Ingeniero Aeronáutico Ambrosio L.V. Taravella",
+      "city": "Córdoba"
+    },
+    "destination": {
+      "code": "SLA",
+      "name": "Aeropuerto Internacional Martín Miguel de Güemes",
+      "city": "Salta"
+    },
+    "aircraft": {
+      "model": "Cessna Citation Latitude",
+      "registration": "LV-CCL"
+    },
+    "flight_duration": "1h 25m",
+    "status": "Completado",
+    "cost_usd": 18500
+  },
+  {
+    "id": "JSA-7855",
+    "date": "2025-04-30",
+    "origin": {
+      "code": "AEP",
+      "name": "Aeroparque Jorge Newbery",
+      "city": "Buenos Aires"
+    },
+    "destination": {
+      "code": "IGR",
+      "name": "Aeropuerto Internacional de Puerto Iguazú",
+      "city": "Puerto Iguazú"
+    },
+    "aircraft": {
+      "model": "Learjet 75",
+      "registration": "LV-LJT"
+    },
+    "flight_duration": "1h 50m",
+    "status": "Cancelado",
+    "cost_usd": 24000
+  }
+]
