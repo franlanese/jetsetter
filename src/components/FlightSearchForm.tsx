@@ -15,8 +15,17 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
-import { toast } from "@/hooks/use-toast"
-import FlightResults from "./FlightResults"
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+} from "@/components/ui/alert-dialog"
+
 
 const formSchema = z.object({
   origin: z.string().min(3, { message: "El código de aeropuerto debe tener 3 caracteres." }).max(3).toUpperCase(),
@@ -30,8 +39,8 @@ const formSchema = z.object({
 export type FlightSearchFormValues = z.infer<typeof formSchema>
 
 export default function FlightSearchForm() {
-    const [searchResults, setSearchResults] = useState<any[] | null>(null);
-    const [isLoading, setIsLoading] = useState(false);
+    const [isDialogOpen, setIsDialogOpen] = useState(false);
+    const [whatsappUrl, setWhatsappUrl] = useState('');
 
   const form = useForm<FlightSearchFormValues>({
     resolver: zodResolver(formSchema),
@@ -43,23 +52,19 @@ export default function FlightSearchForm() {
   })
 
   function onSubmit(values: FlightSearchFormValues) {
-    setIsLoading(true);
-    setSearchResults(null);
-    console.log(values);
-    // Simulate API call
-    setTimeout(() => {
-        const mockResults = [
-            { id: '1', airline: 'NetJets', aircraft: 'Gulfstream G650', from: values.origin, to: values.destination, departureTime: '09:00', arrivalTime: '17:00', price: 45000 },
-            { id: '2', airline: 'Flexjet', aircraft: 'Bombardier Global 7500', from: values.origin, to: values.destination, departureTime: '10:30', arrivalTime: '18:30', price: 52000 },
-            { id: '3', airline: 'VistaJet', aircraft: 'Dassault Falcon 7X', from: values.origin, to: values.destination, departureTime: '11:00', arrivalTime: '19:00', price: 48500 },
-        ];
-        setSearchResults(mockResults);
-        setIsLoading(false);
-        toast({
-            title: "Búsqueda Completa",
-            description: `Se encontraron ${mockResults.length} vuelos para su viaje de ${values.origin} a ${values.destination}.`,
-        });
-    }, 1500);
+    const formattedDate = values.departureDate ? format(values.departureDate, "PPP", { locale: es }) : 'No especificada';
+  
+    const message = `Hola, quisiera cotizar un vuelo privado con los siguientes detalles:
+- Origen: ${values.origin}
+- Destino: ${values.destination}
+- Fecha de salida: ${formattedDate}
+- Pasajeros: ${values.travelers}`;
+
+    const phoneNumber = '+543413250235'; // Reemplazarás esto luego
+    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+    setWhatsappUrl(url);
+    setIsDialogOpen(true);
   }
 
   return (
@@ -171,16 +176,34 @@ export default function FlightSearchForm() {
                 />
             </div>
             <div className="lg:col-span-2">
-                <Button type="submit" className="w-full" disabled={isLoading}>
+                <Button type="submit" className="w-full">
                     <Plane className="mr-2 h-4 w-4" />
-                    {isLoading ? 'Buscando...' : 'Buscar Vuelos'}
+                    Cotizar Vuelo
                 </Button>
             </div>
           </form>
         </Form>
       </CardContent>
     </Card>
-    { (isLoading || searchResults) && <FlightResults results={searchResults} isLoading={isLoading} />} 
+    
+    <AlertDialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+        <AlertDialogContent>
+            <AlertDialogHeader>
+            <AlertDialogTitle>Cotice su vuelo</AlertDialogTitle>
+            <AlertDialogDescription>
+                Será redirigido a WhatsApp para enviar los detalles de su cotización.
+            </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+            <AlertDialogCancel>Cancelar</AlertDialogCancel>
+            <AlertDialogAction asChild>
+                <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+                Continuar a WhatsApp
+                </a>
+            </AlertDialogAction>
+            </AlertDialogFooter>
+        </AlertDialogContent>
+    </AlertDialog>
     </>
   )
 }

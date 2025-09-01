@@ -21,7 +21,7 @@ import { cn } from '@/lib/utils';
 
 const emptyLegsData = [
     { id: 1, from: 'LHR', to: 'JFK', date: '2025-10-28', aircraft: 'Gulfstream G650', seats: 8, price: 25000, status: 'Disponible', imageUrl: '/images/Gulfstream-G650.jpg', dataAiHint: 'Gulfstream G650' },
-    { id: 2, from: 'TEB', to: 'VNY', date: '2025-10-29', aircraft: 'Bombardier Global 7500', seats: 12, price: 18000, status: 'Disponible', imageUrl: '/images/bombardier-global-7500.png', dataAiHint: 'Bombardier Global 7500' },
+    { id: 2, from: 'TEB', to: 'VNY', date: '2025-10-29', aircraft: 'Bombardier Global 7500', seats: 12, price: 18000, status: 'Disponible', imageUrl: 'https://placehold.co/600x400.png', dataAiHint: 'Bombardier Global 7500' },
     { id: 3, from: 'DXB', to: 'CDG', date: '2025-10-30', aircraft: 'Dassault Falcon 8X', seats: 10, price: 35000, status: 'Reservado', imageUrl: 'https://placehold.co/600x400.png', dataAiHint: 'Dassault Falcon 8X' },
     { id: 4, from: 'HPN', to: 'MIA', date: '2025-11-01', aircraft: 'Cessna Citation Longitude', seats: 9, price: 15000, status: 'Disponible', imageUrl: 'https://placehold.co/600x400.png', dataAiHint: 'Cessna Citation Longitude' },
     { id: 5, from: 'SVO', to: 'LBG', date: '2025-11-02', aircraft: 'Embraer Praetor 600', seats: 7, price: 30000, status: 'Disponible', imageUrl: 'https://placehold.co/600x400.png', dataAiHint: 'Embraer Praetor 600' },
