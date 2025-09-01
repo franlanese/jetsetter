@@ -82,7 +82,7 @@ export default function FlightSearchForm() {
                     <FormControl>
                         <div className="relative">
                             <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                            <Input placeholder="ej., JFK" {...field} className="pl-10 uppercase" />
+                            <Input placeholder="¿Desde dónde?" {...field} className="pl-10 placeholder:text-s" />
                         </div>
                     </FormControl>
                     <FormMessage />
@@ -100,7 +100,7 @@ export default function FlightSearchForm() {
                     <FormControl>
                         <div className="relative">
                             <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                            <Input placeholder="ej., LAX" {...field} className="pl-10 uppercase"/>
+                            <Input placeholder="¿Adónde quieres ir?" {...field} className="pl-10 placeholder:text-s"/>
                         </div>
                     </FormControl>
                     <FormMessage />

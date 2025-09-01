@@ -20,12 +20,12 @@ import { es } from 'date-fns/locale';
 import { cn } from '@/lib/utils';
 
 const emptyLegsData = [
-    { id: 1, from: 'LHR', to: 'JFK', date: '2024-10-28', aircraft: 'Gulfstream G650', seats: 8, price: 25000, status: 'Disponible', imageUrl: 'https://placehold.co/600x400.png', dataAiHint: 'Gulfstream G650' },
-    { id: 2, from: 'TEB', to: 'VNY', date: '2024-10-29', aircraft: 'Bombardier Global 7500', seats: 12, price: 18000, status: 'Disponible', imageUrl: 'https://placehold.co/600x400.png', dataAiHint: 'Bombardier Global 7500' },
-    { id: 3, from: 'DXB', to: 'CDG', date: '2024-10-30', aircraft: 'Dassault Falcon 8X', seats: 10, price: 35000, status: 'Reservado', imageUrl: 'https://placehold.co/600x400.png', dataAiHint: 'Dassault Falcon 8X' },
-    { id: 4, from: 'HPN', to: 'MIA', date: '2024-11-01', aircraft: 'Cessna Citation Longitude', seats: 9, price: 15000, status: 'Disponible', imageUrl: 'https://placehold.co/600x400.png', dataAiHint: 'Cessna Citation Longitude' },
-    { id: 5, from: 'SVO', to: 'LBG', date: '2024-11-02', aircraft: 'Embraer Praetor 600', seats: 7, price: 30000, status: 'Disponible', imageUrl: 'https://placehold.co/600x400.png', dataAiHint: 'Embraer Praetor 600' },
-    { id: 6, from: 'LAX', to: 'ASP', date: '2024-11-03', aircraft: 'Gulfstream G280', seats: 6, price: 12000, status: 'Reservado', imageUrl: 'https://placehold.co/600x400.png', dataAiHint: 'Gulfstream G280' },
+    { id: 1, from: 'LHR', to: 'JFK', date: '2025-10-28', aircraft: 'Gulfstream G650', seats: 8, price: 25000, status: 'Disponible', imageUrl: '/images/Gulfstream-G650.jpg', dataAiHint: 'Gulfstream G650' },
+    { id: 2, from: 'TEB', to: 'VNY', date: '2025-10-29', aircraft: 'Bombardier Global 7500', seats: 12, price: 18000, status: 'Disponible', imageUrl: '/images/bombardier-global-7500.png', dataAiHint: 'Bombardier Global 7500' },
+    { id: 3, from: 'DXB', to: 'CDG', date: '2025-10-30', aircraft: 'Dassault Falcon 8X', seats: 10, price: 35000, status: 'Reservado', imageUrl: 'https://placehold.co/600x400.png', dataAiHint: 'Dassault Falcon 8X' },
+    { id: 4, from: 'HPN', to: 'MIA', date: '2025-11-01', aircraft: 'Cessna Citation Longitude', seats: 9, price: 15000, status: 'Disponible', imageUrl: 'https://placehold.co/600x400.png', dataAiHint: 'Cessna Citation Longitude' },
+    { id: 5, from: 'SVO', to: 'LBG', date: '2025-11-02', aircraft: 'Embraer Praetor 600', seats: 7, price: 30000, status: 'Disponible', imageUrl: 'https://placehold.co/600x400.png', dataAiHint: 'Embraer Praetor 600' },
+    { id: 6, from: 'LAX', to: 'ASP', date: '2025-11-03', aircraft: 'Gulfstream G650', seats: 8, price: 12000, status: 'Reservado', imageUrl: '/images/Gulfstream-G650.jpg', dataAiHint: 'Gulfstream G280' },
 ];
 
 
@@ -60,15 +60,29 @@ export default function EmptyLegsList() {
     <>
       <Card className="mb-8 p-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-end">
-            <div className="relative">
+            <div>
                 <label className="text-sm font-medium">Desde</label>
-                <MapPin className="absolute left-3 top-[2.4rem] -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                <Input placeholder="ej., JFK" value={origin} onChange={(e) => setOrigin(e.target.value)} className="pl-10 uppercase mt-1" />
+                <div className="relative mt-1">
+                    <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                    <Input
+                    value={destination}
+                    onChange={(e) => setDestination(e.target.value)}
+                    className="pl-10 placeholder:text-s"
+                    placeholder='¿Desde dónde?'
+                    />
+                </div>
             </div>
-            <div className="relative">
+            <div>
                 <label className="text-sm font-medium">Hasta</label>
-                <MapPin className="absolute left-3 top-[2.4rem] -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                <Input placeholder="ej., LAX" value={destination} onChange={(e) => setDestination(e.target.value)} className="pl-10 uppercase mt-1" />
+                <div className="relative mt-1">
+                    <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                    <Input
+                    value={destination}
+                    onChange={(e) => setDestination(e.target.value)}
+                    className="pl-10 placeholder:text-s"
+                    placeholder='¿Adónde quieres ir?'
+                    />
+                </div>
             </div>
             <div>
                 <label className="text-sm font-medium">Fecha de Salida</label>
@@ -85,7 +99,7 @@ export default function EmptyLegsList() {
                         {departureDate ? (
                             format(departureDate, "PPP", { locale: es })
                         ) : (
-                            <span>Elija una fecha</span>
+                            <span className="text-sm text-muted-foreground">Elija una fecha</span>
                         )}
                         </Button>
                     </PopoverTrigger>
