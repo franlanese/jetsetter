@@ -30,7 +30,6 @@ export function RegisterDialog({ children }: RegisterDialogProps) {
   const [open, setOpen] = useState(false);
   const [isRegistered, setIsRegistered] = useState(false);
   const [error, setError] = useState("");
-  const { toast } = useToast();
   const { setShowLoginDialog, setShowRegisterDialog } = useAuth();
 
   const validateEmail = (email: string) => {

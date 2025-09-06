@@ -66,7 +66,7 @@ export default function EmptyLegsList() {
                     <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                     <Input
                     value={destination}
-                    onChange={(e) => setDestination(e.target.value)}
+                    onChange={(e) => setOrigin(e.target.value)}
                     className="pl-10 placeholder:text-s"
                     placeholder='¿Desde dónde?'
                     />

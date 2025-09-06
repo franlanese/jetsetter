@@ -55,12 +55,12 @@ export default function FlightSearchForm() {
     const formattedDate = values.departureDate ? format(values.departureDate, "PPP", { locale: es }) : 'No especificada';
   
     const message = `Hola, quisiera cotizar un vuelo privado con los siguientes detalles:
-- Origen: ${values.origin}
-- Destino: ${values.destination}
-- Fecha de salida: ${formattedDate}
-- Pasajeros: ${values.travelers}`;
+    - Origen: ${values.origin}
+    - Destino: ${values.destination}
+    - Fecha de salida: ${formattedDate}
+    - Pasajeros: ${values.travelers}`;
 
-    const phoneNumber = '+543413250235'; // Reemplazarás esto luego
+    const phoneNumber = '+543417568545'; // Reemplazarás esto luego
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
     setWhatsappUrl(url);
@@ -175,11 +175,11 @@ export default function FlightSearchForm() {
                 )}
                 />
             </div>
-            <div className="lg:col-span-2">
-                <Button type="submit" className="w-full">
-                    <Plane className="mr-2 h-4 w-4" />
-                    Cotizar Vuelo
-                </Button>
+            <div className="lg:col-span-2 self-center">
+              <Button type="submit" className="w-full">
+                <Plane className="mr-2 h-4 w-4" />
+                Cotizar Vuelo
+              </Button>
             </div>
           </form>
         </Form>

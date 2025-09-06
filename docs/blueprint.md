@@ -1,4 +1,4 @@
-# **App Name**: Jetsetter
+# **App Name**: Aera
 
 ## Core Features:
 

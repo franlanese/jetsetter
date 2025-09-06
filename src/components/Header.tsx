@@ -1,12 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { Send, Menu, Plane, Bell, Search, User } from "lucide-react";
+import Image from "next/image";
+import { Menu, Plane, Search, User, ChevronLeft , Send} from "lucide-react";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { useState } from "react";
 import { LoginDialog } from "./LoginDialog";
 import { RegisterDialog } from "./RegisterDialog";
 import { useAuth } from "@/context/AuthContext";
@@ -26,16 +27,23 @@ const navLinks = [
 
 export default function Header() {
   const pathname = usePathname();
+  const router = useRouter();
   const { isLoggedIn, logout, showLoginDialog, setShowLoginDialog, showRegisterDialog, setShowRegisterDialog } = useAuth();
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center">
+    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 px-5">
+      <div className="flex h-16 items-center">
         <div className="mr-4 flex items-center">
-          <Link href="/" className="flex items-center gap-2">
-            <Send className="h-6 w-6 text-primary" />
-            <span className="font-bold text-lg">Jetsetter</span>
-          </Link>
+          {pathname !== '/' ? (
+            <Button variant="ghost" size="icon" onClick={() => router.back()}>
+              <ChevronLeft className="h-6 w-6" />
+            </Button>
+          ) : (
+            <Link href="/" className="flex items-center gap-2">
+              <Send className="h-6 w-6 text-primary" />
+              <span className="font-bold text-lg">Aera</span>
+            </Link>
+          )}
         </div>
         <nav className="hidden md:flex md:items-center md:gap-4 lg:gap-6 text-sm font-medium">
           {navLinks.map((link) => (
@@ -74,10 +82,10 @@ export default function Header() {
           ) : (
             <>
               <LoginDialog open={showLoginDialog}>
-                <Button variant="ghost" size="sm" className="hidden sm:inline-flex" onClick={() => setShowLoginDialog(true)}>Iniciar Sesión</Button>
+                <Button variant="ghost" size="sm" className="hidden md:inline-flex" onClick={() => setShowLoginDialog(true)}>Iniciar Sesión</Button>
               </LoginDialog>
               <RegisterDialog open={showRegisterDialog}>
-                <Button size="sm" className="hidden sm:inline-flex" onClick={() => setShowRegisterDialog(true)}>Registrarse</Button>
+                <Button size="sm" className="hidden md:inline-flex" onClick={() => setShowRegisterDialog(true)}>Registrarse</Button>
               </RegisterDialog>
             </>
           )}
@@ -90,10 +98,18 @@ export default function Header() {
             </SheetTrigger>
             <SheetContent side="right">
               <nav className="grid gap-6 text-lg font-medium mt-8">
-                <Link href="/" className="flex items-center gap-2 text-lg font-semibold mb-4">
-                  <Send className="h-6 w-6 text-primary" />
-                  <span>Jetsetter</span>
-                </Link>
+                {pathname === '/empty-legs' ? (
+                  <Button variant="ghost" className="justify-start gap-2" onClick={() => { router.back(); }}>
+                    <ChevronLeft className="h-6 w-6" />
+                    <span>Volver</span>
+                  </Button>
+                ) : (
+                  <Link href="/" className="flex items-center gap-2 text-lg font-semibold mb-4">
+                    <Send className="h-6 w-6 text-primary" />
+                    <span>Aera</span>
+                  </Link>
+                )}
+
                 {navLinks.map((link) => (
                   <SheetClose asChild key={link.href}>
                     <Link

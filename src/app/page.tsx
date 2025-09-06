@@ -25,26 +25,26 @@ export default function Home() {
           data-ai-hint="luxury jet"
           priority
         />
-        <div className="container px-4 md:px-6 text-center relative z-20">
+        <div className="px-4 md:px-6 text-center relative z-20">
           <div className="max-w-3xl mx-auto">
             <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl font-headline" style={{textShadow: '0 2px 4px rgba(0,0,0,0.1)'}}>
               Vuelos Charter en Jet Privado
             </h1>
-            <p className="mt-4 text-lg text-gray-300 md:text-xl" style={{textShadow: '0 1px 3px rgba(0,0,0,0.1)'}}>
+            <p className="mt-4 text-lg text-gray-300 md:text-xl text-center" style={{textShadow: '0 1px 3px rgba(0,0,0,0.1)'}}>
               Experimente viajes sin interrupciones con acceso a una red global de aviones privados. Tu viaje comienza aquí.
             </p>
           </div>
         </div>
       </section>
       
-      <div className="container -mt-24 relative z-30 px-4 md:px-6">
+      <div className="container -mt-10 md:-mt-20 lg:-mt-24 z-30 px-4 md:px-6">
         <FlightSearchForm />
       </div>
 
       <section className="w-full py-16 md:py-24 lg:py-32">
-        <div className="container px-4 md:px-6">
+        <div className="px-4 md:px-6">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
-            <div className="space-y-2">
+            <div className="space-y-2 text-center">
               <div className="inline-block rounded-lg bg-secondary px-3 py-1 text-sm font-medium">Empty Legs</div>
               <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl font-headline">Ofertas Imbatibles de Última Hora</h2>
               <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
