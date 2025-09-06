@@ -14,7 +14,7 @@ const emptyLegs = [
 export default function Home() {
   return (
     <div className="flex flex-col items-center">
-      <section className="w-full py-20 md:py-32 lg:py-40 bg-card relative">
+      <section className="w-full py-16 md:py-32 lg:py-40 bg-card relative">
         <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent z-10"></div>
         <Image 
           src="/images/jetinterior.jpg" 

@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "from": "AEP",
+    "to": "COR",
+    "date": "2025-10-28",
+    "aircraft": "Learjet 45",
+    "seats": 7,
+    "price": 250,
+    "status": "Disponible",
+    "imageUrl": "/images/Learjet-45.png",
+    "dataAiHint": "Learjet 45"
+  },
+  {
+    "id": 2,
+    "from": "MDZ",
+    "to": "AEP",
+    "date": "2025-10-29",
+    "aircraft": "Cessna Citation XLS+",
+    "seats": 8,
+    "price": 300,
+    "status": "Disponible",
+    "imageUrl": "/images/Cessna-citation-xls+.png",
+    "dataAiHint": "Cessna Citation XLS+"
+  },
+  {
+    "id": 3,
+    "from": "BRC",
+    "to": "EPA",
+    "date": "2025-10-30",
+    "aircraft": "Embraer Phenom 300",
+    "seats": 7,
+    "price": 400,
+    "status": "Reservado",
+    "imageUrl": "/images/Embraer-Phenom-300.png",
+    "dataAiHint": "Embraer Phenom 300"
+  },
+  {
+    "id": 4,
+    "from": "ROS",
+    "to": "AEP",
+    "date": "2025-11-01",
+    "aircraft": "Cessna Citation XLS+",
+    "seats": 8,
+    "price": 200,
+    "status": "Disponible",
+    "imageUrl": "/images/Cessna-citation-xls+.png",
+    "dataAiHint": "Cessna Citation XLS+"
+  },
+  {
+    "id": 5,
+    "from": "IGR",
+    "to": "AEP",
+    "date": "2025-11-02",
+    "aircraft": "Learjet 60XR",
+    "seats": 7,
+    "price": 300,
+    "status": "Disponible",
+    "imageUrl": "/images/Learjet-60xr.png",
+    "dataAiHint": "Learjet 60XR"
+  },
+  {
+    "id": 6,
+    "from": "USH",
+    "to": "MDZ",
+    "date": "2025-11-03",
+    "aircraft": "King Air B 200",
+    "seats": 6,
+    "price": 220,
+    "status": "Reservado",
+    "imageUrl": "/images/King-air-b-200.png",
+    "dataAiHint": "Embraer Phenom 100"
+  }
+]

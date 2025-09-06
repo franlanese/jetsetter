@@ -18,16 +18,7 @@ import { Calendar as CalendarComponent } from './ui/calendar';
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
 import { cn } from '@/lib/utils';
-
-const emptyLegsData = [
-    { id: 1, from: 'LHR', to: 'JFK', date: '2025-10-28', aircraft: 'Gulfstream G650', seats: 8, price: 25000, status: 'Disponible', imageUrl: '/images/Gulfstream-G650.jpg', dataAiHint: 'Gulfstream G650' },
-    { id: 2, from: 'TEB', to: 'VNY', date: '2025-10-29', aircraft: 'Bombardier Global 7500', seats: 12, price: 18000, status: 'Disponible', imageUrl: 'https://placehold.co/600x400.png', dataAiHint: 'Bombardier Global 7500' },
-    { id: 3, from: 'DXB', to: 'CDG', date: '2025-10-30', aircraft: 'Dassault Falcon 8X', seats: 10, price: 35000, status: 'Reservado', imageUrl: 'https://placehold.co/600x400.png', dataAiHint: 'Dassault Falcon 8X' },
-    { id: 4, from: 'HPN', to: 'MIA', date: '2025-11-01', aircraft: 'Cessna Citation Longitude', seats: 9, price: 15000, status: 'Disponible', imageUrl: 'https://placehold.co/600x400.png', dataAiHint: 'Cessna Citation Longitude' },
-    { id: 5, from: 'SVO', to: 'LBG', date: '2025-11-02', aircraft: 'Embraer Praetor 600', seats: 7, price: 30000, status: 'Disponible', imageUrl: 'https://placehold.co/600x400.png', dataAiHint: 'Embraer Praetor 600' },
-    { id: 6, from: 'LAX', to: 'ASP', date: '2025-11-03', aircraft: 'Gulfstream G650', seats: 8, price: 12000, status: 'Reservado', imageUrl: '/images/Gulfstream-G650.jpg', dataAiHint: 'Gulfstream G280' },
-];
-
+import emptyLegsTest from "../data/emptyLegs.json"
 
 export default function EmptyLegsList() {
   const [origin, setOrigin] = useState('');
@@ -35,7 +26,7 @@ export default function EmptyLegsList() {
   const [departureDate, setDepartureDate] = useState<Date | undefined>();
 
   const filteredLegs = useMemo(() => {
-    return emptyLegsData.filter(leg => {
+    return emptyLegsTest.filter(leg => {
         const legDate = new Date(leg.date);
         legDate.setHours(0,0,0,0);
         
@@ -156,8 +147,11 @@ export default function EmptyLegsList() {
                     <CardFooter className="flex justify-between items-center pt-4 border-t">
                         <div className="flex items-center">
                             <DollarSign className="w-5 h-5 mr-1 text-primary"/>
-                            <p className="text-2xl font-bold text-primary">
+                            <p className="text-2xl font-bold mr-2 text-primary">
                                 {leg.price.toLocaleString('es-ES')}
+                            </p>
+                            <p className='text-xs text-primary'>
+                                por asiento
                             </p>
                         </div>
                         <Button size="sm" disabled={leg.status !== 'Disponible'}>

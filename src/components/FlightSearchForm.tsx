@@ -69,7 +69,7 @@ export default function FlightSearchForm() {
 
   return (
     <>
-    <Card className="w-full shadow-2xl">
+    <Card className="w-full shadow-2xl py-4">
       <CardHeader>
         <CardTitle className="font-headline text-2xl">Encuentre Su Vuelo Privado</CardTitle>
         <CardDescription>Ingrese los detalles de su viaje para comenzar.</CardDescription>
