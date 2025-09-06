@@ -5,11 +5,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, PlaneTakeoff } from 'lucide-react';
 
-const emptyLegs = [
-  { id: 1, from: 'LHR', to: 'JFK', date: 'Oct 28, 2024', price: '$25,000', aircraft: 'Gulfstream G650' },
-  { id: 2, from: 'TEB', to: 'VNY', date: 'Oct 29, 2024', price: '$18,000', aircraft: 'Bombardier Global 7500' },
-  { id: 3, from: 'DXB', to: 'CDG', date: 'Oct 30, 2024', price: '$35,000', aircraft: 'Dassault Falcon 8X' },
-];
+import allEmptyLegs from '@/data/emptyLegs.json';
+
+const emptyLegs = allEmptyLegs.slice(0, 3);
 
 export default function Home() {
   return (
@@ -63,8 +61,8 @@ export default function Home() {
                 </CardHeader>
                 <CardContent className="grid gap-2 flex-grow">
                   <p className="text-sm text-muted-foreground">{leg.aircraft}</p>
-                  <p className="text-sm font-medium">{leg.date}</p>
-                  <p className="text-2xl font-bold text-primary">{leg.price}</p>
+                  <p className="text-sm font-medium">{new Date(leg.date).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+                  <p className="text-2xl font-bold text-primary">{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(leg.price)}</p>
                 </CardContent>
                 <div className="p-6 pt-0">
                   <Button asChild className="w-full mt-2">
