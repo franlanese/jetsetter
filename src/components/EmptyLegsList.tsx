@@ -33,9 +33,17 @@ export default function EmptyLegsList() {
         const filterDate = departureDate ? new Date(departureDate) : null;
         if(filterDate) filterDate.setHours(0,0,0,0);
 
+        const originMatch = origin === '' || 
+                            leg.from.toLowerCase().includes(origin.toLowerCase()) ||
+                            (leg.originCity && leg.originCity.toLowerCase().includes(origin.toLowerCase()));
+
+        const destinationMatch = destination === '' ||
+                                 leg.to.toLowerCase().includes(destination.toLowerCase()) ||
+                                 (leg.destinationCity && leg.destinationCity.toLowerCase().includes(destination.toLowerCase()));
+
         return (
-            (origin === '' || leg.from.toLowerCase().includes(origin.toLowerCase())) &&
-            (destination === '' || leg.to.toLowerCase().includes(destination.toLowerCase())) &&
+            originMatch &&
+            destinationMatch &&
             (!filterDate || legDate.getTime() === filterDate.getTime())
         )
     })
@@ -56,7 +64,7 @@ export default function EmptyLegsList() {
                 <div className="relative mt-1">
                     <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                     <Input
-                    value={destination}
+                    value={origin}
                     onChange={(e) => setOrigin(e.target.value)}
                     className="pl-10 placeholder:text-s"
                     placeholder='¿Desde dónde?'
@@ -126,9 +134,17 @@ export default function EmptyLegsList() {
                         </Badge>
                     </div>
                     <CardHeader>
-                        <CardTitle className="text-2xl font-bold flex items-center justify-between">
-                            <span>{leg.from} <ArrowRight className="inline-block mx-1 h-5 w-5" /> {leg.to}</span>
-                        </CardTitle>
+                        <div className="flex items-center justify-between">
+                            <div className="text-left">
+                                <p className="text-sm text-muted-foreground">{leg.originCity}</p>
+                                <p className="text-2xl font-bold">{leg.from}</p>
+                            </div>
+                            <ArrowRight className="mx-4 h-6 w-6" />
+                            <div className="text-right">
+                                <p className="text-sm text-muted-foreground">{leg.destinationCity}</p>
+                                <p className="text-2xl font-bold">{leg.to}</p>
+                            </div>
+                        </div>
                     </CardHeader>
                     <CardContent className="grid gap-3 flex-grow">
                         <div className="flex items-center text-muted-foreground">
@@ -144,7 +160,7 @@ export default function EmptyLegsList() {
                             <span className="text-sm">{leg.seats} Asientos Disponibles</span>
                         </div>
                     </CardContent>
-                    <CardFooter className="flex justify-between items-center pt-4 border-t">
+                    <CardFooter className="flex justify-between items-center pt-4 px-4 border-t">
                         <div className="flex items-center">
                             <DollarSign className="w-5 h-5 mr-1 text-primary"/>
                             <p className="text-2xl font-bold mr-2 text-primary">

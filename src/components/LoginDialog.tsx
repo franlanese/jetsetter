@@ -47,7 +47,7 @@ export function LoginDialog({ children }: LoginDialogProps) {
       <DialogTrigger asChild onClick={() => setShowLoginDialog(true)}>
         {children}
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="w-[calc(100%_-_1rem)] sm:w-full sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle>Iniciar Sesión</DialogTitle>
           <DialogDescription>

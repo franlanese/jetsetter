@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { useState } from "react";
 import { Menu, Plane, Search, User, ChevronLeft , Send} from "lucide-react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
@@ -29,14 +30,15 @@ export default function Header() {
   const pathname = usePathname();
   const router = useRouter();
   const { isLoggedIn, logout, showLoginDialog, setShowLoginDialog, showRegisterDialog, setShowRegisterDialog } = useAuth();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 px-5">
       <div className="flex h-16 items-center">
         <div className="mr-4 flex items-center">
           {pathname !== '/' ? (
-            <Button variant="ghost" size="icon" onClick={() => router.back()}>
-              <ChevronLeft className="h-6 w-6" />
+            <Button variant="ghost" size="icon" className="" onClick={() => router.back()}>
+              <ChevronLeft className="h-12 w-12" />
             </Button>
           ) : (
             <Link href="/" className="flex items-center gap-2">
@@ -45,7 +47,7 @@ export default function Header() {
             </Link>
           )}
         </div>
-        <nav className="hidden md:flex md:items-center md:gap-4 lg:gap-6 text-sm font-medium">
+        <nav className="hidden lg:flex lg:items-center lg:gap-4 lg:gap-6 text-sm font-medium">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -81,15 +83,15 @@ export default function Header() {
             </DropdownMenu>
           ) : (
             <>
-              <LoginDialog open={showLoginDialog}>
-                <Button variant="ghost" size="sm" className="hidden md:inline-flex" onClick={() => setShowLoginDialog(true)}>Iniciar Sesión</Button>
+              <LoginDialog>
+                <Button variant="ghost" size="sm" className="hidden md:inline-flex">Iniciar Sesión</Button>
               </LoginDialog>
-              <RegisterDialog open={showRegisterDialog}>
-                <Button size="sm" className="hidden md:inline-flex" onClick={() => setShowRegisterDialog(true)}>Registrarse</Button>
+              <RegisterDialog>
+                <Button size="sm" className="hidden md:inline-flex">Registrarse</Button>
               </RegisterDialog>
             </>
           )}
-          <Sheet>
+          <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
             <SheetTrigger asChild>
               <Button variant="outline" size="icon" className="md:hidden">
                 <Menu className="h-4 w-4" />
@@ -97,20 +99,15 @@ export default function Header() {
               </Button>
             </SheetTrigger>
             <SheetContent side="right">
-              <nav className="grid gap-6 text-lg font-medium mt-8">
-                {pathname === '/empty-legs' ? (
+              <nav className="grid text-lg font-medium mt-8">
+                {pathname === '/empty-legs' && (
                   <Button variant="ghost" className="justify-start gap-2" onClick={() => { router.back(); }}>
                     <ChevronLeft className="h-6 w-6" />
                     <span>Volver</span>
                   </Button>
-                ) : (
-                  <Link href="/" className="flex items-center gap-2 text-lg font-semibold mb-4">
-                    <Send className="h-6 w-6 text-primary" />
-                    <span>Aera</span>
-                  </Link>
                 )}
-
-                {navLinks.map((link) => (
+                
+                {/*navLinks.map((link) => (
                   <SheetClose asChild key={link.href}>
                     <Link
                       href={link.href}
@@ -123,18 +120,18 @@ export default function Header() {
                       {link.label}
                     </Link>
                   </SheetClose>
-                ))}
+                ))*/}
                 <div className="flex flex-col gap-2 pt-6">
                   {isLoggedIn ? (
                     <Button onClick={logout}>Cerrar Sesión</Button>
                   ) : (
                     <>
-                      <RegisterDialog open={showRegisterDialog}>
-                        <Button className="w-full" onClick={() => setShowRegisterDialog(true)}>Registrarse</Button>
-                      </RegisterDialog>
-                      <LoginDialog open={showLoginDialog}>
-                        <Button variant="ghost" className="w-full" onClick={() => setShowLoginDialog(true)}>Iniciar Sesión</Button>
+                      <LoginDialog>
+                        <Button variant="ghost" className="w-full" onClick={() => setIsMenuOpen(false)}>Iniciar Sesión</Button>
                       </LoginDialog>
+                      <RegisterDialog>
+                        <Button className="w-full" onClick={() => setIsMenuOpen(false)}>Registrarse</Button>
+                      </RegisterDialog>
                     </>
                   )}
                 </div>

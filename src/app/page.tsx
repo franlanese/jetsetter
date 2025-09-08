@@ -26,7 +26,7 @@ export default function Home() {
         <div className="px-4 md:px-6 text-center relative z-20">
           <div className="max-w-3xl mx-auto">
             <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl font-headline" style={{textShadow: '0 2px 4px rgba(0,0,0,0.1)'}}>
-              Vuelos Charter en Jet Privado
+              Vuelos Charter en Avión Privado
             </h1>
             <p className="mt-4 text-lg text-gray-300 md:text-xl text-center" style={{textShadow: '0 1px 3px rgba(0,0,0,0.1)'}}>
               Experimente viajes sin interrupciones con acceso a una red global de aviones privados. Tu viaje comienza aquí.
@@ -62,7 +62,7 @@ export default function Home() {
                 <CardContent className="grid gap-2 flex-grow">
                   <p className="text-sm text-muted-foreground">{leg.aircraft}</p>
                   <p className="text-sm font-medium">{new Date(leg.date).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
-                  <p className="text-2xl font-bold text-primary">{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(leg.price)}</p>
+                  <p className="text-2xl font-bold text-primary">{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' , minimumFractionDigits: 0, maximumFractionDigits: 0}).format(leg.price)}</p>
                 </CardContent>
                 <div className="p-6 pt-0">
                   <Button asChild className="w-full mt-2">
