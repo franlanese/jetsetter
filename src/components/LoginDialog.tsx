@@ -54,7 +54,7 @@ export function LoginDialog({ children }: LoginDialogProps) {
             Ingrese sus credenciales para acceder a su cuenta.
           </DialogDescription>
         </DialogHeader>
-        <div className="grid gap-4 py-4">
+        <div className="flex flex-col gap-4 py-4">
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="user" className="text-right">
               Usuario
@@ -78,7 +78,7 @@ export function LoginDialog({ children }: LoginDialogProps) {
               className="col-span-3"
             />
           </div>
-          {error && <p className="text-red-500 text-sm col-span-4 text-center">{error}</p>}
+          {error && <p className="text-red-500 text-sm text-center">{error}</p>}
         </div>
         <DialogFooter>
           <Button type="submit" onClick={handleLogin}>
