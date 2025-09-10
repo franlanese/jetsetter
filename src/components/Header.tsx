@@ -72,11 +72,10 @@ export default function Header() {
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
                 <DropdownMenuLabel>Mi Cuenta</DropdownMenuLabel>
-                <DropdownMenuSeparator />
+                
                 <DropdownMenuItem asChild>
                   <Link href="/historial-de-viajes">Historial de Viajes</Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem>Mi Cuenta</DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem onClick={logout}>Cerrar Sesión</DropdownMenuItem>
               </DropdownMenuContent>
@@ -89,8 +88,6 @@ export default function Header() {
               <RegisterDialog>
                 <Button size="sm" className="hidden md:inline-flex">Registrarse</Button>
               </RegisterDialog>
-            </>
-          )}
           <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
             <SheetTrigger asChild>
               <Button variant="outline" size="icon" className="md:hidden">
@@ -138,6 +135,8 @@ export default function Header() {
               </nav>
             </SheetContent>
           </Sheet>
+          </>
+          )}
         </div>
       </div>
     </header>

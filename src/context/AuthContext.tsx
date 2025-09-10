@@ -1,6 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
+import { useToast } from '@/hooks/use-toast';
 
 interface AuthContextType {
   isLoggedIn: boolean;
@@ -16,6 +17,7 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
+  const { toast } = useToast();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loading, setLoading] = useState(true);
   const [showLoginDialog, setShowLoginDialog] = useState(false);
@@ -33,14 +35,27 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     if (user === 'asd' && pass === '123') {
       localStorage.setItem('user', JSON.stringify({ user }));
       setIsLoggedIn(true);
+      toast({
+        title: `¡Bienvenido ${user}! `,
+        description: 'Inicio de sesión exitoso',
+      });
       return true;
     }
+    toast({
+      title: 'Error de inicio de sesión',
+      description: 'Usuario o contraseña incorrectos',
+      variant: 'destructive',
+    });
     return false;
   };
 
   const logout = () => {
     localStorage.removeItem('user');
     setIsLoggedIn(false);
+    toast({
+      title: 'Cierre de sesión exitoso',
+      description: '¡Hasta pronto!',
+    });
   };
 
   return (
