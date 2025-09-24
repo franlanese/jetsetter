@@ -231,10 +231,14 @@ export default function EmptyLegsList() {
                   alt={leg.aircraft}
                   fill
                   objectFit="cover"
+                  className="transition-all duration-300"
                   data-ai-hint={leg.dataAiHint}
                 />
+                {leg.status !== 'Disponible' && (
+                  <div className="absolute inset-0 bg-card/70 transition-opacity duration-300"></div>
+                )}
                 <Badge
-                  className="absolute top-4 right-4"
+                  className="absolute top-4 right-4 text-sm"
                   variant={leg.status === 'Disponible' ? 'default' : 'secondary'}
                 >
                   {leg.status}
