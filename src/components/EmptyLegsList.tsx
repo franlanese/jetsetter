@@ -47,6 +47,7 @@ import {
 } from '@/components/ui/dialog';
 import { useToast } from '@/hooks/use-toast';
 import { Label } from '@/components/ui/label';
+import { Checkbox } from './ui/checkbox';
 
 // Define the type for a leg based on your JSON structure
 interface Leg {
@@ -68,6 +69,7 @@ export default function EmptyLegsList() {
   const [origin, setOrigin] = useState('');
   const [destination, setDestination] = useState('');
   const [departureDate, setDepartureDate] = useState<Date | undefined>();
+  const [showAvailableOnly, setShowAvailableOnly] = useState(false);
   const [selectedLeg, setSelectedLeg] = useState<Leg | null>(null);
   const [isConfirmDialogOpen, setIsConfirmDialogOpen] = useState(false);
   const [isSeatDialogOpen, setIsSeatDialogOpen] = useState(false);
@@ -94,18 +96,22 @@ export default function EmptyLegsList() {
         (leg.destinationCity &&
           leg.destinationCity.toLowerCase().includes(destination.toLowerCase()));
 
+      const availableMatch = !showAvailableOnly || leg.status === 'Disponible';
+
       return (
         originMatch &&
         destinationMatch &&
-        (!filterDate || legDate.getTime() === filterDate.getTime())
+        (!filterDate || legDate.getTime() === filterDate.getTime()) &&
+        availableMatch
       );
     });
-  }, [origin, destination, departureDate]);
+  }, [origin, destination, departureDate, showAvailableOnly]);
 
   const resetFilters = () => {
     setOrigin('');
     setDestination('');
     setDepartureDate(undefined);
+    setShowAvailableOnly(false);
   };
 
   const handleReserveClick = (leg: Leg) => {
@@ -193,6 +199,22 @@ export default function EmptyLegsList() {
           <Button onClick={resetFilters} variant="outline">
             Limpiar Filtros
           </Button>
+        </div>
+        <div className="flex items-center space-x-2 mt-5">
+          <Checkbox
+            id="available-only"
+            checked={showAvailableOnly}
+            onCheckedChange={(checked) =>
+              setShowAvailableOnly(checked as boolean)
+            }
+            className='h-5 w-5 border-input'
+          />
+          <label
+            htmlFor="available-only"
+            className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+          >
+            Mostrar solo disponibles
+          </label>
         </div>
       </Card>
 
