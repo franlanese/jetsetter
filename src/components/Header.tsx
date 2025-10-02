@@ -22,8 +22,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 const navLinks = [
-  { href: "/", label: "Buscar Vuelos", icon: Search },
-  { href: "/empty-legs", label: "Tramos Vacíos", icon: Plane },
+  { href: "/demo", label: "Buscar Vuelos", icon: Search },
+  { href: "/demo/empty-legs", label: "Tramos Vacíos", icon: Plane },
 ];
 
 export default function Header() {
@@ -74,7 +74,7 @@ export default function Header() {
                 <DropdownMenuLabel>Mi Cuenta</DropdownMenuLabel>
                 
                 <DropdownMenuItem asChild>
-                  <Link href="/historial-de-viajes">Historial de Viajes</Link>
+                  <Link href="/demo/historial-de-viajes">Historial de Viajes</Link>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem onClick={logout}>Cerrar Sesión</DropdownMenuItem>
