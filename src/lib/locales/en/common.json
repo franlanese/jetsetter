@@ -1,3 +1,19 @@
 {
-    "intro1": "Private Jet Charter Flights"
+  "intro1": "Private Plane Charter Flights",
+  "welcomeTitle": "Welcome to Aera",
+  "welcomeSubtitle": "The digital assistant for your private aviation company. Manage flights and bookings with unprecedented ease.",
+  "featuresTitle": "Main Features",
+  "feature1Title": "Intelligent Flight Search",
+  "feature1Text": "Our system allows you to search and filter private flights in real-time, connecting you with a global network of operators.",
+  "feature2Title": "Empty Legs Offers",
+  "feature2Text": "Access exclusive opportunities for flights at reduced prices, taking advantage of the empty legs of private jets.",
+  "feature3Title": "Travel History",
+  "feature3Text": "Keep a detailed record of all your past trips, with easy access to information and management of your flights.",
+  "techTitle": "Our Technology",
+  "techSubtitle": "Modern Technology Stack",
+  "techText": "Aera is built on a foundation of cutting-edge web technologies to ensure a fast, secure, and scalable user experience.",
+  "ctaTitle": "Ready to fly?",
+  "ctaSubtitle": "Explore the application and discover the new era of private travel.",
+  "ctaButton": "Go to Demo",
+  "footerRights": "All rights reserved."
 }

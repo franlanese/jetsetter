@@ -36,7 +36,7 @@ export default function Header() {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 px-5">
       <div className="flex h-16 items-center">
         <div className="mr-4 flex items-center">
-          {pathname !== '/' ? (
+          {pathname !== '/' && pathname !== '/demo' ? (
             <Button variant="ghost" size="icon" className="" onClick={() => router.back()}>
               <ChevronLeft className="h-12 w-12" />
             </Button>

@@ -1,3 +1,19 @@
 {
-    "intro1": "Vuelos Charter en Avión Privado"
+    "intro1": "Vuelos Charter en Avión Privado",
+    "welcomeTitle": "Bienvenido a Aera",
+    "welcomeSubtitle": "El asistente digital para tu empresa de aviación privada. Gestiona vuelos y reservas con una facilidad sin precedentes.",
+    "featuresTitle": "Funcionalidades Principales",
+    "feature1Title": "Búsqueda Inteligente de Vuelos",
+    "feature1Text": "Nuestro sistema permite buscar y filtrar vuelos privados en tiempo real, conectándote con una red global de operadores.",
+    "feature2Title": "Ofertas \"Empty Legs\"",
+    "feature2Text": "Accede a oportunidades exclusivas de vuelos a precios reducidos, aprovechando los tramos vacíos de jets privados.",
+    "feature3Title": "Historial de Viajes",
+    "feature3Text": "Mantén un registro detallado de todos tus viajes anteriores, con acceso fácil a la información y gestión de tus vuelos.",
+    "techTitle": "Nuestra Tecnología",
+    "techSubtitle": "Stack Tecnológico Moderno",
+    "techText": "Aera está construido sobre una base de tecnologías web de vanguardia para garantizar una experiencia de usuario rápida, segura y escalable.",
+    "ctaTitle": "¿Listo para volar?",
+    "ctaSubtitle": "Explora la aplicación y descubre la nueva era de los viajes privados.",
+    "ctaButton": "Ir a la Demo",
+    "footerRights": "Todos los derechos reservados."
 }
