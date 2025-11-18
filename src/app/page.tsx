@@ -1,5 +1,4 @@
 'use client';
-
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
@@ -7,6 +6,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Rocket, Plane, History, Code , BadgePercent, SearchCheck} from 'lucide-react';
 import { LanguageProvider, useTranslation } from '@/context/LanguageContext';
 import { LanguageSwitcher } from '@/components/LanguageSwitcher';
+
+import { DemoRequestDialog } from '@/components/DemoRequestDialog';
 
 const PresentationPageContent = () => {
   const { t } = useTranslation();
@@ -91,9 +92,11 @@ const PresentationPageContent = () => {
           <p className="text-lg mb-8">
             {t('ctaSubtitle')}
           </p>
-          <Button asChild style={{ width:250, height: 60, fontSize: 20}}>
-            <Link href="/demo">{t('ctaButton')}</Link>
-          </Button>
+          <DemoRequestDialog>
+            <Button style={{ width:250, height: 60, fontSize: 20}}>
+              {t('ctaButton')}
+            </Button>
+          </DemoRequestDialog>
         </section>
 
         {/* Technology Stack Section - Adjust card and badge colors */}
