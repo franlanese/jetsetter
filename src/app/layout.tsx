@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: 'Aera',
   description: 'Viajá rápido y seguro con Aera',
   icons: {
-    icon: '/favicon.svg',
+    icon: '/favicon.ico',
   },
 };
 
