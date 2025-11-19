@@ -44,6 +44,20 @@ const PresentationPageContent = () => {
       </section>
 
       <main className="container mx-auto px-4 py-12">
+        {/* New Section */}
+        <section className="mb-20">
+          <Card className="max-w-4xl mx-auto bg-secondary/50">
+            <CardHeader>
+              <CardTitle className="text-center">Aera es una Plataforma web para clientes y un Panel de Control para administradores. Modular y escalable.</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-center">
+              Permite a tus clientes solicitar vuelos y visualizar empty Legs y realizar pagos. Ademas adquiere la posibilidad de publicar y difundir empty Legs, tanto a clientes como a potenciales interesados.
+              </p>
+            </CardContent>
+          </Card>
+        </section>
+
         {/* Features Section - Adjust card background for contrast */}
         <section className="mb-20">
           <h2 className="text-4xl font-bold text-center mb-12">
