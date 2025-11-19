@@ -1,0 +1,104 @@
+"use client";
+
+import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { useState } from "react";
+import { useRouter } from 'next/navigation';
+
+interface DemoRequestDialogProps {
+  children: React.ReactNode;
+}
+
+export function DemoRequestDialog({ children }: DemoRequestDialogProps) {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [company, setCompany] = useState("");
+  const [error, setError] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
+
+  const handleSubmit = () => {
+    if (!name || !email) {
+      setError("Nombre y correo electrónico son obligatorios.");
+      return;
+    }
+    // Simple email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setError("Por favor, ingrese un correo electrónico válido.");
+      return;
+    }
+    
+    setError("");
+    setIsOpen(false);
+    router.push('/demo');
+  };
+
+  return (
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
+      <DialogTrigger asChild onClick={() => setIsOpen(true)}>
+        {children}
+      </DialogTrigger>
+      <DialogContent className="w-[calc(100%_-_1rem)] sm:w-full sm:max-w-[425px]">
+        <DialogHeader>
+          <DialogTitle>Solicitar Demo</DialogTitle>
+          <DialogDescription>
+            Complete el formulario para acceder a la demostración.
+          </DialogDescription>
+        </DialogHeader>
+        <div className="flex flex-col gap-4 py-4">
+          <div className="grid grid-cols-4 items-center gap-4">
+            <Label htmlFor="name" className="text-right">
+              Nombre
+            </Label>
+            <Input
+              id="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="col-span-3"
+            />
+          </div>
+          <div className="grid grid-cols-4 items-center gap-4">
+            <Label htmlFor="email" className="text-right">
+              Correo
+            </Label>
+            <Input
+              id="email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="col-span-3"
+            />
+          </div>
+          <div className="grid grid-cols-4 items-center gap-4">
+            <Label htmlFor="company" className="text-right">
+              Empresa
+            </Label>
+            <Input
+              id="company"
+              value={company}
+              onChange={(e) => setCompany(e.target.value)}
+              className="col-span-3"
+            />
+          </div>
+          {error && <p className="text-red-500 text-sm text-center">{error}</p>}
+        </div>
+        <DialogFooter>
+          <Button type="submit" onClick={handleSubmit}>
+            Ir a la Demo
+          </Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  );
+}
