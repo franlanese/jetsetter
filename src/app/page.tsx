@@ -1,9 +1,10 @@
 'use client';
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Rocket, Plane, History, Code , BadgePercent, SearchCheck} from 'lucide-react';
+import { Rocket, Plane, History, Code, BadgePercent, SearchCheck } from 'lucide-react';
 import { LanguageProvider, useTranslation } from '@/context/LanguageContext';
 import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 import { DemoRequestDialog } from '@/components/DemoRequestDialog';
@@ -15,6 +16,7 @@ import { Navigation, Pagination } from 'swiper/modules';
 
 const PresentationPageContent = () => {
   const { t } = useTranslation();
+  const [paginationEl, setPaginationEl] = useState<HTMLElement | null>(null);
 
   return (
     <div className="min-h-screen">
@@ -56,7 +58,7 @@ const PresentationPageContent = () => {
             </CardHeader>
             <CardContent>
               <p className="text-center">
-              Permite a tus clientes solicitar vuelos y visualizar empty Legs y realizar pagos. Ademas adquiere la posibilidad de publicar y difundir empty Legs, tanto a clientes como a potenciales interesados.
+                Permite a tus clientes solicitar vuelos y visualizar empty Legs y realizar pagos. Ademas adquiere la posibilidad de publicar y difundir empty Legs, tanto a clientes como a potenciales interesados.
               </p>
             </CardContent>
           </Card>
@@ -72,7 +74,7 @@ const PresentationPageContent = () => {
             spaceBetween={50}
             slidesPerView={1}
             navigation
-            pagination={{ clickable: true }}
+            pagination={{ clickable: true, el: paginationEl }}
             breakpoints={{
               640: {
                 slidesPerView: 1,
@@ -87,8 +89,9 @@ const PresentationPageContent = () => {
                 spaceBetween: 50,
               },
             }}
+            className="pb-16"
           >
-            <SwiperSlide>
+            <SwiperSlide className="!h-auto">
               <Card className="h-full flex flex-col text-center hover:shadow-lg transition-shadow bg-secondary/50">
                 <CardHeader>
                   <SearchCheck className="mx-auto h-12 w-12 text-blue-400 mb-4" />
@@ -101,7 +104,7 @@ const PresentationPageContent = () => {
                 </CardContent>
               </Card>
             </SwiperSlide>
-            <SwiperSlide>
+            <SwiperSlide className="!h-auto">
               <Card className="h-full flex flex-col text-center hover:shadow-lg transition-shadow bg-secondary/50">
                 <CardHeader>
                   <BadgePercent className="mx-auto h-12 w-12 text-green-400 mb-4" />
@@ -114,7 +117,7 @@ const PresentationPageContent = () => {
                 </CardContent>
               </Card>
             </SwiperSlide>
-            <SwiperSlide>
+            <SwiperSlide className="!h-auto">
               <Card className="h-full flex flex-col text-center hover:shadow-lg transition-shadow bg-secondary/50">
                 <CardHeader>
                   <History className="mx-auto h-12 w-12 text-purple-400 mb-4" />
@@ -128,6 +131,7 @@ const PresentationPageContent = () => {
               </Card>
             </SwiperSlide>
           </Swiper>
+          <div className="flex justify-center mt-8" ref={setPaginationEl} />
         </section>
 
         {/* CTA Section - Text will inherit foreground color */}
@@ -137,7 +141,7 @@ const PresentationPageContent = () => {
             {t('ctaSubtitle')}
           </p>
           <DemoRequestDialog>
-            <Button style={{ width:250, height: 60, fontSize: 20}}>
+            <Button style={{ width: 250, height: 60, fontSize: 20 }}>
               {t('ctaButton')}
             </Button>
           </DemoRequestDialog>

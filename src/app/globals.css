@@ -6,6 +6,22 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+:root {
+  --swiper-navigation-size: 20px;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  width: 20px !important;
+  height: 20px !important;
+  margin-top: -10px !important;
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  font-size: 20px !important;
+}
+
 @layer base {
   :root {
     --background: 205 79% 7%;
@@ -42,7 +58,7 @@ body {
     --sidebar-border: 205 79% 17%;
     --sidebar-ring: 231 48% 91%;
   }
- 
+
   .dark {
     --background: 205 79% 7%;
     --foreground: 45 48% 91%;
@@ -83,6 +99,7 @@ body {
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
