@@ -147,27 +147,19 @@ const PresentationPageContent = () => {
           </DemoRequestDialog>
         </section>
 
-        {/* Technology Stack Section - Adjust card and badge colors */}
+        {/* Powered by Zonodev Section */}
         <section className="mb-10">
-          <h2 className="text-3xl font-bold text-center mb-6">
-            {t('techTitle')}
-          </h2>
           <Card className="max-w-4xl mx-auto bg-secondary/50">
             <CardHeader>
-              <Code className="mx-auto h-12 w-12 text-gray-400 mb-4" />
-              <CardTitle className="text-center">{t('techSubtitle')}</CardTitle>
+              <img src="https://zonodev.ar/favicon.ico" alt="Zonodev Logo" className="mx-auto h-12 w-12 mb-4" />
+              <CardTitle className="text-center">Powered by Zonodev</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-center text-lg mb-6">
-                {t('techText')}
+              <p className="text-center text-lg">
+                Aera es nuestra plataforma de gestion en que la plasmamos nuestra experiencia y creatividad.
+                <br />
+                Un desarrollo de <a href="https://zonodev.ar" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">zonodev.ar </a> {'  <3'}
               </p>
-              <div className="flex justify-center flex-wrap gap-4">
-                <span className="bg-muted text-muted-foreground text-sm font-medium me-2 px-2.5 py-0.5 rounded">Next.js</span>
-                <span className="bg-muted text-muted-foreground text-sm font-medium me-2 px-2.5 py-0.5 rounded">React</span>
-                <span className="bg-muted text-muted-foreground text-sm font-medium me-2 px-2.5 py-0.5 rounded">TypeScript</span>
-                <span className="bg-muted text-muted-foreground text-sm font-medium me-2 px-2.5 py-0.5 rounded">Tailwind CSS</span>
-                <span className="bg-muted text-muted-foreground text-sm font-medium me-2 px-2.5 py-0.5 rounded">Genkit AI</span>
-              </div>
             </CardContent>
           </Card>
         </section>
