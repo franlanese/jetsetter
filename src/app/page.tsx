@@ -8,6 +8,7 @@ import { Rocket, Plane, History, Code, BadgePercent, SearchCheck } from 'lucide-
 import { LanguageProvider, useTranslation } from '@/context/LanguageContext';
 import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 import { DemoRequestDialog } from '@/components/DemoRequestDialog';
+import CardNav, { CardNavItem } from '@/components/NavBar';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -18,8 +19,48 @@ const PresentationPageContent = () => {
   const { t } = useTranslation();
   const [paginationEl, setPaginationEl] = useState<HTMLElement | null>(null);
 
+  const navItems: CardNavItem[] = [
+    {
+      label: 'Servicios',
+      bgColor: '#e0f2fe', // light blue
+      textColor: '#0f172a',
+      links: [
+        { label: 'Vuelos Charter', href: '#', ariaLabel: 'Vuelos Charter' },
+        { label: 'Empty Legs', href: '#', ariaLabel: 'Empty Legs' },
+        { label: 'Gestión de Flotas', href: '#', ariaLabel: 'Gestión de Flotas' },
+      ],
+    },
+    {
+      label: 'Compañía',
+      bgColor: '#f0fdf4', // light green
+      textColor: '#0f172a',
+      links: [
+        { label: 'Sobre Nosotros', href: '#', ariaLabel: 'Sobre Nosotros' },
+        { label: 'Blog', href: '#', ariaLabel: 'Blog' },
+        { label: 'Contacto', href: '#', ariaLabel: 'Contacto' },
+      ],
+    },
+    {
+      label: 'Legal',
+      bgColor: '#fef2f2', // light red
+      textColor: '#0f172a',
+      links: [
+        { label: 'Términos', href: '#', ariaLabel: 'Términos' },
+        { label: 'Privacidad', href: '#', ariaLabel: 'Privacidad' },
+      ],
+    },
+  ];
+
   return (
     <div className="min-h-screen">
+      <CardNav
+        logo="https://zonodev.ar/favicon.ico"
+        logoAlt="Aera Logo"
+        items={navItems}
+        baseColor="#ffffff"
+        buttonBgColor="#000000"
+        buttonTextColor="#ffffff"
+      />
       <LanguageSwitcher />
       {/* Hero Section - Overlay and text colors are already dark-theme friendly */}
       <section className="relative w-full py-20 md:py-28 lg:py-36 text-center">
