@@ -6,8 +6,12 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Rocket, Plane, History, Code , BadgePercent, SearchCheck} from 'lucide-react';
 import { LanguageProvider, useTranslation } from '@/context/LanguageContext';
 import { LanguageSwitcher } from '@/components/LanguageSwitcher';
-
 import { DemoRequestDialog } from '@/components/DemoRequestDialog';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import { Navigation, Pagination } from 'swiper/modules';
 
 const PresentationPageContent = () => {
   const { t } = useTranslation();
@@ -63,41 +67,67 @@ const PresentationPageContent = () => {
           <h2 className="text-4xl font-bold text-center mb-12">
             {t('featuresTitle')}
           </h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <Card className="text-center hover:shadow-lg transition-shadow bg-secondary/50">
-              <CardHeader>
-                <SearchCheck className="mx-auto h-12 w-12 text-blue-400 mb-4" />
-                <CardTitle>{t('feature1Title')}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p>
-                  {t('feature1Text')}
-                </p>
-              </CardContent>
-            </Card>
-            <Card className="text-center hover:shadow-lg transition-shadow bg-secondary/50">
-              <CardHeader>
-                <BadgePercent className="mx-auto h-12 w-12 text-green-400 mb-4" />
-                <CardTitle>{t('feature2Title')}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p>
-                  {t('feature2Text')}
-                </p>
-              </CardContent>
-            </Card>
-            <Card className="text-center hover:shadow-lg transition-shadow bg-secondary/50">
-              <CardHeader>
-                <History className="mx-auto h-12 w-12 text-purple-400 mb-4" />
-                <CardTitle>{t('feature3Title')}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p>
-                  {t('feature3Text')}
-                </p>
-              </CardContent>
-            </Card>
-          </div>
+          <Swiper
+            modules={[Navigation, Pagination]}
+            spaceBetween={50}
+            slidesPerView={1}
+            navigation
+            pagination={{ clickable: true }}
+            breakpoints={{
+              640: {
+                slidesPerView: 1,
+                spaceBetween: 20,
+              },
+              768: {
+                slidesPerView: 2,
+                spaceBetween: 40,
+              },
+              1024: {
+                slidesPerView: 3,
+                spaceBetween: 50,
+              },
+            }}
+          >
+            <SwiperSlide>
+              <Card className="h-full flex flex-col text-center hover:shadow-lg transition-shadow bg-secondary/50">
+                <CardHeader>
+                  <SearchCheck className="mx-auto h-12 w-12 text-blue-400 mb-4" />
+                  <CardTitle>{t('feature1Title')}</CardTitle>
+                </CardHeader>
+                <CardContent className="flex-grow">
+                  <p>
+                    {t('feature1Text')}
+                  </p>
+                </CardContent>
+              </Card>
+            </SwiperSlide>
+            <SwiperSlide>
+              <Card className="h-full flex flex-col text-center hover:shadow-lg transition-shadow bg-secondary/50">
+                <CardHeader>
+                  <BadgePercent className="mx-auto h-12 w-12 text-green-400 mb-4" />
+                  <CardTitle>{t('feature2Title')}</CardTitle>
+                </CardHeader>
+                <CardContent className="flex-grow">
+                  <p>
+                    {t('feature2Text')}
+                  </p>
+                </CardContent>
+              </Card>
+            </SwiperSlide>
+            <SwiperSlide>
+              <Card className="h-full flex flex-col text-center hover:shadow-lg transition-shadow bg-secondary/50">
+                <CardHeader>
+                  <History className="mx-auto h-12 w-12 text-purple-400 mb-4" />
+                  <CardTitle>{t('feature3Title')}</CardTitle>
+                </CardHeader>
+                <CardContent className="flex-grow">
+                  <p>
+                    {t('feature3Text')}
+                  </p>
+                </CardContent>
+              </Card>
+            </SwiperSlide>
+          </Swiper>
         </section>
 
         {/* CTA Section - Text will inherit foreground color */}
