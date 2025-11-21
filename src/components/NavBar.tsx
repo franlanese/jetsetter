@@ -16,8 +16,6 @@ export type CardNavItem = {
 };
 
 export interface CardNavProps {
-    logo: string;
-    logoAlt?: string;
     items: CardNavItem[];
     className?: string;
     ease?: string;
@@ -25,18 +23,18 @@ export interface CardNavProps {
     menuColor?: string;
     buttonBgColor?: string;
     buttonTextColor?: string;
+    languageSelector?: React.ReactNode;
 }
 
 const CardNav: React.FC<CardNavProps> = ({
-    logo,
-    logoAlt = 'Logo',
     items,
     className = '',
     ease = 'power3.out',
     baseColor = '#fff',
     menuColor,
     buttonBgColor,
-    buttonTextColor
+    buttonTextColor,
+    languageSelector
 }) => {
     const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
     const [isExpanded, setIsExpanded] = useState(false);
@@ -64,7 +62,7 @@ const CardNav: React.FC<CardNavProps> = ({
 
                 contentEl.offsetHeight;
 
-                const topBar = 60;
+                const topBar = 44;
                 const padding = 16;
                 const contentHeight = contentEl.scrollHeight;
 
@@ -83,7 +81,7 @@ const CardNav: React.FC<CardNavProps> = ({
         const navEl = navRef.current;
         if (!navEl) return null;
 
-        gsap.set(navEl, { height: 60, overflow: 'hidden' });
+        gsap.set(navEl, { height: 44, overflow: 'hidden' });
         gsap.set(cardsRef.current, { y: 50, opacity: 0 });
 
         const tl = gsap.timeline({ paused: true });
@@ -171,16 +169,18 @@ const CardNav: React.FC<CardNavProps> = ({
                     </div>
 
                     <div className="logo-container">
-                        <img src={logo} alt={logoAlt} className="logo" />
+                        {/* Logo removed */}
                     </div>
 
-                    <button
-                        type="button"
-                        className="card-nav-cta-button"
-                        style={{ backgroundColor: buttonBgColor, color: buttonTextColor }}
-                    >
-                        Get Started
-                    </button>
+                    <div className="card-nav-actions">
+                        <button
+                            type="button"
+                            className="card-nav-cta-button"
+                            style={{ backgroundColor: buttonBgColor, color: buttonTextColor }}
+                        >
+                            Get Started
+                        </button>
+                    </div>
                 </div>
 
                 <div className="card-nav-content" aria-hidden={!isExpanded}>
@@ -202,6 +202,11 @@ const CardNav: React.FC<CardNavProps> = ({
                             </div>
                         </div>
                     ))}
+                    {languageSelector && (
+                        <div className="language-selector-container">
+                            {languageSelector}
+                        </div>
+                    )}
                 </div>
             </nav>
         </div>

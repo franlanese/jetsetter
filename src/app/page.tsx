@@ -40,28 +40,30 @@ const PresentationPageContent = () => {
         { label: 'Contacto', href: '#', ariaLabel: 'Contacto' },
       ],
     },
-    {
-      label: 'Legal',
-      bgColor: '#fef2f2', // light red
-      textColor: '#0f172a',
-      links: [
-        { label: 'Términos', href: '#', ariaLabel: 'Términos' },
-        { label: 'Privacidad', href: '#', ariaLabel: 'Privacidad' },
-      ],
-    },
+
   ];
 
   return (
     <div className="min-h-screen">
-      <CardNav
-        logo="https://zonodev.ar/favicon.ico"
-        logoAlt="Aera Logo"
-        items={navItems}
-        baseColor="#ffffff"
-        buttonBgColor="#000000"
-        buttonTextColor="#ffffff"
-      />
-      <LanguageSwitcher />
+      <div className="top-nav-row">
+        <div className="nav-side-box" style={{ backgroundColor: 'hsl(205, 79%, 7%)', padding: '0 1rem' }}>
+          <Image
+            src="/images/aera2.png"
+            alt="Aera Logo"
+            width={32}
+            height={32}
+            className="object-contain"
+          />
+        </div>
+        <CardNav
+          items={navItems}
+          baseColor="hsl(205, 79%, 7%)"
+          menuColor="hsl(45, 48%, 91%)"
+          buttonBgColor="hsl(45, 48%, 91%)"
+          buttonTextColor="hsl(205, 79%, 7%)"
+          languageSelector={<LanguageSwitcher />}
+        />
+      </div>
       {/* Hero Section - Overlay and text colors are already dark-theme friendly */}
       <section className="relative w-full py-20 md:py-28 lg:py-36 text-center">
         <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent z-10"></div>
