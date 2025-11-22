@@ -115,7 +115,7 @@ body {
 }
 
 .top-nav-row {
-  position: absolute;
+  position: fixed;
   top: 1rem;
   left: 0;
   right: 0;
