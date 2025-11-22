@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Rocket, Plane, History, Code, BadgePercent, SearchCheck } from 'lucide-react';
+import { Rocket, Plane, History, Code, BadgePercent, SearchCheck, LayoutDashboard, Monitor, Mail, Calculator, UserCheck, Globe, Blocks } from 'lucide-react';
 import { LanguageProvider, useTranslation } from '@/context/LanguageContext';
 import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 import { DemoRequestDialog } from '@/components/DemoRequestDialog';
@@ -41,6 +41,44 @@ const PresentationPageContent = () => {
       ],
     },
 
+  ];
+
+  const features = [
+    {
+      icon: <LayoutDashboard className="mx-auto h-12 w-12 text-blue-400 mb-4" />,
+      title: "Panel de Control",
+      description: "Permite a los Administradores publicar viajes y gestionar la flota."
+    },
+    {
+      icon: <Monitor className="mx-auto h-12 w-12 text-green-400 mb-4" />,
+      title: "Plataforma para Clientes",
+      description: "Solicitar Vuelos, Visualizar Empty Legsy realizar Pagos. Diseño profesional y exclusivo hecho para tu empresa."
+    },
+    {
+      icon: <Mail className="mx-auto h-12 w-12 text-purple-400 mb-4" />,
+      title: "Email Marketing para Empty Legs",
+      description: "Permite enviar comunicaciones personalizadas sobre vuelos Empty Legs, optimizando la difusión y el alcance comercial."
+    },
+    {
+      icon: <Calculator className="mx-auto h-12 w-12 text-orange-400 mb-4" />,
+      title: "Automatización de presupuestos",
+      description: "Genera presupuestos de vuelos de forma automática, aplicando los parámetros de la empresa para asegurar rapidez, precisión y eficiencia en cada cotización."
+    },
+    {
+      icon: <UserCheck className="mx-auto h-12 w-12 text-red-400 mb-4" />,
+      title: "Validar registros de clientes",
+      description: "Módulo que valida registros de clientes mediante SMS, correo electrónico o WhatsApp, garantizando seguridad, autenticidad y confiabilidad en la información ingresada."
+    },
+    {
+      icon: <Globe className="mx-auto h-12 w-12 text-teal-400 mb-4" />,
+      title: "Traducción Multilingüe",
+      description: "Ofrecer la página en diferentes idiomas, optimizando la experiencia del usuario y facilitando el alcance a mercados internacionales."
+    },
+    {
+      icon: <Blocks className="mx-auto h-12 w-12 text-indigo-400 mb-4" />,
+      title: "Escalable y Modular",
+      description: "Posibilidad de futuras ampliaciones funcionales y personalización de diseño."
+    }
   ];
 
   return (
@@ -142,45 +180,21 @@ const PresentationPageContent = () => {
             }}
             className="pb-16"
           >
-            <SwiperSlide className="!h-auto">
-              <Card className="h-full flex flex-col text-center hover:shadow-lg transition-shadow bg-secondary/50">
-                <CardHeader>
-                  <SearchCheck className="mx-auto h-12 w-12 text-blue-400 mb-4" />
-                  <CardTitle>{t('feature1Title')}</CardTitle>
-                </CardHeader>
-                <CardContent className="flex-grow">
-                  <p>
-                    {t('feature1Text')}
-                  </p>
-                </CardContent>
-              </Card>
-            </SwiperSlide>
-            <SwiperSlide className="!h-auto">
-              <Card className="h-full flex flex-col text-center hover:shadow-lg transition-shadow bg-secondary/50">
-                <CardHeader>
-                  <BadgePercent className="mx-auto h-12 w-12 text-green-400 mb-4" />
-                  <CardTitle>{t('feature2Title')}</CardTitle>
-                </CardHeader>
-                <CardContent className="flex-grow">
-                  <p>
-                    {t('feature2Text')}
-                  </p>
-                </CardContent>
-              </Card>
-            </SwiperSlide>
-            <SwiperSlide className="!h-auto">
-              <Card className="h-full flex flex-col text-center hover:shadow-lg transition-shadow bg-secondary/50">
-                <CardHeader>
-                  <History className="mx-auto h-12 w-12 text-purple-400 mb-4" />
-                  <CardTitle>{t('feature3Title')}</CardTitle>
-                </CardHeader>
-                <CardContent className="flex-grow">
-                  <p>
-                    {t('feature3Text')}
-                  </p>
-                </CardContent>
-              </Card>
-            </SwiperSlide>
+            {features.map((feature, index) => (
+              <SwiperSlide key={index} className="!h-auto">
+                <Card className="h-full flex flex-col text-center hover:shadow-lg transition-shadow bg-secondary/50">
+                  <CardHeader>
+                    {feature.icon}
+                    <CardTitle>{feature.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent className="flex-grow">
+                    <p>
+                      {feature.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              </SwiperSlide>
+            ))}
           </Swiper>
           <div className="flex justify-center mt-8" ref={setPaginationEl} />
         </section>
