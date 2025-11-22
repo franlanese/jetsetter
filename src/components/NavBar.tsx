@@ -6,6 +6,7 @@ type CardNavLink = {
     label: string;
     href: string;
     ariaLabel: string;
+    target?: string;
 };
 
 export type CardNavItem = {
@@ -148,6 +149,12 @@ const CardNav: React.FC<CardNavProps> = ({
         }
     };
 
+    const handleLinkClick = () => {
+        if (isExpanded) {
+            toggleMenu();
+        }
+    };
+
     const setCardRef = (i: number) => (el: HTMLDivElement | null) => {
         if (el) cardsRef.current[i] = el;
     };
@@ -194,7 +201,15 @@ const CardNav: React.FC<CardNavProps> = ({
                             <div className="nav-card-label">{item.label}</div>
                             <div className="nav-card-links">
                                 {item.links?.map((lnk, i) => (
-                                    <a key={`${lnk.label}-${i}`} className="nav-card-link" href={lnk.href} aria-label={lnk.ariaLabel}>
+                                    <a
+                                        key={`${lnk.label}-${i}`}
+                                        className="nav-card-link"
+                                        href={lnk.href}
+                                        aria-label={lnk.ariaLabel}
+                                        target={lnk.target}
+                                        rel={lnk.target === '_blank' ? 'noopener noreferrer' : undefined}
+                                        onClick={handleLinkClick}
+                                    >
                                         <ArrowUpRight className="nav-card-link-icon" aria-hidden="true" />
                                         {lnk.label}
                                     </a>

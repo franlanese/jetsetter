@@ -21,13 +21,13 @@ const PresentationPageContent = () => {
 
   const navItems: CardNavItem[] = [
     {
-      label: 'Servicios',
+      label: 'Por qué Aera?',
       bgColor: '#e0f2fe', // light blue
       textColor: '#0f172a',
       links: [
-        { label: 'Vuelos Charter', href: '#', ariaLabel: 'Vuelos Charter' },
-        { label: 'Empty Legs', href: '#', ariaLabel: 'Empty Legs' },
-        { label: 'Gestión de Flotas', href: '#', ariaLabel: 'Gestión de Flotas' },
+        { label: 'Funcionalidades', href: '#features', ariaLabel: 'Funcionalidades' },
+        { label: 'Precios', href: '#', ariaLabel: 'Precios' },
+        { label: 'Ver Demo', href: '#demo', ariaLabel: 'Ver Demo' },
       ],
     },
     {
@@ -35,9 +35,9 @@ const PresentationPageContent = () => {
       bgColor: '#f0fdf4', // light green
       textColor: '#0f172a',
       links: [
-        { label: 'Sobre Nosotros', href: '#', ariaLabel: 'Sobre Nosotros' },
-        { label: 'Blog', href: '#', ariaLabel: 'Blog' },
-        { label: 'Contacto', href: '#', ariaLabel: 'Contacto' },
+        { label: 'Sobre Nosotros', href: '#powered-by-zonodev', ariaLabel: 'Sobre Nosotros' },
+        { label: 'Linkedin', href: 'https://www.linkedin.com/company/zonodev/', ariaLabel: 'Linkedin', target: '_blank' },
+        { label: 'Contacto', href: '#powered-by-zonodev', ariaLabel: 'Contacto' },
       ],
     },
 
@@ -47,13 +47,21 @@ const PresentationPageContent = () => {
     <div className="min-h-screen">
       <div className="top-nav-row">
         <div className="nav-side-box" style={{ backgroundColor: 'hsl(205, 79%, 7%)', padding: '0 1rem' }}>
-          <Image
-            src="/images/aera2.png"
-            alt="Aera Logo"
-            width={32}
-            height={32}
-            className="object-contain"
-          />
+          <Link
+            href="/"
+            onClick={(e) => {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+          >
+            <Image
+              src="/images/aera2.png"
+              alt="Aera Logo"
+              width={32}
+              height={32}
+              className="object-contain cursor-pointer"
+            />
+          </Link>
         </div>
         <CardNav
           items={navItems}
@@ -108,7 +116,7 @@ const PresentationPageContent = () => {
         </section>
 
         {/* Features Section - Adjust card background for contrast */}
-        <section className="mb-20">
+        <section className="mb-20 scroll-mt-28" id="features">
           <h2 className="text-4xl font-bold text-center mb-12">
             {t('featuresTitle')}
           </h2>
@@ -178,7 +186,7 @@ const PresentationPageContent = () => {
         </section>
 
         {/* CTA Section - Text will inherit foreground color */}
-        <section className="text-center mb-20">
+        <section className="text-center mb-20 scroll-mt-28" id="demo">
           <h2 className="text-3xl font-bold mb-4">{t('ctaTitle')}</h2>
           <p className="text-lg mb-8">
             {t('ctaSubtitle')}
@@ -191,7 +199,7 @@ const PresentationPageContent = () => {
         </section>
 
         {/* Powered by Zonodev Section */}
-        <section className="mb-10">
+        <section className="mb-10 scroll-mt-28" id="powered-by-zonodev">
           <Card className="max-w-4xl mx-auto bg-secondary/50">
             <CardHeader>
               <img src="https://zonodev.ar/favicon.ico" alt="Zonodev Logo" className="mx-auto h-12 w-12 mb-4" />
