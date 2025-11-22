@@ -12,12 +12,17 @@ export const LanguageSwitcher = () => {
     { code: 'pt', name: 'Português', flag: '/images/brasil.png' },
   ];
 
+  const handleLanguageChange = (e: React.MouseEvent, langCode: string) => {
+    e.stopPropagation(); // Prevent event from bubbling up to NavBar
+    setLocale(langCode as any);
+  };
+
   return (
     <div className="language-selector">
       {languages.map((lang) => (
         <button
           key={lang.code}
-          onClick={() => setLocale(lang.code as any)}
+          onClick={(e) => handleLanguageChange(e, lang.code)}
           className={`language-button ${locale === lang.code ? 'active' : ''}`}
           aria-label={`Switch to ${lang.name}`}
         >

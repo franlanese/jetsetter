@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef, useState } from 'react';
+import React, { useLayoutEffect, useRef, useState, useMemo, useCallback } from 'react';
 import { gsap } from 'gsap';
 import { ArrowUpRight } from 'lucide-react';
 
@@ -42,7 +42,7 @@ const CardNav: React.FC<CardNavProps> = ({
     const cardsRef = useRef<HTMLDivElement[]>([]);
     const tlRef = useRef<gsap.core.Timeline | null>(null);
 
-    const calculateHeight = () => {
+    const calculateHeight = useCallback(() => {
         const navEl = navRef.current;
         if (!navEl) return 260;
 
@@ -75,9 +75,9 @@ const CardNav: React.FC<CardNavProps> = ({
             }
         }
         return 260;
-    };
+    }, []);
 
-    const createTimeline = () => {
+    const createTimeline = useCallback(() => {
         const navEl = navRef.current;
         if (!navEl) return null;
 
@@ -95,7 +95,7 @@ const CardNav: React.FC<CardNavProps> = ({
         tl.to(cardsRef.current, { y: 0, opacity: 1, duration: 0.4, ease, stagger: 0.08 }, '-=0.1');
 
         return tl;
-    };
+    }, [calculateHeight, ease]);
 
     useLayoutEffect(() => {
         const tl = createTimeline();
@@ -105,7 +105,7 @@ const CardNav: React.FC<CardNavProps> = ({
             tl?.kill();
             tlRef.current = null;
         };
-    }, [ease, items]);
+    }, [createTimeline]);
 
     useLayoutEffect(() => {
         const handleResize = () => {

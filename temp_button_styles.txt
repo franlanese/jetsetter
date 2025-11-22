@@ -1,0 +1,19 @@
+  .card-nav-cta-button {
+    display: inline-block;
+    background-color: transparent;
+    color: inherit;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    height: auto;
+    font-weight: 400;
+    font-size: 14px;
+    text-decoration: underline;
+    margin-left: 0;
+    margin-right: 1rem;
+  }
+
+  .card-nav-cta-button:hover {
+    background-color: transparent;
+    opacity: 0.8;
+  }
