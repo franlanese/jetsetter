@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Rocket, Plane, History, Code, BadgePercent, SearchCheck, LayoutDashboard, Monitor, Mail, Calculator, UserCheck, Globe, Blocks } from 'lucide-react';
+import { Rocket, Plane, History, Code, BadgePercent, SearchCheck, LayoutDashboard, Monitor, Mail, Calculator, UserCheck, Globe, Blocks, Linkedin } from 'lucide-react';
 import { LanguageProvider, useTranslation } from '@/context/LanguageContext';
 import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 import { DemoRequestDialog } from '@/components/DemoRequestDialog';
@@ -312,9 +312,81 @@ const PresentationPageContent = () => {
         </section>
       </main>
 
-      {/* Footer - Remove explicit background, let it inherit */}
-      <footer className="text-center p-6 border-t">
-        <p className="text-muted-foreground">&copy; {new Date().getFullYear()} Aera. {t('footerRights')}</p>
+      {/* Footer */}
+      <footer className="bg-secondary/30 border-t pt-16 pb-8">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+            {/* Brand Column */}
+            <div className="space-y-4">
+              <div className="flex items-center gap-2">
+                <Image
+                  src="/images/aera2.png"
+                  alt="Aera Logo"
+                  width={40}
+                  height={40}
+                  className="object-contain"
+                />
+                <span className="text-xl font-bold">Aera</span>
+              </div>
+              <p className="text-muted-foreground text-sm">
+                La plataforma integral para la gestión de aviación privada.
+              </p>
+            </div>
+
+            {/* Quick Links */}
+            <div>
+              <h3 className="font-semibold mb-4">Producto</h3>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li><a href="#features" className="hover:text-primary transition-colors">Funcionalidades</a></li>
+                <li><a href="#" className="hover:text-primary transition-colors">Precios</a></li>
+                <li><a href="#demo" className="hover:text-primary transition-colors">Demo</a></li>
+              </ul>
+            </div>
+
+            {/* Legal */}
+            <div>
+              <h3 className="font-semibold mb-4">Legal</h3>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li><a href="#" className="hover:text-primary transition-colors">Privacidad</a></li>
+                <li><a href="#" className="hover:text-primary transition-colors">Términos</a></li>
+              </ul>
+            </div>
+
+            {/* Connect */}
+            <div className="space-y-4">
+              <h3 className="font-semibold">Conecta con Zonodev</h3>
+              <div className="flex gap-4">
+                <a
+                  href="https://www.linkedin.com/company/zonodev/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 bg-background rounded-full hover:bg-primary/10 transition-colors"
+                  aria-label="LinkedIn"
+                >
+                  <Linkedin className="w-5 h-5" />
+                </a>
+                <a
+                  href="https://zonodev.ar/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 bg-background rounded-full hover:bg-primary/10 transition-colors"
+                  aria-label="Website"
+                >
+                  <Globe className="w-5 h-5" />
+                </a>
+              </div>
+              <DemoRequestDialog>
+                <Button className="w-full">
+                  Get Started
+                </Button>
+              </DemoRequestDialog>
+            </div>
+          </div>
+
+          <div className="border-t pt-8 text-center text-sm text-muted-foreground">
+            <p>&copy; 2025 Zonodev. Todos los derechos reservados.</p>
+          </div>
+        </div>
       </footer>
     </div>
   );
