@@ -193,29 +193,19 @@ const PresentationPageContent = () => {
               >
                 <SwiperSlide className="relative w-full h-full">
                   <Image
-                    src="/images/jetinterior.jpg"
+                    src="/images/CapturaDemo1.jpg"
                     alt="Plataforma Web"
                     fill
                     className="object-cover rounded-lg"
                   />
-                  <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                    <p className="text-white text-2xl font-bold px-4 text-center">
-                      Solicita vuelos, visualiza Empty Legs y realiza pagos de forma sencilla.
-                    </p>
-                  </div>
                 </SwiperSlide>
                 <SwiperSlide className="relative w-full h-full">
                   <Image
-                    src="/images/Learjet-60xr.png"
+                    src="/images/CapturaPanelControl.png"
                     alt="Panel de Control"
                     fill
                     className="object-contain bg-slate-900 rounded-lg"
                   />
-                  <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                    <p className="text-white text-2xl font-bold px-4 text-center">
-                      Gestiona tu flota, publica viajes y obtén estadísticas en tiempo real.
-                    </p>
-                  </div>
                 </SwiperSlide>
                 <SwiperSlide className="relative w-full h-full">
                   <Image
@@ -224,11 +214,6 @@ const PresentationPageContent = () => {
                     fill
                     className="object-contain bg-slate-900 rounded-lg"
                   />
-                  <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                    <p className="text-white text-2xl font-bold px-4 text-center">
-                      Adapta la plataforma a tus necesidades y crece sin límites.
-                    </p>
-                  </div>
                 </SwiperSlide>
               </Swiper>
             </CardContent>
