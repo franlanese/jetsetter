@@ -9,6 +9,7 @@ import { LanguageProvider, useTranslation } from '@/context/LanguageContext';
 import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 import { DemoRequestDialog } from '@/components/DemoRequestDialog';
 import CardNav, { CardNavItem } from '@/components/NavBar';
+import GradientText from '@/components/GradientText';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -18,6 +19,15 @@ import { Navigation, Pagination } from 'swiper/modules';
 const PresentationPageContent = () => {
   const { t } = useTranslation();
   const [paginationEl, setPaginationEl] = useState<HTMLElement | null>(null);
+  const [selectedIndex, setSelectedIndex] = useState<number>(0);
+  const [swiper, setSwiper] = useState<any>(null);
+
+  const handleHeaderClick = (index: number) => {
+    setSelectedIndex(index);
+    if (swiper) {
+      swiper.slideTo(index);
+    }
+  };
 
   const navItems: CardNavItem[] = [
     {
@@ -47,12 +57,12 @@ const PresentationPageContent = () => {
     {
       icon: <LayoutDashboard className="mx-auto h-12 w-12 text-blue-400 mb-4" />,
       title: "Panel de Control",
-      description: "Permite a los Administradores publicar viajes y gestionar la flota."
+      description: "Publica viajes, Gestionar flota y Obtene estadisticas y analisis de tu empresa en tiempo real. "
     },
     {
       icon: <Monitor className="mx-auto h-12 w-12 text-green-400 mb-4" />,
       title: "Plataforma para Clientes",
-      description: "Solicitar Vuelos, Visualizar Empty Legsy realizar Pagos. Diseño profesional y exclusivo hecho para tu empresa."
+      description: "Solicitar Vuelos, Visualizar Empty Legs y Realizar Pagos. Diseño profesional y exclusivo hecho para tu empresa."
     },
     {
       icon: <Mail className="mx-auto h-12 w-12 text-purple-400 mb-4" />,
@@ -67,12 +77,12 @@ const PresentationPageContent = () => {
     {
       icon: <UserCheck className="mx-auto h-12 w-12 text-red-400 mb-4" />,
       title: "Validar registros de clientes",
-      description: "Módulo que valida registros de clientes mediante SMS, correo electrónico o WhatsApp, garantizando seguridad, autenticidad y confiabilidad en la información ingresada."
+      description: "Validá los registros de clientes mediante SMS, correo electrónico o WhatsApp, garantizando, autenticidad y confiabilidad en la información ingresada."
     },
     {
       icon: <Globe className="mx-auto h-12 w-12 text-teal-400 mb-4" />,
       title: "Traducción Multilingüe",
-      description: "Ofrecer la página en diferentes idiomas, optimizando la experiencia del usuario y facilitando el alcance a mercados internacionales."
+      description: "Ofrece tus servicios en diferentes idiomas, facilitando el alcance a mercados internacionales."
     },
     {
       icon: <Blocks className="mx-auto h-12 w-12 text-indigo-400 mb-4" />,
@@ -141,14 +151,86 @@ const PresentationPageContent = () => {
       <main className="container mx-auto px-4 py-12">
         {/* New Section */}
         <section className="mb-20">
-          <Card className="max-w-4xl mx-auto bg-secondary/50">
+          <Card className="max-w-6xl mx-auto bg-secondary/50">
             <CardHeader>
-              <CardTitle className="text-center">Aera es una Plataforma web para clientes y un Panel de Control para administradores. Modular y escalable.</CardTitle>
+              <CardTitle className="text-center text-4xl leading-tight">
+                <GradientText
+                  colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
+                  onClick={() => handleHeaderClick(0)}
+                  isActive={selectedIndex === 0}
+                  isDimmed={selectedIndex !== null && selectedIndex !== 0}
+                >
+                  Aera es una Plataforma web para Clientes.
+                </GradientText>
+
+                <GradientText
+                  colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
+                  onClick={() => handleHeaderClick(1)}
+                  isActive={selectedIndex === 1}
+                  isDimmed={selectedIndex !== null && selectedIndex !== 1}
+                >
+                  Aera es un Panel de Control para Administradores.
+                </GradientText>
+
+                <GradientText
+                  colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
+                  onClick={() => handleHeaderClick(2)}
+                  isActive={selectedIndex === 2}
+                  isDimmed={selectedIndex !== null && selectedIndex !== 2}
+                >
+                  Aera es Modular y Escalable.
+                </GradientText>
+              </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-center">
-                Permite a tus clientes solicitar vuelos y visualizar empty Legs y realizar pagos. Ademas adquiere la posibilidad de publicar y difundir empty Legs, tanto a clientes como a potenciales interesados.
-              </p>
+              <Swiper
+                modules={[Navigation, Pagination]}
+                spaceBetween={50}
+                slidesPerView={1}
+                onSwiper={(swiper) => setSwiper(swiper)}
+                onSlideChange={(swiper) => setSelectedIndex(swiper.activeIndex)}
+                className="w-full h-[400px] rounded-lg"
+              >
+                <SwiperSlide className="relative w-full h-full">
+                  <Image
+                    src="/images/jetinterior.jpg"
+                    alt="Plataforma Web"
+                    fill
+                    className="object-cover rounded-lg"
+                  />
+                  <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+                    <p className="text-white text-2xl font-bold px-4 text-center">
+                      Solicita vuelos, visualiza Empty Legs y realiza pagos de forma sencilla.
+                    </p>
+                  </div>
+                </SwiperSlide>
+                <SwiperSlide className="relative w-full h-full">
+                  <Image
+                    src="/images/Learjet-60xr.png"
+                    alt="Panel de Control"
+                    fill
+                    className="object-contain bg-slate-900 rounded-lg"
+                  />
+                  <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+                    <p className="text-white text-2xl font-bold px-4 text-center">
+                      Gestiona tu flota, publica viajes y obtén estadísticas en tiempo real.
+                    </p>
+                  </div>
+                </SwiperSlide>
+                <SwiperSlide className="relative w-full h-full">
+                  <Image
+                    src="/images/Cessna-citation-xls+.png"
+                    alt="Modular y Escalable"
+                    fill
+                    className="object-contain bg-slate-900 rounded-lg"
+                  />
+                  <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+                    <p className="text-white text-2xl font-bold px-4 text-center">
+                      Adapta la plataforma a tus necesidades y crece sin límites.
+                    </p>
+                  </div>
+                </SwiperSlide>
+              </Swiper>
             </CardContent>
           </Card>
         </section>
