@@ -49,8 +49,22 @@ export function DemoRequestDialog({ children, open: externalOpen, onOpenChange: 
     router.push('/demo');
   };
 
+  const handleOpenChange = (open: boolean) => {
+    if (!open) {
+      // Save current scroll position before closing
+      const scrollY = window.scrollY;
+      setIsOpen(open);
+      // Restore scroll position after a short delay
+      requestAnimationFrame(() => {
+        window.scrollTo(0, scrollY);
+      });
+    } else {
+      setIsOpen(open);
+    }
+  };
+
   return (
-    <Dialog open={isOpen} onOpenChange={setIsOpen}>
+    <Dialog open={isOpen} onOpenChange={handleOpenChange}>
       <DialogTrigger asChild onClick={() => setIsOpen(true)}>
         {children}
       </DialogTrigger>

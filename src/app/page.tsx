@@ -23,6 +23,7 @@ const PresentationPageContent = () => {
   const [paginationEl, setPaginationEl] = useState<HTMLElement | null>(null);
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
   const [swiper, setSwiper] = useState<any>(null);
+  const [isDemoDialogOpen, setIsDemoDialogOpen] = useState(false);
   const [imageViewerOpen, setImageViewerOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState({ src: '', alt: '' });
 
@@ -127,6 +128,7 @@ const PresentationPageContent = () => {
           buttonBgColor="hsl(45, 48%, 91%)"
           buttonTextColor="hsl(205, 79%, 7%)"
           languageSelector={<LanguageSwitcher />}
+          onDemoClick={() => setIsDemoDialogOpen(true)}
         />
       </div>
       {/* Hero Section - Overlay and text colors are already dark-theme friendly */}
@@ -301,7 +303,7 @@ const PresentationPageContent = () => {
           <p className="text-lg mb-8">
             {t('ctaSubtitle')}
           </p>
-          <DemoRequestDialog>
+          <DemoRequestDialog open={isDemoDialogOpen} onOpenChange={setIsDemoDialogOpen}>
             <Button style={{ width: 250, height: 60, fontSize: 20 }}>
               {t('ctaButton')}
             </Button>
@@ -389,7 +391,7 @@ const PresentationPageContent = () => {
                   <Globe className="w-5 h-5" />
                 </a>
               </div>
-              <DemoRequestDialog>
+              <DemoRequestDialog open={isDemoDialogOpen} onOpenChange={setIsDemoDialogOpen}>
                 <Button className="w-full">
                   Get Started
                 </Button>
