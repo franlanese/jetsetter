@@ -15,6 +15,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Navigation, Pagination } from 'swiper/modules';
+import DotGrid from '@/components/DotGridBG';
 
 const PresentationPageContent = () => {
   const { t } = useTranslation();
@@ -121,16 +122,21 @@ const PresentationPageContent = () => {
         />
       </div>
       {/* Hero Section - Overlay and text colors are already dark-theme friendly */}
-      <section className="relative w-full py-20 md:py-28 lg:py-36 text-center">
-        <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent z-10"></div>
-        <Image
-          src="/images/jetinterior.jpg"
-          alt="Interior de jet privado de lujo"
-          fill
-          objectFit="cover"
-          className="opacity-20"
-          priority
-        />
+      <section className="relative w-full pt-20 pb-32 md:pt-32 md:pb-48 lg:pt-40 lg:pb-64 text-center">
+        <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-110 z-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-20 z-10"></div>
+        <div className="absolute inset-0 overflow-hidden z-0">
+          <DotGrid
+            baseColor="#385fad"
+            activeColor="#d2d2bc"
+            dotSize={6}
+            gap={35}
+            proximity={130}
+            shockRadius={200}
+            resistance={600}
+            returnDuration={1}
+          />
+        </div>
         <div className="relative z-20 max-w-3xl mx-auto px-4">
           <Image
             src="/images/aera2.png"
@@ -153,7 +159,7 @@ const PresentationPageContent = () => {
         <section className="mb-20">
           <Card className="max-w-6xl mx-auto bg-secondary/50">
             <CardHeader>
-              <CardTitle className="text-center text-4xl leading-tight">
+              <CardTitle className="text-center text-2xl md:text-3xl lg:text-4xl leading-tight">
                 <GradientText
                   colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
                   onClick={() => handleHeaderClick(0)}
@@ -373,7 +379,7 @@ const PresentationPageContent = () => {
           </div>
         </div>
       </footer>
-    </div>
+    </div >
   );
 };
 
