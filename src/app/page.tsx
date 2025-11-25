@@ -216,6 +216,7 @@ const PresentationPageContent = () => {
                       src="/images/CapturaDemo1.2.png"
                       alt="Plataforma Web"
                       fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
                       className="object-contain rounded-lg"
                     />
                   </div>
@@ -229,6 +230,7 @@ const PresentationPageContent = () => {
                       src="/images/CapturaPanelControl.png"
                       alt="Panel de Control"
                       fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
                       className="object-contain bg-slate-900 rounded-lg"
                     />
                   </div>
@@ -242,6 +244,7 @@ const PresentationPageContent = () => {
                       src="/images/Cessna-citation-xls+.png"
                       alt="Modular y Escalable"
                       fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
                       className="object-contain bg-slate-900 rounded-lg"
                     />
                   </div>
