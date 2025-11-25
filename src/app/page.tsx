@@ -16,18 +16,26 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Navigation, Pagination } from 'swiper/modules';
 import DotGrid from '@/components/DotGridBG';
+import { ImageViewerDialog } from '@/components/ImageViewerDialog';
 
 const PresentationPageContent = () => {
   const { t } = useTranslation();
   const [paginationEl, setPaginationEl] = useState<HTMLElement | null>(null);
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
   const [swiper, setSwiper] = useState<any>(null);
+  const [imageViewerOpen, setImageViewerOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState({ src: '', alt: '' });
 
   const handleHeaderClick = (index: number) => {
     setSelectedIndex(index);
     if (swiper) {
       swiper.slideTo(index);
     }
+  };
+
+  const handleImageClick = (src: string, alt: string) => {
+    setSelectedImage({ src, alt });
+    setImageViewerOpen(true);
   };
 
   const navItems: CardNavItem[] = [
@@ -198,28 +206,43 @@ const PresentationPageContent = () => {
                 className="w-full aspect-[1920/911] rounded-lg"
               >
                 <SwiperSlide className="relative w-full h-full">
-                  <Image
-                    src="/images/CapturaDemo1.2.png"
-                    alt="Plataforma Web"
-                    fill
-                    className="object-contain rounded-lg"
-                  />
+                  <div
+                    className="relative w-full h-full cursor-pointer"
+                    onClick={() => handleImageClick('/images/CapturaDemo1.2.png', 'Plataforma Web')}
+                  >
+                    <Image
+                      src="/images/CapturaDemo1.2.png"
+                      alt="Plataforma Web"
+                      fill
+                      className="object-contain rounded-lg"
+                    />
+                  </div>
                 </SwiperSlide>
                 <SwiperSlide className="relative w-full h-full">
-                  <Image
-                    src="/images/CapturaPanelControl.png"
-                    alt="Panel de Control"
-                    fill
-                    className="object-contain bg-slate-900 rounded-lg"
-                  />
+                  <div
+                    className="relative w-full h-full cursor-pointer"
+                    onClick={() => handleImageClick('/images/CapturaPanelControl.png', 'Panel de Control')}
+                  >
+                    <Image
+                      src="/images/CapturaPanelControl.png"
+                      alt="Panel de Control"
+                      fill
+                      className="object-contain bg-slate-900 rounded-lg"
+                    />
+                  </div>
                 </SwiperSlide>
                 <SwiperSlide className="relative w-full h-full">
-                  <Image
-                    src="/images/Cessna-citation-xls+.png"
-                    alt="Modular y Escalable"
-                    fill
-                    className="object-contain bg-slate-900 rounded-lg"
-                  />
+                  <div
+                    className="relative w-full h-full cursor-pointer"
+                    onClick={() => handleImageClick('/images/Cessna-citation-xls+.png', 'Modular y Escalable')}
+                  >
+                    <Image
+                      src="/images/Cessna-citation-xls+.png"
+                      alt="Modular y Escalable"
+                      fill
+                      className="object-contain bg-slate-900 rounded-lg"
+                    />
+                  </div>
                 </SwiperSlide>
               </Swiper>
             </CardContent>
@@ -379,6 +402,12 @@ const PresentationPageContent = () => {
           </div>
         </div>
       </footer>
+      <ImageViewerDialog
+        src={selectedImage.src}
+        alt={selectedImage.alt}
+        open={imageViewerOpen}
+        onOpenChange={setImageViewerOpen}
+      />
     </div >
   );
 };
