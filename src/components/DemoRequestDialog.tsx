@@ -17,15 +17,20 @@ import { useRouter } from 'next/navigation';
 
 interface DemoRequestDialogProps {
   children: React.ReactNode;
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
 }
 
-export function DemoRequestDialog({ children }: DemoRequestDialogProps) {
+export function DemoRequestDialog({ children, open: externalOpen, onOpenChange: externalOnOpenChange }: DemoRequestDialogProps) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [company, setCompany] = useState("");
   const [error, setError] = useState("");
-  const [isOpen, setIsOpen] = useState(false);
+  const [internalOpen, setInternalOpen] = useState(false);
   const router = useRouter();
+
+  const isOpen = externalOpen !== undefined ? externalOpen : internalOpen;
+  const setIsOpen = externalOnOpenChange || setInternalOpen;
 
   const handleSubmit = () => {
     if (!name || !email) {
@@ -38,14 +43,28 @@ export function DemoRequestDialog({ children }: DemoRequestDialogProps) {
       setError("Por favor, ingrese un correo electrónico válido.");
       return;
     }
-    
+
     setError("");
     setIsOpen(false);
     router.push('/demo');
   };
 
+  const handleOpenChange = (open: boolean) => {
+    if (!open) {
+      // Save current scroll position before closing
+      const scrollY = window.scrollY;
+      setIsOpen(open);
+      // Restore scroll position after a short delay
+      requestAnimationFrame(() => {
+        window.scrollTo(0, scrollY);
+      });
+    } else {
+      setIsOpen(open);
+    }
+  };
+
   return (
-    <Dialog open={isOpen} onOpenChange={setIsOpen}>
+    <Dialog open={isOpen} onOpenChange={handleOpenChange}>
       <DialogTrigger asChild onClick={() => setIsOpen(true)}>
         {children}
       </DialogTrigger>

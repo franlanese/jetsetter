@@ -4,20 +4,40 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Rocket, Plane, History, Code, BadgePercent, SearchCheck } from 'lucide-react';
+import { Rocket, Plane, History, Code, BadgePercent, SearchCheck, LayoutDashboard, Monitor, Mail, Calculator, UserCheck, Globe, Blocks, Linkedin } from 'lucide-react';
 import { LanguageProvider, useTranslation } from '@/context/LanguageContext';
 import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 import { DemoRequestDialog } from '@/components/DemoRequestDialog';
 import CardNav, { CardNavItem } from '@/components/NavBar';
+import GradientText from '@/components/GradientText';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Navigation, Pagination } from 'swiper/modules';
+import DotGrid from '@/components/DotGridBG';
+import { ImageViewerDialog } from '@/components/ImageViewerDialog';
 
 const PresentationPageContent = () => {
   const { t } = useTranslation();
   const [paginationEl, setPaginationEl] = useState<HTMLElement | null>(null);
+  const [selectedIndex, setSelectedIndex] = useState<number>(0);
+  const [swiper, setSwiper] = useState<any>(null);
+  const [isDemoDialogOpen, setIsDemoDialogOpen] = useState(false);
+  const [imageViewerOpen, setImageViewerOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState({ src: '', alt: '' });
+
+  const handleHeaderClick = (index: number) => {
+    setSelectedIndex(index);
+    if (swiper) {
+      swiper.slideTo(index);
+    }
+  };
+
+  const handleImageClick = (src: string, alt: string) => {
+    setSelectedImage({ src, alt });
+    setImageViewerOpen(true);
+  };
 
   const navItems: CardNavItem[] = [
     {
@@ -41,6 +61,44 @@ const PresentationPageContent = () => {
       ],
     },
 
+  ];
+
+  const features = [
+    {
+      icon: <LayoutDashboard className="mx-auto h-12 w-12 text-blue-400 mb-4" />,
+      title: "Panel de Control",
+      description: "Publica viajes, Gestionar flota y Obtene estadisticas y analisis de tu empresa en tiempo real. "
+    },
+    {
+      icon: <Monitor className="mx-auto h-12 w-12 text-green-400 mb-4" />,
+      title: "Plataforma para Clientes",
+      description: "Solicitar Vuelos, Visualizar Empty Legs y Realizar Pagos. Diseño profesional y exclusivo hecho para tu empresa."
+    },
+    {
+      icon: <Mail className="mx-auto h-12 w-12 text-purple-400 mb-4" />,
+      title: "Email Marketing para Empty Legs",
+      description: "Permite enviar comunicaciones personalizadas sobre vuelos Empty Legs, optimizando la difusión y el alcance comercial."
+    },
+    {
+      icon: <Calculator className="mx-auto h-12 w-12 text-orange-400 mb-4" />,
+      title: "Automatización de presupuestos",
+      description: "Genera presupuestos de vuelos de forma automática, aplicando los parámetros de la empresa para asegurar rapidez, precisión y eficiencia en cada cotización."
+    },
+    {
+      icon: <UserCheck className="mx-auto h-12 w-12 text-red-400 mb-4" />,
+      title: "Validar registros de clientes",
+      description: "Validá los registros de clientes mediante SMS, correo electrónico o WhatsApp, garantizando, autenticidad y confiabilidad en la información ingresada."
+    },
+    {
+      icon: <Globe className="mx-auto h-12 w-12 text-teal-400 mb-4" />,
+      title: "Traducción Multilingüe",
+      description: "Ofrece tus servicios en diferentes idiomas, facilitando el alcance a mercados internacionales."
+    },
+    {
+      icon: <Blocks className="mx-auto h-12 w-12 text-indigo-400 mb-4" />,
+      title: "Escalable y Modular",
+      description: "Posibilidad de futuras ampliaciones funcionales y personalización de diseño."
+    }
   ];
 
   return (
@@ -70,19 +128,25 @@ const PresentationPageContent = () => {
           buttonBgColor="hsl(45, 48%, 91%)"
           buttonTextColor="hsl(205, 79%, 7%)"
           languageSelector={<LanguageSwitcher />}
+          onDemoClick={() => setIsDemoDialogOpen(true)}
         />
       </div>
       {/* Hero Section - Overlay and text colors are already dark-theme friendly */}
-      <section className="relative w-full py-20 md:py-28 lg:py-36 text-center">
-        <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent z-10"></div>
-        <Image
-          src="/images/jetinterior.jpg"
-          alt="Interior de jet privado de lujo"
-          fill
-          objectFit="cover"
-          className="opacity-20"
-          priority
-        />
+      <section className="relative w-full pt-20 pb-32 md:pt-32 md:pb-48 lg:pt-40 lg:pb-64 text-center">
+        <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-110 z-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-20 z-10"></div>
+        <div className="absolute inset-0 overflow-hidden z-0">
+          <DotGrid
+            baseColor="#385fad"
+            activeColor="#d2d2bc"
+            dotSize={6}
+            gap={35}
+            proximity={130}
+            shockRadius={200}
+            resistance={600}
+            returnDuration={1}
+          />
+        </div>
         <div className="relative z-20 max-w-3xl mx-auto px-4">
           <Image
             src="/images/aera2.png"
@@ -103,14 +167,86 @@ const PresentationPageContent = () => {
       <main className="container mx-auto px-4 py-12">
         {/* New Section */}
         <section className="mb-20">
-          <Card className="max-w-4xl mx-auto bg-secondary/50">
+          <Card className="max-w-6xl mx-auto bg-secondary/50">
             <CardHeader>
-              <CardTitle className="text-center">Aera es una Plataforma web para clientes y un Panel de Control para administradores. Modular y escalable.</CardTitle>
+              <CardTitle className="text-center text-2xl md:text-3xl lg:text-4xl leading-tight">
+                <GradientText
+                  colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
+                  onClick={() => handleHeaderClick(0)}
+                  isActive={selectedIndex === 0}
+                  isDimmed={selectedIndex !== null && selectedIndex !== 0}
+                >
+                  Aera es una Plataforma web para Clientes.
+                </GradientText>
+
+                <GradientText
+                  colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
+                  onClick={() => handleHeaderClick(1)}
+                  isActive={selectedIndex === 1}
+                  isDimmed={selectedIndex !== null && selectedIndex !== 1}
+                >
+                  Aera es un Panel de Control para Administradores.
+                </GradientText>
+
+                <GradientText
+                  colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
+                  onClick={() => handleHeaderClick(2)}
+                  isActive={selectedIndex === 2}
+                  isDimmed={selectedIndex !== null && selectedIndex !== 2}
+                >
+                  Aera es Modular y Escalable.
+                </GradientText>
+              </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-center">
-                Permite a tus clientes solicitar vuelos y visualizar empty Legs y realizar pagos. Ademas adquiere la posibilidad de publicar y difundir empty Legs, tanto a clientes como a potenciales interesados.
-              </p>
+              <Swiper
+                modules={[Navigation, Pagination]}
+                spaceBetween={50}
+                slidesPerView={1}
+                onSwiper={(swiper) => setSwiper(swiper)}
+                onSlideChange={(swiper) => setSelectedIndex(swiper.activeIndex)}
+                className="w-full aspect-[1920/911] rounded-lg"
+              >
+                <SwiperSlide className="relative w-full h-full">
+                  <div
+                    className="relative w-full h-full cursor-pointer"
+                    onClick={() => handleImageClick('/images/CapturaDemo1.2.png', 'Plataforma Web')}
+                  >
+                    <Image
+                      src="/images/CapturaDemo1.2.png"
+                      alt="Plataforma Web"
+                      fill
+                      className="object-contain rounded-lg"
+                    />
+                  </div>
+                </SwiperSlide>
+                <SwiperSlide className="relative w-full h-full">
+                  <div
+                    className="relative w-full h-full cursor-pointer"
+                    onClick={() => handleImageClick('/images/CapturaPanelControl.png', 'Panel de Control')}
+                  >
+                    <Image
+                      src="/images/CapturaPanelControl.png"
+                      alt="Panel de Control"
+                      fill
+                      className="object-contain bg-slate-900 rounded-lg"
+                    />
+                  </div>
+                </SwiperSlide>
+                <SwiperSlide className="relative w-full h-full">
+                  <div
+                    className="relative w-full h-full cursor-pointer"
+                    onClick={() => handleImageClick('/images/Cessna-citation-xls+.png', 'Modular y Escalable')}
+                  >
+                    <Image
+                      src="/images/Cessna-citation-xls+.png"
+                      alt="Modular y Escalable"
+                      fill
+                      className="object-contain bg-slate-900 rounded-lg"
+                    />
+                  </div>
+                </SwiperSlide>
+              </Swiper>
             </CardContent>
           </Card>
         </section>
@@ -142,45 +278,21 @@ const PresentationPageContent = () => {
             }}
             className="pb-16"
           >
-            <SwiperSlide className="!h-auto">
-              <Card className="h-full flex flex-col text-center hover:shadow-lg transition-shadow bg-secondary/50">
-                <CardHeader>
-                  <SearchCheck className="mx-auto h-12 w-12 text-blue-400 mb-4" />
-                  <CardTitle>{t('feature1Title')}</CardTitle>
-                </CardHeader>
-                <CardContent className="flex-grow">
-                  <p>
-                    {t('feature1Text')}
-                  </p>
-                </CardContent>
-              </Card>
-            </SwiperSlide>
-            <SwiperSlide className="!h-auto">
-              <Card className="h-full flex flex-col text-center hover:shadow-lg transition-shadow bg-secondary/50">
-                <CardHeader>
-                  <BadgePercent className="mx-auto h-12 w-12 text-green-400 mb-4" />
-                  <CardTitle>{t('feature2Title')}</CardTitle>
-                </CardHeader>
-                <CardContent className="flex-grow">
-                  <p>
-                    {t('feature2Text')}
-                  </p>
-                </CardContent>
-              </Card>
-            </SwiperSlide>
-            <SwiperSlide className="!h-auto">
-              <Card className="h-full flex flex-col text-center hover:shadow-lg transition-shadow bg-secondary/50">
-                <CardHeader>
-                  <History className="mx-auto h-12 w-12 text-purple-400 mb-4" />
-                  <CardTitle>{t('feature3Title')}</CardTitle>
-                </CardHeader>
-                <CardContent className="flex-grow">
-                  <p>
-                    {t('feature3Text')}
-                  </p>
-                </CardContent>
-              </Card>
-            </SwiperSlide>
+            {features.map((feature, index) => (
+              <SwiperSlide key={index} className="!h-auto">
+                <Card className="h-full flex flex-col text-center hover:shadow-lg transition-shadow bg-secondary/50">
+                  <CardHeader>
+                    {feature.icon}
+                    <CardTitle>{feature.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent className="flex-grow">
+                    <p>
+                      {feature.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              </SwiperSlide>
+            ))}
           </Swiper>
           <div className="flex justify-center mt-8" ref={setPaginationEl} />
         </section>
@@ -191,7 +303,7 @@ const PresentationPageContent = () => {
           <p className="text-lg mb-8">
             {t('ctaSubtitle')}
           </p>
-          <DemoRequestDialog>
+          <DemoRequestDialog open={isDemoDialogOpen} onOpenChange={setIsDemoDialogOpen}>
             <Button style={{ width: 250, height: 60, fontSize: 20 }}>
               {t('ctaButton')}
             </Button>
@@ -216,11 +328,89 @@ const PresentationPageContent = () => {
         </section>
       </main>
 
-      {/* Footer - Remove explicit background, let it inherit */}
-      <footer className="text-center p-6 border-t">
-        <p className="text-muted-foreground">&copy; {new Date().getFullYear()} Aera. {t('footerRights')}</p>
+      {/* Footer */}
+      <footer className="bg-secondary/30 border-t pt-16 pb-8">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+            {/* Brand Column */}
+            <div className="space-y-4">
+              <div className="flex items-center gap-2">
+                <Image
+                  src="/images/aera2.png"
+                  alt="Aera Logo"
+                  width={40}
+                  height={40}
+                  className="object-contain"
+                />
+                <span className="text-xl font-bold">Aera</span>
+              </div>
+              <p className="text-muted-foreground text-sm">
+                La plataforma integral para la gestión de aviación privada.
+              </p>
+            </div>
+
+            {/* Quick Links */}
+            <div>
+              <h3 className="font-semibold mb-4">Producto</h3>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li><a href="#features" className="hover:text-primary transition-colors">Funcionalidades</a></li>
+                <li><a href="#" className="hover:text-primary transition-colors">Precios</a></li>
+                <li><a href="#demo" className="hover:text-primary transition-colors">Demo</a></li>
+              </ul>
+            </div>
+
+            {/* Legal */}
+            <div>
+              <h3 className="font-semibold mb-4">Legal</h3>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li><a href="#" className="hover:text-primary transition-colors">Privacidad</a></li>
+                <li><a href="#" className="hover:text-primary transition-colors">Términos</a></li>
+              </ul>
+            </div>
+
+            {/* Connect */}
+            <div className="space-y-4">
+              <h3 className="font-semibold">Conecta con Zonodev</h3>
+              <div className="flex gap-4">
+                <a
+                  href="https://www.linkedin.com/company/zonodev/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 bg-background rounded-full hover:bg-primary/10 transition-colors"
+                  aria-label="LinkedIn"
+                >
+                  <Linkedin className="w-5 h-5" />
+                </a>
+                <a
+                  href="https://zonodev.ar/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 bg-background rounded-full hover:bg-primary/10 transition-colors"
+                  aria-label="Website"
+                >
+                  <Globe className="w-5 h-5" />
+                </a>
+              </div>
+              <DemoRequestDialog open={isDemoDialogOpen} onOpenChange={setIsDemoDialogOpen}>
+                <Button className="w-full">
+                  Get Started
+                </Button>
+              </DemoRequestDialog>
+            </div>
+          </div>
+
+          <div className="border-t pt-8 text-center text-sm text-muted-foreground">
+            <p>&copy; 2025 Zonodev. Todos los derechos reservados.</p>
+          </div>
+        </div>
       </footer>
-    </div>
+      <ImageViewerDialog
+        src={selectedImage.src}
+        alt={selectedImage.alt}
+        open={imageViewerOpen}
+        onOpenChange={setImageViewerOpen}
+      />
+    </div >
   );
 };
 

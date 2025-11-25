@@ -25,6 +25,7 @@ export interface CardNavProps {
     buttonBgColor?: string;
     buttonTextColor?: string;
     languageSelector?: React.ReactNode;
+    onDemoClick?: () => void;
 }
 
 const CardNav: React.FC<CardNavProps> = ({
@@ -35,7 +36,8 @@ const CardNav: React.FC<CardNavProps> = ({
     menuColor,
     buttonBgColor,
     buttonTextColor,
-    languageSelector
+    languageSelector,
+    onDemoClick
 }) => {
     const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
     const [isExpanded, setIsExpanded] = useState(false);
@@ -149,7 +151,11 @@ const CardNav: React.FC<CardNavProps> = ({
         }
     };
 
-    const handleLinkClick = () => {
+    const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+        if (href === '#demo' && onDemoClick) {
+            e.preventDefault();
+            onDemoClick();
+        }
         if (isExpanded) {
             toggleMenu();
         }
@@ -184,6 +190,7 @@ const CardNav: React.FC<CardNavProps> = ({
                             type="button"
                             className="card-nav-cta-button"
                             style={{ backgroundColor: buttonBgColor, color: buttonTextColor }}
+                            onClick={onDemoClick}
                         >
                             Get Started
                         </button>
@@ -208,7 +215,7 @@ const CardNav: React.FC<CardNavProps> = ({
                                         aria-label={lnk.ariaLabel}
                                         target={lnk.target}
                                         rel={lnk.target === '_blank' ? 'noopener noreferrer' : undefined}
-                                        onClick={handleLinkClick}
+                                        onClick={(e) => handleLinkClick(e, lnk.href)}
                                     >
                                         <ArrowUpRight className="nav-card-link-icon" aria-hidden="true" />
                                         {lnk.label}
