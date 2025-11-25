@@ -189,14 +189,14 @@ const PresentationPageContent = () => {
                 slidesPerView={1}
                 onSwiper={(swiper) => setSwiper(swiper)}
                 onSlideChange={(swiper) => setSelectedIndex(swiper.activeIndex)}
-                className="w-full h-[400px] rounded-lg"
+                className="w-full aspect-[1920/911] rounded-lg"
               >
                 <SwiperSlide className="relative w-full h-full">
                   <Image
-                    src="/images/CapturaDemo1.jpg"
+                    src="/images/CapturaDemo1.2.png"
                     alt="Plataforma Web"
                     fill
-                    className="object-cover rounded-lg"
+                    className="object-contain rounded-lg"
                   />
                 </SwiperSlide>
                 <SwiperSlide className="relative w-full h-full">
