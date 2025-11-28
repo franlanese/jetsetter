@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
@@ -7,10 +7,11 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { Rocket, Plane, History, Code, BadgePercent, SearchCheck, LayoutDashboard, Monitor, Mail, Calculator, UserCheck, Globe, Blocks, Linkedin } from 'lucide-react';
+import { Rocket, Plane, History, Code, BadgePercent, SearchCheck, LayoutDashboard, Monitor, Mail, Calculator, UserCheck, Globe, Blocks, Linkedin, ChevronLeft, ChevronRight } from 'lucide-react';
 import { LanguageProvider, useTranslation } from '@/context/LanguageContext';
 import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 import { DemoRequestDialog } from '@/components/DemoRequestDialog';
+import { useToast } from "@/hooks/use-toast";
 import CardNav, { CardNavItem } from '@/components/NavBar';
 import GradientText from '@/components/GradientText';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -23,7 +24,7 @@ import { ImageViewerDialog } from '@/components/ImageViewerDialog';
 
 const PresentationPageContent = () => {
   const { t } = useTranslation();
-  const [paginationEl, setPaginationEl] = useState<HTMLElement | null>(null);
+  const { toast } = useToast();
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
   const [swiper, setSwiper] = useState<any>(null);
   const [isDemoDialogOpen, setIsDemoDialogOpen] = useState(false);
@@ -42,6 +43,15 @@ const PresentationPageContent = () => {
     setImageViewerOpen(true);
   };
 
+  const handleEmailClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    navigator.clipboard.writeText("contacto@zonodev.ar");
+    toast({
+      title: "Email copiado",
+      description: "La dirección de email ha sido copiada al portapapeles.",
+    });
+  };
+
   const navItems: CardNavItem[] = [
     {
       label: 'Por qué Aera?',
@@ -58,7 +68,10 @@ const PresentationPageContent = () => {
       bgColor: '#f0fdf4', // light green
       textColor: '#0f172a',
       links: [
-        { label: 'Sobre Nosotros', href: '#powered-by-zonodev', ariaLabel: 'Sobre Nosotros' },
+        {
+          label: 'Sobre Nosotros',
+          href: "http://zonodev.ar", target: "_blank", rel: "noopener noreferrer", ariaLabel: 'Sobre Nosotros'
+        },
         { label: 'Linkedin', href: 'https://www.linkedin.com/company/zonodev/', ariaLabel: 'Linkedin', target: '_blank' },
         { label: 'Contacto', href: '#powered-by-zonodev', ariaLabel: 'Contacto' },
       ],
@@ -179,7 +192,7 @@ const PresentationPageContent = () => {
                   isActive={selectedIndex === 0}
                   isDimmed={selectedIndex !== null && selectedIndex !== 0}
                 >
-                  Aera es una Plataforma web para Clientes.
+                  Aera es una Plataforma web para Pasajeros.
                 </GradientText>
 
                 <GradientText
@@ -262,45 +275,62 @@ const PresentationPageContent = () => {
           <h2 className="text-4xl font-bold text-center mb-12">
             {t('featuresTitle')}
           </h2>
-          <Swiper
-            modules={[Navigation, Pagination]}
-            spaceBetween={50}
-            slidesPerView={1}
-            navigation
-            pagination={{ clickable: true, el: paginationEl }}
-            breakpoints={{
-              640: {
-                slidesPerView: 1,
-                spaceBetween: 20,
-              },
-              768: {
-                slidesPerView: 2,
-                spaceBetween: 40,
-              },
-              1024: {
-                slidesPerView: 3,
-                spaceBetween: 50,
-              },
-            }}
-            className="pb-16"
-          >
-            {features.map((feature, index) => (
-              <SwiperSlide key={index} className="!h-auto">
-                <Card className="h-full flex flex-col text-center hover:shadow-lg transition-shadow bg-secondary/50">
-                  <CardHeader>
-                    {feature.icon}
-                    <CardTitle>{feature.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent className="flex-grow">
-                    <p>
-                      {feature.description}
-                    </p>
-                  </CardContent>
-                </Card>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-          <div className="flex justify-center mt-8" ref={setPaginationEl} />
+          <div className="relative group px-4 md:px-12">
+            <Swiper
+              modules={[Navigation, Pagination]}
+              spaceBetween={50}
+              slidesPerView={1}
+              loop={true}
+              navigation={{
+                prevEl: '.features-swiper-button-prev',
+                nextEl: '.features-swiper-button-next',
+              }}
+              pagination={{ clickable: true }}
+              breakpoints={{
+                640: {
+                  slidesPerView: 1,
+                  spaceBetween: 20,
+                },
+                768: {
+                  slidesPerView: 3,
+                  spaceBetween: 40,
+                },
+                1024: {
+                  slidesPerView: 3,
+                  spaceBetween: 50,
+                },
+              }}
+              className="pb-16"
+            >
+              {features.map((feature, index) => (
+                <SwiperSlide key={index} className="!h-auto">
+                  <Card className="h-full flex flex-col text-center hover:shadow-lg transition-shadow bg-secondary/50">
+                    <CardHeader>
+                      {feature.icon}
+                      <CardTitle>{feature.title}</CardTitle>
+                    </CardHeader>
+                    <CardContent className="flex-grow">
+                      <p>
+                        {feature.description}
+                      </p>
+                    </CardContent>
+                  </Card>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+            <button
+              className="features-swiper-button-prev absolute top-1/2 -translate-y-1/2 -left-4 md:-left-8 z-10 p-2 rounded-full bg-background/80 shadow-md hover:bg-background transition-colors hidden md:block"
+              aria-label="Previous slide"
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+            <button
+              className="features-swiper-button-next absolute top-1/2 -translate-y-1/2 -right-4 md:-right-8 z-10 p-2 rounded-full bg-background/80 shadow-md hover:bg-background transition-colors hidden md:block"
+              aria-label="Next slide"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
+          </div>
         </section>
 
         {/* CTA Section - Text will inherit foreground color */}
@@ -343,25 +373,28 @@ const PresentationPageContent = () => {
 
                 {/* Right Column: Contact Form */}
                 <div className="bg-background/50 p-6 rounded-xl border shadow-sm">
-                  <h4 className="text-xl font-semibold mb-6">Contáctanos</h4>
+                  <h4 className="text-xl font-semibold mb-6 flex items-center gap-2">
+                    <Mail className="w-5 h-5" />
+                    Contactanos
+                  </h4>
                   <div className="space-y-4">
                     <div className="grid grid-cols-2 gap-4">
                       <div className="space-y-2">
                         <Label htmlFor="name">Nombre</Label>
-                        <Input id="name" placeholder="Tu nombre" />
+                        <Input id="name" placeholder="Tu nombre" className="placeholder:text-muted-foreground/30" />
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="email">Email</Label>
-                        <Input id="email" type="email" placeholder="tu@email.com" />
+                        <Input id="email" type="email" placeholder="tu@email.com" className="placeholder:text-muted-foreground/30" />
                       </div>
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="company">Empresa</Label>
-                      <Input id="company" placeholder="Nombre de tu empresa" />
+                      <Input id="company" placeholder="Nombre de tu empresa" className="placeholder:text-muted-foreground/30" />
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="message">Mensaje</Label>
-                      <Textarea id="message" placeholder="Escribe tu mensaje aquí..." className="min-h-[120px] resize-none" />
+                      <Textarea id="message" placeholder="Escribe tu mensaje aquí..." className="min-h-[120px] resize-none placeholder:text-muted-foreground/30" />
                     </div>
                     <Button className="w-full text-lg py-6">Enviar Mensaje</Button>
                   </div>
@@ -403,12 +436,19 @@ const PresentationPageContent = () => {
               </ul>
             </div>
 
-            {/* Legal */}
+            {/* Soporte Técnico */}
             <div>
-              <h3 className="font-semibold mb-4">Legal</h3>
+              <h3 className="font-semibold mb-4">Soporte Técnico</h3>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><a href="#" className="hover:text-primary transition-colors">Privacidad</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">Términos</a></li>
+                <li><a
+                  href="https://api.whatsapp.com/send/?phone=5493417568545&text=Hola%2C+me+gustar%C3%ADa+saber+m%C3%A1s+sobre+sus+servicios.&type=phone_number&app_absent=0"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-primary transition-colors">WhatsApp</a></li>
+                <li><a
+                  href="#"
+                  onClick={handleEmailClick}
+                  className="hover:text-primary transition-colors">Email</a></li>
               </ul>
             </div>
 
