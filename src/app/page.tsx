@@ -31,6 +31,15 @@ const PresentationPageContent = () => {
   const [imageViewerOpen, setImageViewerOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState({ src: '', alt: '' });
 
+  // Contact form state
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    company: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const handleHeaderClick = (index: number) => {
     setSelectedIndex(index);
     if (swiper) {
@@ -52,6 +61,67 @@ const PresentationPageContent = () => {
     });
   };
 
+  const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({ ...prev, [id]: value }));
+  };
+
+  const handleFormSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // Basic validation
+    if (!formData.name || !formData.email || !formData.message) {
+      toast({
+        title: "Error",
+        description: "Por favor completa todos los campos requeridos.",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        toast({
+          title: "¡Mensaje enviado!",
+          description: "Gracias por contactarnos. Te responderemos pronto.",
+        });
+        // Clear form
+        setFormData({
+          name: '',
+          email: '',
+          company: '',
+          message: ''
+        });
+      } else {
+        toast({
+          title: "Error",
+          description: data.error || "Hubo un problema al enviar el mensaje.",
+          variant: "destructive"
+        });
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "No se pudo enviar el mensaje. Por favor intenta de nuevo.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   const navItems: CardNavItem[] = [
     {
       label: 'Por qué Aera?',
@@ -59,7 +129,6 @@ const PresentationPageContent = () => {
       textColor: '#0f172a',
       links: [
         { label: 'Funcionalidades', href: '#features', ariaLabel: 'Funcionalidades' },
-        { label: 'Precios', href: '#', ariaLabel: 'Precios' },
         { label: 'Ver Demo', href: '#demo', ariaLabel: 'Ver Demo' },
       ],
     },
@@ -70,7 +139,7 @@ const PresentationPageContent = () => {
       links: [
         {
           label: 'Sobre Nosotros',
-          href: "http://zonodev.ar", target: "_blank", rel: "noopener noreferrer", ariaLabel: 'Sobre Nosotros'
+          href: "http://zonodev.ar", target: "_blank", ariaLabel: 'Sobre Nosotros'
         },
         { label: 'Linkedin', href: 'https://www.linkedin.com/company/zonodev/', ariaLabel: 'Linkedin', target: '_blank' },
         { label: 'Contacto', href: '#powered-by-zonodev', ariaLabel: 'Contacto' },
@@ -377,27 +446,61 @@ const PresentationPageContent = () => {
                     <Mail className="w-5 h-5" />
                     Contactanos
                   </h4>
-                  <div className="space-y-4">
+                  <form onSubmit={handleFormSubmit} className="space-y-4">
                     <div className="grid grid-cols-2 gap-4">
                       <div className="space-y-2">
-                        <Label htmlFor="name">Nombre</Label>
-                        <Input id="name" placeholder="Tu nombre" className="placeholder:text-muted-foreground/30" />
+                        <Label htmlFor="name">Nombre *</Label>
+                        <Input
+                          id="name"
+                          placeholder="Tu nombre"
+                          className="placeholder:text-muted-foreground/30"
+                          value={formData.name}
+                          onChange={handleFormChange}
+                          required
+                        />
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="email">Email</Label>
-                        <Input id="email" type="email" placeholder="tu@email.com" className="placeholder:text-muted-foreground/30" />
+                        <Label htmlFor="email">Email *</Label>
+                        <Input
+                          id="email"
+                          type="email"
+                          placeholder="tu@email.com"
+                          className="placeholder:text-muted-foreground/30"
+                          value={formData.email}
+                          onChange={handleFormChange}
+                          required
+                        />
                       </div>
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="company">Empresa</Label>
-                      <Input id="company" placeholder="Nombre de tu empresa" className="placeholder:text-muted-foreground/30" />
+                      <Input
+                        id="company"
+                        placeholder="Nombre de tu empresa"
+                        className="placeholder:text-muted-foreground/30"
+                        value={formData.company}
+                        onChange={handleFormChange}
+                      />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="message">Mensaje</Label>
-                      <Textarea id="message" placeholder="Escribe tu mensaje aquí..." className="min-h-[120px] resize-none placeholder:text-muted-foreground/30" />
+                      <Label htmlFor="message">Mensaje *</Label>
+                      <Textarea
+                        id="message"
+                        placeholder="Escribe tu mensaje aquí..."
+                        className="min-h-[120px] resize-none placeholder:text-muted-foreground/30"
+                        value={formData.message}
+                        onChange={handleFormChange}
+                        required
+                      />
                     </div>
-                    <Button className="w-full text-lg py-6">Enviar Mensaje</Button>
-                  </div>
+                    <Button
+                      type="submit"
+                      className="w-full text-lg py-6"
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? 'Enviando...' : 'Enviar Mensaje'}
+                    </Button>
+                  </form>
                 </div>
               </div>
             </CardContent>
@@ -431,7 +534,6 @@ const PresentationPageContent = () => {
               <h3 className="font-semibold mb-4">Producto</h3>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li><a href="#features" className="hover:text-primary transition-colors">Funcionalidades</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">Precios</a></li>
                 <li><a href="#demo" className="hover:text-primary transition-colors">Demo</a></li>
               </ul>
             </div>
