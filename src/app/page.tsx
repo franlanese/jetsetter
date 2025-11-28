@@ -4,6 +4,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { Label } from '@/components/ui/label';
 import { Rocket, Plane, History, Code, BadgePercent, SearchCheck, LayoutDashboard, Monitor, Mail, Calculator, UserCheck, Globe, Blocks, Linkedin } from 'lucide-react';
 import { LanguageProvider, useTranslation } from '@/context/LanguageContext';
 import { LanguageSwitcher } from '@/components/LanguageSwitcher';
@@ -315,17 +318,55 @@ const PresentationPageContent = () => {
 
         {/* Powered by Zonodev Section */}
         <section className="mb-10 scroll-mt-28" id="powered-by-zonodev">
-          <Card className="max-w-4xl mx-auto bg-secondary/50">
-            <CardHeader>
-              <img src="https://zonodev.ar/favicon.ico" alt="Zonodev Logo" className="mx-auto h-12 w-12 mb-4" />
-              <CardTitle className="text-center">Powered by Zonodev</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-center text-lg">
-                Aera es nuestra plataforma de gestion en que la plasmamos nuestra experiencia y creatividad.
-                <br />
-                Un desarrollo de <a href="https://zonodev.ar" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">zonodev.ar </a> {'  <3'}
-              </p>
+          <Card className="max-w-6xl mx-auto bg-secondary/50">
+            <CardContent className="p-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                {/* Left Column: Branding */}
+                <div className="flex flex-col items-center space-y-6 text-center">
+                  <div className="flex flex-col items-center gap-6">
+                    <div className="relative h-40 w-40 rounded-full overflow-hidden shadow-md border-4 border-white/10">
+                      <Image
+                        src="/images/zonodevBG.png"
+                        alt="Zonodev Logo"
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <h3 className="text-3xl font-bold">Powered by Zonodev</h3>
+                  </div>
+                  <p className="text-lg text-muted-foreground leading-relaxed">
+                    Aera es nuestra plataforma de gestion en que la plasmamos nuestra experiencia y creatividad.
+                    <br />
+                    Un desarrollo de <a href="https://zonodev.ar" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-medium">zonodev.ar </a> {'  <3'}
+                  </p>
+                </div>
+
+                {/* Right Column: Contact Form */}
+                <div className="bg-background/50 p-6 rounded-xl border shadow-sm">
+                  <h4 className="text-xl font-semibold mb-6">Contáctanos</h4>
+                  <div className="space-y-4">
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="name">Nombre</Label>
+                        <Input id="name" placeholder="Tu nombre" />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="email">Email</Label>
+                        <Input id="email" type="email" placeholder="tu@email.com" />
+                      </div>
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="company">Empresa</Label>
+                      <Input id="company" placeholder="Nombre de tu empresa" />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="message">Mensaje</Label>
+                      <Textarea id="message" placeholder="Escribe tu mensaje aquí..." className="min-h-[120px] resize-none" />
+                    </div>
+                    <Button className="w-full text-lg py-6">Enviar Mensaje</Button>
+                  </div>
+                </div>
+              </div>
             </CardContent>
           </Card>
         </section>
