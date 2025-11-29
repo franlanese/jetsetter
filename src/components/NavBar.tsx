@@ -185,7 +185,7 @@ const CardNav: React.FC<CardNavProps> = ({
                         {/* Logo removed */}
                     </div>
 
-                    <div className="card-nav-actions">
+                    <div className="card-nav-actions mobile-only">
                         <button
                             type="button"
                             className="card-nav-cta-button"
@@ -225,12 +225,28 @@ const CardNav: React.FC<CardNavProps> = ({
                         </div>
                     ))}
                     {languageSelector && (
-                        <div className="language-selector-container">
+                        <div className="language-selector-container mobile-only">
                             {languageSelector}
                         </div>
                     )}
                 </div>
             </nav>
+
+            <div className="desktop-external-actions">
+                <button
+                    type="button"
+                    className="card-nav-cta-button desktop-cta"
+                    style={{ backgroundColor: buttonBgColor, color: buttonTextColor }}
+                    onClick={onDemoClick}
+                >
+                    Get Started
+                </button>
+                {languageSelector && (
+                    <div className="desktop-language-selector">
+                        {languageSelector}
+                    </div>
+                )}
+            </div>
         </div>
     );
 };
