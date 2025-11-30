@@ -5,7 +5,7 @@ import es from '@/lib/locales/es/common.json';
 import en from '@/lib/locales/en/common.json';
 import pt from '@/lib/locales/pt/common.json';
 
-const translations: Record<string, Record<string, string>> = { es, en, pt };
+const translations: Record<string, any> = { es, en, pt };
 
 type Locale = 'es' | 'en' | 'pt';
 
@@ -26,7 +26,15 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   }, [locale]);
 
   const t = (key: string) => {
-    return messages[key] || key;
+    const keys = key.split('.');
+    let value: any = messages;
+
+    for (const k of keys) {
+      if (value === undefined || value === null) return key;
+      value = value[k];
+    }
+
+    return value === undefined ? key : (value as string);
   };
 
   return (

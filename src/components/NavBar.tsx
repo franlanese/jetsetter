@@ -28,6 +28,8 @@ export interface CardNavProps {
     onDemoClick?: () => void;
 }
 
+import { useTranslation } from '@/context/LanguageContext';
+
 const CardNav: React.FC<CardNavProps> = ({
     items,
     className = '',
@@ -39,6 +41,7 @@ const CardNav: React.FC<CardNavProps> = ({
     languageSelector,
     onDemoClick
 }) => {
+    const { t } = useTranslation();
     const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
     const [isExpanded, setIsExpanded] = useState(false);
     const navRef = useRef<HTMLDivElement | null>(null);
@@ -192,7 +195,7 @@ const CardNav: React.FC<CardNavProps> = ({
                             style={{ backgroundColor: buttonBgColor, color: buttonTextColor }}
                             onClick={onDemoClick}
                         >
-                            Get Started
+                            {t('nav.getStarted')}
                         </button>
                     </div>
                 </div>
@@ -239,7 +242,7 @@ const CardNav: React.FC<CardNavProps> = ({
                     style={{ backgroundColor: buttonBgColor, color: buttonTextColor }}
                     onClick={onDemoClick}
                 >
-                    Get Started
+                    {t('nav.getStarted')}
                 </button>
                 {languageSelector && (
                     <div className="desktop-language-selector">

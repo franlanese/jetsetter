@@ -7,7 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { Rocket, Plane, History, Code, BadgePercent, SearchCheck, LayoutDashboard, Monitor, Mail, Calculator, UserCheck, Globe, Blocks, Linkedin, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Rocket, Plane, History, Code, BadgePercent, SearchCheck, LayoutDashboard, Monitor, Mail, Calculator, UserCheck, Globe, Blocks, Linkedin, ChevronLeft, ChevronRight, Loader2, Send } from 'lucide-react';
 import { LanguageProvider, useTranslation } from '@/context/LanguageContext';
 import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 import { DemoRequestDialog } from '@/components/DemoRequestDialog';
@@ -124,65 +124,61 @@ const PresentationPageContent = () => {
 
   const navItems: CardNavItem[] = [
     {
-      label: 'Por qué Aera?',
-      bgColor: '#e0f2fe', // light blue
-      textColor: '#0f172a',
+      label: t('nav.whyAera'),
+      bgColor: 'hsl(45, 48%, 91%)',
+      textColor: 'hsl(205, 79%, 7%)',
       links: [
-        { label: 'Funcionalidades', href: '#features', ariaLabel: 'Funcionalidades' },
-        { label: 'Ver Demo', href: '#demo', ariaLabel: 'Ver Demo' },
-      ],
+        { label: t('nav.features'), href: '#features', ariaLabel: 'Funcionalidades' },
+        { label: t('nav.demo'), href: '#demo', ariaLabel: 'Ver Demo' }
+      ]
     },
     {
-      label: 'Compañía',
-      bgColor: '#f0fdf4', // light green
-      textColor: '#0f172a',
+      label: t('nav.company'),
+      bgColor: 'hsl(45, 48%, 91%)',
+      textColor: 'hsl(205, 79%, 7%)',
       links: [
-        {
-          label: 'Sobre Nosotros',
-          href: "http://zonodev.ar", target: "_blank", ariaLabel: 'Sobre Nosotros'
-        },
+        { label: t('nav.aboutUs'), href: 'https://zonodev.ar/', ariaLabel: 'Sobre Nosotros', target: '_blank' },
         { label: 'Linkedin', href: 'https://www.linkedin.com/company/zonodev/', ariaLabel: 'Linkedin', target: '_blank' },
-        { label: 'Contacto', href: '#powered-by-zonodev', ariaLabel: 'Contacto' },
-      ],
-    },
-
+        { label: t('nav.contact'), href: '#powered-by-zonodev', ariaLabel: 'Contacto' }
+      ]
+    }
   ];
 
   const features = [
     {
       icon: <LayoutDashboard className="mx-auto h-12 w-12 text-blue-400 mb-4" />,
-      title: "Panel de Control",
-      description: "Publica viajes, Gestionar flota y Obtene estadisticas y analisis de tu empresa en tiempo real. "
+      title: t('features.dashboard.title'),
+      description: t('features.dashboard.desc')
     },
     {
       icon: <Monitor className="mx-auto h-12 w-12 text-green-400 mb-4" />,
-      title: "Plataforma para Clientes",
-      description: "Solicitar Vuelos, Visualizar Empty Legs y Realizar Pagos. Diseño profesional y exclusivo hecho para tu empresa."
+      title: t('features.clientPlatform.title'),
+      description: t('features.clientPlatform.desc')
     },
     {
       icon: <Mail className="mx-auto h-12 w-12 text-purple-400 mb-4" />,
-      title: "Email Marketing para Empty Legs",
-      description: "Permite enviar comunicaciones personalizadas sobre vuelos Empty Legs, optimizando la difusión y el alcance comercial."
+      title: t('features.emailMarketing.title'),
+      description: t('features.emailMarketing.desc')
     },
     {
       icon: <Calculator className="mx-auto h-12 w-12 text-orange-400 mb-4" />,
-      title: "Automatización de presupuestos",
-      description: "Genera presupuestos de vuelos de forma automática, aplicando los parámetros de la empresa para asegurar rapidez, precisión y eficiencia en cada cotización."
+      title: t('features.budgetAutomation.title'),
+      description: t('features.budgetAutomation.desc')
     },
     {
       icon: <UserCheck className="mx-auto h-12 w-12 text-red-400 mb-4" />,
-      title: "Validar registros de clientes",
-      description: "Validá los registros de clientes mediante SMS, correo electrónico o WhatsApp, garantizando, autenticidad y confiabilidad en la información ingresada."
+      title: t('features.clientValidation.title'),
+      description: t('features.clientValidation.desc')
     },
     {
       icon: <Globe className="mx-auto h-12 w-12 text-teal-400 mb-4" />,
-      title: "Traducción Multilingüe",
-      description: "Ofrece tus servicios en diferentes idiomas, facilitando el alcance a mercados internacionales."
+      title: t('features.multilingual.title'),
+      description: t('features.multilingual.desc')
     },
     {
       icon: <Blocks className="mx-auto h-12 w-12 text-indigo-400 mb-4" />,
-      title: "Escalable y Modular",
-      description: "Posibilidad de futuras ampliaciones funcionales y personalización de diseño."
+      title: t('features.scalable.title'),
+      description: t('features.scalable.desc')
     }
   ];
 
@@ -261,7 +257,7 @@ const PresentationPageContent = () => {
                   isActive={selectedIndex === 0}
                   isDimmed={selectedIndex !== null && selectedIndex !== 0}
                 >
-                  Aera es una Plataforma web para Pasajeros.
+                  {t('hero.passengerPlatform')}
                 </GradientText>
 
                 <GradientText
@@ -270,7 +266,7 @@ const PresentationPageContent = () => {
                   isActive={selectedIndex === 1}
                   isDimmed={selectedIndex !== null && selectedIndex !== 1}
                 >
-                  Aera es un Panel de Control para Administradores.
+                  {t('hero.adminPanel')}
                 </GradientText>
 
                 <GradientText
@@ -279,7 +275,7 @@ const PresentationPageContent = () => {
                   isActive={selectedIndex === 2}
                   isDimmed={selectedIndex !== null && selectedIndex !== 2}
                 >
-                  Aera es Modular y Escalable.
+                  {t('hero.modular')}
                 </GradientText>
               </CardTitle>
             </CardHeader>
@@ -431,25 +427,25 @@ const PresentationPageContent = () => {
                         className="object-cover"
                       />
                     </div>
-                    <h3 className="text-3xl font-bold">Powered by Zonodev</h3>
+                    <h3 className="text-3xl font-bold">{t('poweredBy.title')}</h3>
                   </div>
                   <p className="text-lg text-muted-foreground leading-relaxed">
-                    Aera es nuestra plataforma de gestion en que la plasmamos nuestra experiencia y creatividad.
+                    {t('poweredBy.desc')}
                     <br />
-                    Un desarrollo de <a href="https://zonodev.ar" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-medium">zonodev.ar </a> {'  <3'}
+                    {t('poweredBy.devBy')} <a href="https://zonodev.ar" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-medium">zonodev.ar </a> {'  <3'}
                   </p>
                 </div>
 
                 {/* Right Column: Contact Form */}
-                <div className="bg-background/50 p-6 rounded-xl border shadow-sm">
-                  <h4 className="text-xl font-semibold mb-6 flex items-center gap-2">
+                <div className="md:bg-background/50 md:p-6 md:rounded-xl md:border md:shadow-sm">
+                  <h4 className="text-xl font-semibold mb-6 flex items-center justify-center md:justify-start gap-2">
                     <Mail className="w-5 h-5" />
-                    Contactanos
+                    {t('contact.title')}
                   </h4>
                   <form onSubmit={handleFormSubmit} className="space-y-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="space-y-2">
-                        <Label htmlFor="name">Nombre *</Label>
+                        <Label htmlFor="name">{t('contact.name')}</Label>
                         <Input
                           id="name"
                           placeholder="Tu nombre"
@@ -460,7 +456,7 @@ const PresentationPageContent = () => {
                         />
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="email">Email *</Label>
+                        <Label htmlFor="email">{t('contact.email')}</Label>
                         <Input
                           id="email"
                           type="email"
@@ -473,7 +469,7 @@ const PresentationPageContent = () => {
                       </div>
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="company">Empresa</Label>
+                      <Label htmlFor="company">{t('contact.company')}</Label>
                       <Input
                         id="company"
                         placeholder="Nombre de tu empresa"
@@ -483,7 +479,7 @@ const PresentationPageContent = () => {
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="message">Mensaje *</Label>
+                      <Label htmlFor="message">{t('contact.message')}</Label>
                       <Textarea
                         id="message"
                         placeholder="Escribe tu mensaje aquí..."
@@ -498,7 +494,17 @@ const PresentationPageContent = () => {
                       className="w-full text-lg py-6"
                       disabled={isSubmitting}
                     >
-                      {isSubmitting ? 'Enviando...' : 'Enviar Mensaje'}
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                          {t('contact.submitting')}
+                        </>
+                      ) : (
+                        <>
+                          <Send className="mr-2 h-4 w-4" />
+                          {t('contact.submit')}
+                        </>
+                      )}
                     </Button>
                   </form>
                 </div>
@@ -525,22 +531,22 @@ const PresentationPageContent = () => {
                 <span className="text-xl font-bold">Aera</span>
               </div>
               <p className="text-muted-foreground text-sm">
-                La plataforma integral para la gestión de aviación privada.
+                {t('footer.brandDesc')}
               </p>
             </div>
 
             {/* Quick Links */}
             <div>
-              <h3 className="font-semibold mb-4">Producto</h3>
+              <h3 className="font-semibold mb-4">{t('footer.product')}</h3>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><a href="#features" className="hover:text-primary transition-colors">Funcionalidades</a></li>
-                <li><a href="#demo" className="hover:text-primary transition-colors">Demo</a></li>
+                <li><a href="#features" className="hover:text-primary transition-colors">{t('nav.features')}</a></li>
+                <li><a href="#demo" className="hover:text-primary transition-colors">{t('nav.demo')}</a></li>
               </ul>
             </div>
 
             {/* Soporte Técnico */}
             <div>
-              <h3 className="font-semibold mb-4">Soporte Técnico</h3>
+              <h3 className="font-semibold mb-4">{t('footer.support')}</h3>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li><a
                   href="https://api.whatsapp.com/send/?phone=5493417568545&text=Hola%2C+me+gustar%C3%ADa+saber+m%C3%A1s+sobre+sus+servicios.&type=phone_number&app_absent=0"
@@ -556,7 +562,7 @@ const PresentationPageContent = () => {
 
             {/* Connect */}
             <div className="space-y-4">
-              <h3 className="font-semibold">Conecta con Zonodev</h3>
+              <h3 className="font-semibold">{t('footer.connect')}</h3>
               <div className="flex gap-4">
                 <a
                   href="https://www.linkedin.com/company/zonodev/"
@@ -579,14 +585,14 @@ const PresentationPageContent = () => {
               </div>
               <DemoRequestDialog open={isDemoDialogOpen} onOpenChange={setIsDemoDialogOpen}>
                 <Button className="w-full">
-                  Get Started
+                  {t('nav.getStarted')}
                 </Button>
               </DemoRequestDialog>
             </div>
           </div>
 
           <div className="border-t pt-8 text-center text-sm text-muted-foreground">
-            <p>&copy; 2025 Zonodev. Todos los derechos reservados.</p>
+            <p>&copy; {new Date().getFullYear()} Zonodev. {t('footerRights')}</p>
           </div>
         </div>
       </footer>
