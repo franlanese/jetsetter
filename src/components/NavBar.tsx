@@ -236,6 +236,11 @@ const CardNav: React.FC<CardNavProps> = ({
             </nav>
 
             <div className="desktop-external-actions">
+                {languageSelector && (
+                    <div className="desktop-language-selector">
+                        {languageSelector}
+                    </div>
+                )}
                 <button
                     type="button"
                     className="card-nav-cta-button desktop-cta"
@@ -244,11 +249,6 @@ const CardNav: React.FC<CardNavProps> = ({
                 >
                     {t('nav.getStarted')}
                 </button>
-                {languageSelector && (
-                    <div className="desktop-language-selector">
-                        {languageSelector}
-                    </div>
-                )}
             </div>
         </div>
     );

@@ -134,7 +134,7 @@ const PresentationPageContent = () => {
     },
     {
       label: t('nav.company'),
-      bgColor: 'hsl(45, 48%, 91%)',
+      bgColor: 'hsl(190, 60%, 92%)',
       textColor: 'hsl(205, 79%, 7%)',
       links: [
         { label: t('nav.aboutUs'), href: 'https://zonodev.ar/', ariaLabel: 'Sobre Nosotros', target: '_blank' },

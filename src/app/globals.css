@@ -118,7 +118,7 @@ body {
   box-sizing: border-box;
   pointer-events: auto;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 1rem;
 }
 
