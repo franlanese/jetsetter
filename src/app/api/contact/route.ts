@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
+import { Resend } from 'resend';
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: NextRequest) {
     try {
@@ -23,20 +25,17 @@ export async function POST(request: NextRequest) {
             );
         }
 
-        // Create transporter
-        const transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-                user: process.env.EMAIL_USER,
-                pass: process.env.EMAIL_PASS,
-            },
-        });
-
-        // Email content
-        const mailOptions = {
-            from: process.env.EMAIL_USER,
-            to: 'contacto@zonodev.ar',
+        // Send email using Resend
+        // NOTE: You need to verify a domain in Resend to send to external emails
+        // For now, using onboarding@resend.dev which has limitations
+        // To send to contacto@zonodev.ar, you need to:
+        // 1. Add and verify your domain in Resend dashboard
+        // 2. Update the 'from' field to use your verified domain
+        const data = await resend.emails.send({
+            from: 'Aera <onboarding@resend.dev>', // Using Resend's test domain
+            to: 'contacto@zonodev.ar', // Now using the verified account email
             subject: 'Nuevo mensaje desde Aera',
+            replyTo: email,
             html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #2563eb;">Nuevo mensaje desde Aera</h2>
@@ -53,21 +52,22 @@ export async function POST(request: NextRequest) {
           <p style="color: #6b7280; font-size: 12px;">Este mensaje fue enviado desde el formulario de contacto de Aera</p>
         </div>
       `,
-            replyTo: email,
-        };
-
-        // Send email
-        await transporter.sendMail(mailOptions);
+        });
 
         return NextResponse.json(
-            { message: 'Email enviado exitosamente' },
+            { message: 'Email enviado exitosamente', data },
             { status: 200 }
         );
-    } catch (error) {
+    } catch (error: any) {
         console.error('Error sending email:', error);
+        console.error('Error details:', error?.message, error?.statusCode);
         return NextResponse.json(
-            { error: 'Error al enviar el email' },
+            {
+                error: 'Error al enviar el email',
+                details: error?.message || 'Unknown error'
+            },
             { status: 500 }
         );
     }
 }
+
