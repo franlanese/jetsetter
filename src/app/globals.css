@@ -536,6 +536,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
   height: 100%;
   pointer-events: none;
 }
@@ -554,4 +555,15 @@ body {
 
 .swiper-pagination-bullet-active {
   opacity: 1 !important;
+}
+
+.dot-grid__wrap {
+  width: 100%;
+  height: 100%;
+}
+
+.dot-grid__canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
