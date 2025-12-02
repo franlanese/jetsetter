@@ -8,7 +8,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Rocket, Plane, History, Code, BadgePercent, SearchCheck, LayoutDashboard, Monitor, Mail, Calculator, UserCheck, Globe, Blocks, Linkedin, ChevronLeft, ChevronRight, Loader2, Send } from 'lucide-react';
-import { LanguageProvider, useTranslation } from '@/context/LanguageContext';
+import { useTranslation } from '@/context/LanguageContext';
 import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 import { DemoRequestDialog } from '@/components/DemoRequestDialog';
 import { useToast } from "@/hooks/use-toast";
@@ -634,9 +634,7 @@ const PresentationPageContent = () => {
 
 const PresentationPage = () => {
   return (
-    <LanguageProvider>
-      <PresentationPageContent />
-    </LanguageProvider>
+    <PresentationPageContent />
   );
 };
 
