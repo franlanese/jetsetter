@@ -7,8 +7,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { Rocket, Plane, History, Code, BadgePercent, SearchCheck, LayoutDashboard, Monitor, Mail, Calculator, UserCheck, Globe, Blocks, Linkedin, ChevronLeft, ChevronRight } from 'lucide-react';
-import { LanguageProvider, useTranslation } from '@/context/LanguageContext';
+import { Rocket, Plane, History, Code, BadgePercent, SearchCheck, LayoutDashboard, Monitor, Mail, Calculator, UserCheck, Globe, Blocks, Linkedin, ChevronLeft, ChevronRight, Loader2, Send } from 'lucide-react';
+import { useTranslation } from '@/context/LanguageContext';
 import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 import { DemoRequestDialog } from '@/components/DemoRequestDialog';
 import { useToast } from "@/hooks/use-toast";
@@ -124,65 +124,61 @@ const PresentationPageContent = () => {
 
   const navItems: CardNavItem[] = [
     {
-      label: 'Por qué Aera?',
-      bgColor: '#e0f2fe', // light blue
-      textColor: '#0f172a',
+      label: t('nav.whyAera'),
+      bgColor: 'hsl(45, 48%, 91%)',
+      textColor: 'hsl(205, 79%, 7%)',
       links: [
-        { label: 'Funcionalidades', href: '#features', ariaLabel: 'Funcionalidades' },
-        { label: 'Ver Demo', href: '#demo', ariaLabel: 'Ver Demo' },
-      ],
+        { label: t('nav.features'), href: '#features', ariaLabel: 'Funcionalidades' },
+        { label: t('nav.demo'), href: '#demo', ariaLabel: 'Ver Demo' }
+      ]
     },
     {
-      label: 'Compañía',
-      bgColor: '#f0fdf4', // light green
-      textColor: '#0f172a',
+      label: t('nav.company'),
+      bgColor: 'hsl(190, 60%, 92%)',
+      textColor: 'hsl(205, 79%, 7%)',
       links: [
-        {
-          label: 'Sobre Nosotros',
-          href: "http://zonodev.ar", target: "_blank", ariaLabel: 'Sobre Nosotros'
-        },
+        { label: t('nav.aboutUs'), href: 'https://zonodev.ar/', ariaLabel: 'Sobre Nosotros', target: '_blank' },
         { label: 'Linkedin', href: 'https://www.linkedin.com/company/zonodev/', ariaLabel: 'Linkedin', target: '_blank' },
-        { label: 'Contacto', href: '#powered-by-zonodev', ariaLabel: 'Contacto' },
-      ],
-    },
-
+        { label: t('nav.contact'), href: '#powered-by-zonodev', ariaLabel: 'Contacto' }
+      ]
+    }
   ];
 
   const features = [
     {
       icon: <LayoutDashboard className="mx-auto h-12 w-12 text-blue-400 mb-4" />,
-      title: "Panel de Control",
-      description: "Publica viajes, Gestionar flota y Obtene estadisticas y analisis de tu empresa en tiempo real. "
+      title: t('features.dashboard.title'),
+      description: t('features.dashboard.desc')
     },
     {
       icon: <Monitor className="mx-auto h-12 w-12 text-green-400 mb-4" />,
-      title: "Plataforma para Clientes",
-      description: "Solicitar Vuelos, Visualizar Empty Legs y Realizar Pagos. Diseño profesional y exclusivo hecho para tu empresa."
+      title: t('features.clientPlatform.title'),
+      description: t('features.clientPlatform.desc')
     },
     {
       icon: <Mail className="mx-auto h-12 w-12 text-purple-400 mb-4" />,
-      title: "Email Marketing para Empty Legs",
-      description: "Permite enviar comunicaciones personalizadas sobre vuelos Empty Legs, optimizando la difusión y el alcance comercial."
+      title: t('features.emailMarketing.title'),
+      description: t('features.emailMarketing.desc')
     },
     {
       icon: <Calculator className="mx-auto h-12 w-12 text-orange-400 mb-4" />,
-      title: "Automatización de presupuestos",
-      description: "Genera presupuestos de vuelos de forma automática, aplicando los parámetros de la empresa para asegurar rapidez, precisión y eficiencia en cada cotización."
+      title: t('features.budgetAutomation.title'),
+      description: t('features.budgetAutomation.desc')
     },
     {
       icon: <UserCheck className="mx-auto h-12 w-12 text-red-400 mb-4" />,
-      title: "Validar registros de clientes",
-      description: "Validá los registros de clientes mediante SMS, correo electrónico o WhatsApp, garantizando, autenticidad y confiabilidad en la información ingresada."
+      title: t('features.clientValidation.title'),
+      description: t('features.clientValidation.desc')
     },
     {
       icon: <Globe className="mx-auto h-12 w-12 text-teal-400 mb-4" />,
-      title: "Traducción Multilingüe",
-      description: "Ofrece tus servicios en diferentes idiomas, facilitando el alcance a mercados internacionales."
+      title: t('features.multilingual.title'),
+      description: t('features.multilingual.desc')
     },
     {
       icon: <Blocks className="mx-auto h-12 w-12 text-indigo-400 mb-4" />,
-      title: "Escalable y Modular",
-      description: "Posibilidad de futuras ampliaciones funcionales y personalización de diseño."
+      title: t('features.scalable.title'),
+      description: t('features.scalable.desc')
     }
   ];
 
@@ -249,267 +245,303 @@ const PresentationPageContent = () => {
         </div>
       </section>
 
-      <main className="container mx-auto px-4 py-12">
-        {/* New Section */}
-        <section className="mb-20">
-          <Card className="max-w-6xl mx-auto bg-secondary/50">
-            <CardHeader>
-              <CardTitle className="text-center text-2xl md:text-3xl lg:text-4xl leading-tight">
-                <GradientText
-                  colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
-                  onClick={() => handleHeaderClick(0)}
-                  isActive={selectedIndex === 0}
-                  isDimmed={selectedIndex !== null && selectedIndex !== 0}
-                >
-                  Aera es una Plataforma web para Pasajeros.
-                </GradientText>
+      <main className="w-full">
+        <div className="container mx-auto px-4 py-12">
+          {/* New Section */}
+          <section className="mb-20">
+            <Card className="max-w-6xl mx-auto bg-secondary/50">
+              <CardHeader>
+                <CardTitle className="text-center text-2xl md:text-3xl lg:text-4xl leading-tight">
+                  <GradientText
+                    colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
+                    onClick={() => handleHeaderClick(0)}
+                    isActive={selectedIndex === 0}
+                    isDimmed={selectedIndex !== null && selectedIndex !== 0}
+                  >
+                    {t('hero.passengerPlatform')}
+                  </GradientText>
 
-                <GradientText
-                  colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
-                  onClick={() => handleHeaderClick(1)}
-                  isActive={selectedIndex === 1}
-                  isDimmed={selectedIndex !== null && selectedIndex !== 1}
-                >
-                  Aera es un Panel de Control para Administradores.
-                </GradientText>
+                  <GradientText
+                    colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
+                    onClick={() => handleHeaderClick(1)}
+                    isActive={selectedIndex === 1}
+                    isDimmed={selectedIndex !== null && selectedIndex !== 1}
+                  >
+                    {t('hero.adminPanel')}
+                  </GradientText>
 
-                <GradientText
-                  colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
-                  onClick={() => handleHeaderClick(2)}
-                  isActive={selectedIndex === 2}
-                  isDimmed={selectedIndex !== null && selectedIndex !== 2}
+                  <GradientText
+                    colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
+                    onClick={() => handleHeaderClick(2)}
+                    isActive={selectedIndex === 2}
+                    isDimmed={selectedIndex !== null && selectedIndex !== 2}
+                  >
+                    {t('hero.modular')}
+                  </GradientText>
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <Swiper
+                  modules={[Navigation, Pagination]}
+                  spaceBetween={50}
+                  slidesPerView={1}
+                  onSwiper={(swiper) => setSwiper(swiper)}
+                  onSlideChange={(swiper) => setSelectedIndex(swiper.activeIndex)}
+                  className="w-full aspect-[1920/911] rounded-lg"
                 >
-                  Aera es Modular y Escalable.
-                </GradientText>
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
+                  <SwiperSlide className="relative w-full h-full">
+                    <div
+                      className="relative w-full h-full cursor-pointer"
+                      onClick={() => handleImageClick('/images/CapturaDemo1.2.png', 'Plataforma Web')}
+                    >
+                      <Image
+                        src="/images/CapturaDemo1.2.png"
+                        alt="Plataforma Web"
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+                        className="object-contain rounded-lg"
+                      />
+                    </div>
+                  </SwiperSlide>
+                  <SwiperSlide className="relative w-full h-full">
+                    <div
+                      className="relative w-full h-full cursor-pointer"
+                      onClick={() => handleImageClick('/images/CapturaPanelControl.png', 'Panel de Control')}
+                    >
+                      <Image
+                        src="/images/CapturaPanelControl.png"
+                        alt="Panel de Control"
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+                        className="object-contain bg-slate-900 rounded-lg"
+                      />
+                    </div>
+                  </SwiperSlide>
+                  <SwiperSlide className="relative w-full h-full">
+                    <div
+                      className="relative w-full h-full cursor-pointer"
+                      onClick={() => handleImageClick('/images/Cessna-citation-xls+.png', 'Modular y Escalable')}
+                    >
+                      <Image
+                        src="/images/Cessna-citation-xls+.png"
+                        alt="Modular y Escalable"
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+                        className="object-contain bg-slate-900 rounded-lg"
+                      />
+                    </div>
+                  </SwiperSlide>
+                </Swiper>
+              </CardContent>
+            </Card>
+          </section>
+
+          {/* Features Section - Adjust card background for contrast */}
+          <section className="mb-20 scroll-mt-28" id="features">
+            <h2 className="text-4xl font-bold text-center mb-12">
+              {t('featuresTitle')}
+            </h2>
+            <div className="relative group px-4 md:px-12">
               <Swiper
                 modules={[Navigation, Pagination]}
                 spaceBetween={50}
                 slidesPerView={1}
-                onSwiper={(swiper) => setSwiper(swiper)}
-                onSlideChange={(swiper) => setSelectedIndex(swiper.activeIndex)}
-                className="w-full aspect-[1920/911] rounded-lg"
+                loop={true}
+                navigation={{
+                  prevEl: '.features-swiper-button-prev',
+                  nextEl: '.features-swiper-button-next',
+                }}
+                pagination={{ clickable: true }}
+                breakpoints={{
+                  640: {
+                    slidesPerView: 1,
+                    spaceBetween: 20,
+                  },
+                  768: {
+                    slidesPerView: 3,
+                    spaceBetween: 40,
+                  },
+                  1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 50,
+                  },
+                }}
+                className="pb-16"
               >
-                <SwiperSlide className="relative w-full h-full">
-                  <div
-                    className="relative w-full h-full cursor-pointer"
-                    onClick={() => handleImageClick('/images/CapturaDemo1.2.png', 'Plataforma Web')}
-                  >
-                    <Image
-                      src="/images/CapturaDemo1.2.png"
-                      alt="Plataforma Web"
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
-                      className="object-contain rounded-lg"
-                    />
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide className="relative w-full h-full">
-                  <div
-                    className="relative w-full h-full cursor-pointer"
-                    onClick={() => handleImageClick('/images/CapturaPanelControl.png', 'Panel de Control')}
-                  >
-                    <Image
-                      src="/images/CapturaPanelControl.png"
-                      alt="Panel de Control"
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
-                      className="object-contain bg-slate-900 rounded-lg"
-                    />
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide className="relative w-full h-full">
-                  <div
-                    className="relative w-full h-full cursor-pointer"
-                    onClick={() => handleImageClick('/images/Cessna-citation-xls+.png', 'Modular y Escalable')}
-                  >
-                    <Image
-                      src="/images/Cessna-citation-xls+.png"
-                      alt="Modular y Escalable"
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
-                      className="object-contain bg-slate-900 rounded-lg"
-                    />
-                  </div>
-                </SwiperSlide>
+                {features.map((feature, index) => (
+                  <SwiperSlide key={index} className="!h-auto">
+                    <Card className="h-full flex flex-col text-center hover:shadow-lg transition-shadow bg-secondary/50">
+                      <CardHeader>
+                        {feature.icon}
+                        <CardTitle>{feature.title}</CardTitle>
+                      </CardHeader>
+                      <CardContent className="flex-grow">
+                        <p>
+                          {feature.description}
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </SwiperSlide>
+                ))}
               </Swiper>
-            </CardContent>
-          </Card>
-        </section>
+              <button
+                className="features-swiper-button-prev absolute top-1/2 -translate-y-1/2 -left-4 md:-left-8 z-10 p-2 rounded-full bg-background/80 shadow-md hover:bg-background transition-colors hidden md:block"
+                aria-label="Previous slide"
+              >
+                <ChevronLeft className="w-6 h-6" />
+              </button>
+              <button
+                className="features-swiper-button-next absolute top-1/2 -translate-y-1/2 -right-4 md:-right-8 z-10 p-2 rounded-full bg-background/80 shadow-md hover:bg-background transition-colors hidden md:block"
+                aria-label="Next slide"
+              >
+                <ChevronRight className="w-6 h-6" />
+              </button>
+            </div>
+          </section>
+        </div>
 
-        {/* Features Section - Adjust card background for contrast */}
-        <section className="mb-20 scroll-mt-28" id="features">
-          <h2 className="text-4xl font-bold text-center mb-12">
-            {t('featuresTitle')}
-          </h2>
-          <div className="relative group px-4 md:px-12">
-            <Swiper
-              modules={[Navigation, Pagination]}
-              spaceBetween={50}
-              slidesPerView={1}
-              loop={true}
-              navigation={{
-                prevEl: '.features-swiper-button-prev',
-                nextEl: '.features-swiper-button-next',
-              }}
-              pagination={{ clickable: true }}
-              breakpoints={{
-                640: {
-                  slidesPerView: 1,
-                  spaceBetween: 20,
-                },
-                768: {
-                  slidesPerView: 3,
-                  spaceBetween: 40,
-                },
-                1024: {
-                  slidesPerView: 3,
-                  spaceBetween: 50,
-                },
-              }}
-              className="pb-16"
-            >
-              {features.map((feature, index) => (
-                <SwiperSlide key={index} className="!h-auto">
-                  <Card className="h-full flex flex-col text-center hover:shadow-lg transition-shadow bg-secondary/50">
-                    <CardHeader>
-                      {feature.icon}
-                      <CardTitle>{feature.title}</CardTitle>
-                    </CardHeader>
-                    <CardContent className="flex-grow">
-                      <p>
-                        {feature.description}
-                      </p>
-                    </CardContent>
-                  </Card>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-            <button
-              className="features-swiper-button-prev absolute top-1/2 -translate-y-1/2 -left-4 md:-left-8 z-10 p-2 rounded-full bg-background/80 shadow-md hover:bg-background transition-colors hidden md:block"
-              aria-label="Previous slide"
-            >
-              <ChevronLeft className="w-6 h-6" />
-            </button>
-            <button
-              className="features-swiper-button-next absolute top-1/2 -translate-y-1/2 -right-4 md:-right-8 z-10 p-2 rounded-full bg-background/80 shadow-md hover:bg-background transition-colors hidden md:block"
-              aria-label="Next slide"
-            >
-              <ChevronRight className="w-6 h-6" />
-            </button>
+        {/* CTA Section - Text will inherit foreground color */}
+        <section className="py-16 mb-20 scroll-mt-28 bg-[hsl(45,48%,91%)] text-[hsl(205,79%,7%)]" id="demo">
+          <div className="container mx-auto px-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-24 items-center">
+              {/* Left Column: Image */}
+              <div className="relative md:-mt-24 z-10 flex justify-center md:justify-end">
+                <Image
+                  src="/images/PhoneScreenshot.webp"
+                  alt="App Screenshot"
+                  width={350}
+                  height={600}
+                  className="w-full max-w-[350px] h-auto object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
+                />
+              </div>
+
+              {/* Right Column: Text */}
+              <div className="text-left">
+                <h2 className="text-3xl md:text-4xl font-bold mb-6">{t('ctaTitle')}</h2>
+                <p className="text-lg mb-8 max-w-lg">
+                  {t('ctaSubtitle')}
+                </p>
+                <DemoRequestDialog open={isDemoDialogOpen} onOpenChange={setIsDemoDialogOpen}>
+                  <Button
+                    style={{ width: 250, height: 60, fontSize: 20 }}
+                    className="bg-[hsl(205,79%,7%)] text-[hsl(45,48%,91%)] hover:bg-[hsl(205,79%,7%)]/90"
+                  >
+                    {t('ctaButton')}
+                  </Button>
+                </DemoRequestDialog>
+              </div>
+            </div>
           </div>
         </section>
 
-        {/* CTA Section - Text will inherit foreground color */}
-        <section className="text-center mb-20 scroll-mt-28" id="demo">
-          <h2 className="text-3xl font-bold mb-4">{t('ctaTitle')}</h2>
-          <p className="text-lg mb-8">
-            {t('ctaSubtitle')}
-          </p>
-          <DemoRequestDialog open={isDemoDialogOpen} onOpenChange={setIsDemoDialogOpen}>
-            <Button style={{ width: 250, height: 60, fontSize: 20 }}>
-              {t('ctaButton')}
-            </Button>
-          </DemoRequestDialog>
-        </section>
+        <div className="container mx-auto px-4 pb-12">
 
-        {/* Powered by Zonodev Section */}
-        <section className="mb-10 scroll-mt-28" id="powered-by-zonodev">
-          <Card className="max-w-6xl mx-auto bg-secondary/50">
-            <CardContent className="p-8">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                {/* Left Column: Branding */}
-                <div className="flex flex-col items-center space-y-6 text-center">
-                  <div className="flex flex-col items-center gap-6">
-                    <div className="relative h-40 w-40 rounded-full overflow-hidden shadow-md border-4 border-white/10">
-                      <Image
-                        src="/images/zonodevBG.png"
-                        alt="Zonodev Logo"
-                        fill
-                        className="object-cover"
-                      />
+          {/* Powered by Zonodev Section */}
+          <section className="mb-10 scroll-mt-28" id="powered-by-zonodev">
+            <Card className="max-w-6xl mx-auto bg-secondary/50">
+              <CardContent className="p-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                  {/* Left Column: Branding */}
+                  <div className="flex flex-col items-center space-y-6 text-center">
+                    <div className="flex flex-col items-center gap-6">
+                      <div className="relative h-40 w-40 rounded-full overflow-hidden shadow-md border-4 border-white/10">
+                        <Image
+                          src="/images/zonodevBG.png"
+                          alt="Zonodev Logo"
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                      <h3 className="text-3xl font-bold">{t('poweredBy.title')}</h3>
                     </div>
-                    <h3 className="text-3xl font-bold">Powered by Zonodev</h3>
+                    <p className="text-lg text-muted-foreground leading-relaxed">
+                      {t('poweredBy.desc')}
+                      <br />
+                      {t('poweredBy.devBy')} <a href="https://zonodev.ar" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-medium">zonodev.ar </a> {'  <3'}
+                    </p>
                   </div>
-                  <p className="text-lg text-muted-foreground leading-relaxed">
-                    Aera es nuestra plataforma de gestion en que la plasmamos nuestra experiencia y creatividad.
-                    <br />
-                    Un desarrollo de <a href="https://zonodev.ar" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-medium">zonodev.ar </a> {'  <3'}
-                  </p>
-                </div>
 
-                {/* Right Column: Contact Form */}
-                <div className="bg-background/50 p-6 rounded-xl border shadow-sm">
-                  <h4 className="text-xl font-semibold mb-6 flex items-center gap-2">
-                    <Mail className="w-5 h-5" />
-                    Contactanos
-                  </h4>
-                  <form onSubmit={handleFormSubmit} className="space-y-4">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {/* Right Column: Contact Form */}
+                  <div className="md:bg-background/50 md:p-6 md:rounded-xl md:border md:shadow-sm">
+                    <h4 className="text-xl font-semibold mb-6 flex items-center justify-center md:justify-start gap-2">
+                      <Mail className="w-5 h-5" />
+                      {t('contact.title')}
+                    </h4>
+                    <form onSubmit={handleFormSubmit} className="space-y-4">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="space-y-2">
+                          <Label htmlFor="name">{t('contact.name')}</Label>
+                          <Input
+                            id="name"
+                            placeholder="Tu nombre"
+                            className="placeholder:text-muted-foreground/30"
+                            value={formData.name}
+                            onChange={handleFormChange}
+                            required
+                          />
+                        </div>
+                        <div className="space-y-2">
+                          <Label htmlFor="email">{t('contact.email')}</Label>
+                          <Input
+                            id="email"
+                            type="email"
+                            placeholder="tu@email.com"
+                            className="placeholder:text-muted-foreground/30"
+                            value={formData.email}
+                            onChange={handleFormChange}
+                            required
+                          />
+                        </div>
+                      </div>
                       <div className="space-y-2">
-                        <Label htmlFor="name">Nombre *</Label>
+                        <Label htmlFor="company">{t('contact.company')}</Label>
                         <Input
-                          id="name"
-                          placeholder="Tu nombre"
+                          id="company"
+                          placeholder="Nombre de tu empresa"
                           className="placeholder:text-muted-foreground/30"
-                          value={formData.name}
+                          value={formData.company}
+                          onChange={handleFormChange}
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="message">{t('contact.message')}</Label>
+                        <Textarea
+                          id="message"
+                          placeholder="Escribe tu mensaje aquí..."
+                          className="min-h-[120px] resize-none placeholder:text-muted-foreground/30"
+                          value={formData.message}
                           onChange={handleFormChange}
                           required
                         />
                       </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="email">Email *</Label>
-                        <Input
-                          id="email"
-                          type="email"
-                          placeholder="tu@email.com"
-                          className="placeholder:text-muted-foreground/30"
-                          value={formData.email}
-                          onChange={handleFormChange}
-                          required
-                        />
-                      </div>
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="company">Empresa</Label>
-                      <Input
-                        id="company"
-                        placeholder="Nombre de tu empresa"
-                        className="placeholder:text-muted-foreground/30"
-                        value={formData.company}
-                        onChange={handleFormChange}
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="message">Mensaje *</Label>
-                      <Textarea
-                        id="message"
-                        placeholder="Escribe tu mensaje aquí..."
-                        className="min-h-[120px] resize-none placeholder:text-muted-foreground/30"
-                        value={formData.message}
-                        onChange={handleFormChange}
-                        required
-                      />
-                    </div>
-                    <Button
-                      type="submit"
-                      className="w-full text-lg py-6"
-                      disabled={isSubmitting}
-                    >
-                      {isSubmitting ? 'Enviando...' : 'Enviar Mensaje'}
-                    </Button>
-                  </form>
+                      <Button
+                        type="submit"
+                        className="w-full text-lg py-6"
+                        disabled={isSubmitting}
+                      >
+                        {isSubmitting ? (
+                          <>
+                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                            {t('contact.submitting')}
+                          </>
+                        ) : (
+                          <>
+                            <Send className="mr-2 h-4 w-4" />
+                            {t('contact.submit')}
+                          </>
+                        )}
+                      </Button>
+                    </form>
+                  </div>
                 </div>
-              </div>
-            </CardContent>
-          </Card>
-        </section>
-      </main>
+              </CardContent>
+            </Card>
+          </section>
+        </div>
+      </main >
 
       {/* Footer */}
-      <footer className="bg-secondary/30 border-t pt-16 pb-8">
+      < footer className="bg-secondary/30 border-t pt-16 pb-8" >
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
             {/* Brand Column */}
@@ -525,22 +557,22 @@ const PresentationPageContent = () => {
                 <span className="text-xl font-bold">Aera</span>
               </div>
               <p className="text-muted-foreground text-sm">
-                La plataforma integral para la gestión de aviación privada.
+                {t('footer.brandDesc')}
               </p>
             </div>
 
             {/* Quick Links */}
             <div>
-              <h3 className="font-semibold mb-4">Producto</h3>
+              <h3 className="font-semibold mb-4">{t('footer.product')}</h3>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><a href="#features" className="hover:text-primary transition-colors">Funcionalidades</a></li>
-                <li><a href="#demo" className="hover:text-primary transition-colors">Demo</a></li>
+                <li><a href="#features" className="hover:text-primary transition-colors">{t('nav.features')}</a></li>
+                <li><a href="#demo" className="hover:text-primary transition-colors">{t('nav.demo')}</a></li>
               </ul>
             </div>
 
             {/* Soporte Técnico */}
             <div>
-              <h3 className="font-semibold mb-4">Soporte Técnico</h3>
+              <h3 className="font-semibold mb-4">{t('footer.support')}</h3>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li><a
                   href="https://api.whatsapp.com/send/?phone=5493417568545&text=Hola%2C+me+gustar%C3%ADa+saber+m%C3%A1s+sobre+sus+servicios.&type=phone_number&app_absent=0"
@@ -556,7 +588,7 @@ const PresentationPageContent = () => {
 
             {/* Connect */}
             <div className="space-y-4">
-              <h3 className="font-semibold">Conecta con Zonodev</h3>
+              <h3 className="font-semibold">{t('footer.connect')}</h3>
               <div className="flex gap-4">
                 <a
                   href="https://www.linkedin.com/company/zonodev/"
@@ -579,17 +611,17 @@ const PresentationPageContent = () => {
               </div>
               <DemoRequestDialog open={isDemoDialogOpen} onOpenChange={setIsDemoDialogOpen}>
                 <Button className="w-full">
-                  Get Started
+                  {t('nav.getStarted')}
                 </Button>
               </DemoRequestDialog>
             </div>
           </div>
 
           <div className="border-t pt-8 text-center text-sm text-muted-foreground">
-            <p>&copy; 2025 Zonodev. Todos los derechos reservados.</p>
+            <p>&copy; {new Date().getFullYear()} Zonodev. {t('footerRights')}</p>
           </div>
         </div>
-      </footer>
+      </footer >
       <ImageViewerDialog
         src={selectedImage.src}
         alt={selectedImage.alt}
@@ -602,9 +634,7 @@ const PresentationPageContent = () => {
 
 const PresentationPage = () => {
   return (
-    <LanguageProvider>
-      <PresentationPageContent />
-    </LanguageProvider>
+    <PresentationPageContent />
   );
 };
 

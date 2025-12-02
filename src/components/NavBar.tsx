@@ -28,6 +28,8 @@ export interface CardNavProps {
     onDemoClick?: () => void;
 }
 
+import { useTranslation } from '@/context/LanguageContext';
+
 const CardNav: React.FC<CardNavProps> = ({
     items,
     className = '',
@@ -39,6 +41,7 @@ const CardNav: React.FC<CardNavProps> = ({
     languageSelector,
     onDemoClick
 }) => {
+    const { t } = useTranslation();
     const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
     const [isExpanded, setIsExpanded] = useState(false);
     const navRef = useRef<HTMLDivElement | null>(null);
@@ -185,14 +188,14 @@ const CardNav: React.FC<CardNavProps> = ({
                         {/* Logo removed */}
                     </div>
 
-                    <div className="card-nav-actions">
+                    <div className="card-nav-actions mobile-only">
                         <button
                             type="button"
                             className="card-nav-cta-button"
                             style={{ backgroundColor: buttonBgColor, color: buttonTextColor }}
                             onClick={onDemoClick}
                         >
-                            Get Started
+                            {t('nav.getStarted')}
                         </button>
                     </div>
                 </div>
@@ -225,12 +228,28 @@ const CardNav: React.FC<CardNavProps> = ({
                         </div>
                     ))}
                     {languageSelector && (
-                        <div className="language-selector-container">
+                        <div className="language-selector-container mobile-only">
                             {languageSelector}
                         </div>
                     )}
                 </div>
             </nav>
+
+            <div className="desktop-external-actions">
+                {languageSelector && (
+                    <div className="desktop-language-selector">
+                        {languageSelector}
+                    </div>
+                )}
+                <button
+                    type="button"
+                    className="card-nav-cta-button desktop-cta"
+                    style={{ backgroundColor: buttonBgColor, color: buttonTextColor }}
+                    onClick={onDemoClick}
+                >
+                    {t('nav.getStarted')}
+                </button>
+            </div>
         </div>
     );
 };

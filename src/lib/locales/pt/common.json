@@ -11,9 +11,76 @@
   "feature3Text": "Mantenha um registro detalhado de todas as suas viagens anteriores, com fácil acesso à informação e gerenciamento de seus voos.",
   "techTitle": "Nossa Tecnologia",
   "techSubtitle": "Stack Tecnológico Moderno",
-  "techText": "A Aera é construída sobre uma base de tecnologias web de ponta para garantir uma experiência de usuário rápida, segura и escalável.",
+  "techText": "A Aera é construída sobre uma base de tecnologias web de ponta para garantir uma experiência de usuário rápida, segura e escalável.",
   "ctaTitle": "Pronto para voar?",
   "ctaSubtitle": "Explore o aplicativo e descubra a nova era das viagens privadas.",
   "ctaButton": "Ir para o Demo",
-  "footerRights": "Todos os direitos reservados."
+  "footerRights": "Todos os direitos reservados.",
+  "nav": {
+    "whyAera": "Por que Aera?",
+    "features": "Funcionalidades",
+    "demo": "Ver Demo",
+    "company": "Empresa",
+    "aboutUs": "Sobre Nós",
+    "contact": "Contato",
+    "getStarted": "Começar"
+  },
+  "features": {
+    "dashboard": {
+      "title": "Painel de Controle",
+      "desc": "Publique voos, gerencie a frota e obtenha estatísticas e análises da sua empresa em tempo real."
+    },
+    "clientPlatform": {
+      "title": "Plataforma para Clientes",
+      "desc": "Solicite voos, visualize Empty Legs e faça pagamentos. Design profissional e exclusivo feito para sua empresa."
+    },
+    "emailMarketing": {
+      "title": "Email Marketing para Empty Legs",
+      "desc": "Permite enviar comunicações personalizadas sobre voos Empty Legs, otimizando a divulgação e o alcance comercial."
+    },
+    "budgetAutomation": {
+      "title": "Automação de Orçamentos",
+      "desc": "Gere orçamentos de voos automaticamente, aplicando os parâmetros da empresa para garantir rapidez, precisão e eficiência em cada cotação."
+    },
+    "clientValidation": {
+      "title": "Validação de Registro de Clientes",
+      "desc": "Valide os registros de clientes via SMS, e-mail ou WhatsApp, garantindo autenticidade e confiabilidade nas informações inseridas."
+    },
+    "multilingual": {
+      "title": "Tradução Multilíngue",
+      "desc": "Ofereça seus serviços em diferentes idiomas, facilitando o alcance a mercados internacionais."
+    },
+    "scalable": {
+      "title": "Escalável e Modular",
+      "desc": "Possibilidade de futuras expansões funcionais e personalização de design."
+    }
+  },
+  "hero": {
+    "passengerPlatform": "Aera é uma Plataforma Web para Passageiros.",
+    "adminPanel": "Aera é um Painel de Controle para Administradores.",
+    "modular": "Aera é Modular e Escalável."
+  },
+  "poweredBy": {
+    "title": "Powered by Zonodev",
+    "desc": "Aera é nossa plataforma de gestão onde plasmamos nossa experiência e criatividade.",
+    "devBy": "Um desenvolvimento de"
+  },
+  "contact": {
+    "title": "Contate-nos",
+    "name": "Nome *",
+    "email": "Email *",
+    "company": "Empresa",
+    "message": "Mensagem *",
+    "submit": "Enviar Mensagem",
+    "submitting": "Enviando..."
+  },
+  "footer": {
+    "brandDesc": "A plataforma integral para a gestão da aviação privada.",
+    "product": "Produto",
+    "demo": "Demo",
+    "support": "Suporte Técnico",
+    "connect": "Conecte-se com Zonodev",
+    "terms": "Termos de Serviço",
+    "privacy": "Política de Privacidade"
+  }
 }

@@ -15,5 +15,72 @@
   "ctaTitle": "Ready to fly?",
   "ctaSubtitle": "Explore the application and discover the new era of private travel.",
   "ctaButton": "Go to Demo",
-  "footerRights": "All rights reserved."
+  "footerRights": "All rights reserved.",
+  "nav": {
+    "whyAera": "Why Aera?",
+    "features": "Features",
+    "demo": "View Demo",
+    "company": "Company",
+    "aboutUs": "About Us",
+    "contact": "Contact",
+    "getStarted": "Get Started"
+  },
+  "features": {
+    "dashboard": {
+      "title": "Control Panel",
+      "desc": "Publish flights, manage fleet, and get real-time statistics and analysis of your company."
+    },
+    "clientPlatform": {
+      "title": "Client Platform",
+      "desc": "Request flights, view Empty Legs, and make payments. Professional and exclusive design made for your company."
+    },
+    "emailMarketing": {
+      "title": "Email Marketing for Empty Legs",
+      "desc": "Send personalized communications about Empty Legs flights, optimizing dissemination and commercial reach."
+    },
+    "budgetAutomation": {
+      "title": "Budget Automation",
+      "desc": "Generate flight quotes automatically, applying company parameters to ensure speed, precision, and efficiency in every quote."
+    },
+    "clientValidation": {
+      "title": "Client Registration Validation",
+      "desc": "Validate client registrations via SMS, email, or WhatsApp, ensuring authenticity and reliability of entered information."
+    },
+    "multilingual": {
+      "title": "Multilingual Translation",
+      "desc": "Offer your services in different languages, facilitating reach to international markets."
+    },
+    "scalable": {
+      "title": "Scalable and Modular",
+      "desc": "Possibility of future functional expansions and design customization."
+    }
+  },
+  "hero": {
+    "passengerPlatform": "Aera is a Web Platform for Passengers.",
+    "adminPanel": "Aera is a Control Panel for Administrators.",
+    "modular": "Aera is Modular and Scalable."
+  },
+  "poweredBy": {
+    "title": "Powered by Zonodev",
+    "desc": "Aera is our management platform where we embody our experience and creativity.",
+    "devBy": "Developed by"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "name": "Name *",
+    "email": "Email *",
+    "company": "Company",
+    "message": "Message *",
+    "submit": "Send Message",
+    "submitting": "Sending..."
+  },
+  "footer": {
+    "brandDesc": "The comprehensive platform for private aviation management.",
+    "product": "Product",
+    "demo": "Demo",
+    "support": "Technical Support",
+    "connect": "Connect with Zonodev",
+    "terms": "Terms of Service",
+    "privacy": "Privacy Policy"
+  }
 }
