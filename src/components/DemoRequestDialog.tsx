@@ -14,6 +14,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import { useRouter } from 'next/navigation';
+import { submitForm } from "@/app/actions";
 
 interface DemoRequestDialogProps {
   children: React.ReactNode;
@@ -32,7 +33,7 @@ export function DemoRequestDialog({ children, open: externalOpen, onOpenChange: 
   const isOpen = externalOpen !== undefined ? externalOpen : internalOpen;
   const setIsOpen = externalOnOpenChange || setInternalOpen;
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!name || !email) {
       setError("Nombre y correo electrónico son obligatorios.");
       return;
@@ -46,7 +47,14 @@ export function DemoRequestDialog({ children, open: externalOpen, onOpenChange: 
 
     setError("");
     setIsOpen(false);
-    router.push('/demo');
+
+    const formData = new FormData()
+
+    formData.append("nombre", name);
+    formData.append("email", email);
+    formData.append("empresa", company)
+    await submitForm(formData)
+    //router.push('/demo');
   };
 
   const handleOpenChange = (open: boolean) => {
