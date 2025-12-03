@@ -244,7 +244,11 @@ const CardNav: React.FC<CardNavProps> = ({
                 <button
                     type="button"
                     className="card-nav-cta-button desktop-cta"
-                    style={{ backgroundColor: buttonBgColor, color: buttonTextColor }}
+                    style={{
+                        backgroundColor: buttonBgColor,
+                        color: buttonTextColor,
+                        border: `1px solid ${buttonTextColor}`
+                    }}
                     onClick={onDemoClick}
                 >
                     {t('nav.getStarted')}
