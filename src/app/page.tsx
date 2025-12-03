@@ -229,19 +229,25 @@ const PresentationPageContent = () => {
           />
         </div>
         <div className="relative z-20 max-w-3xl mx-auto px-4">
-          <Image
-            src="/images/aera2.png"
-            alt="Interior de jet privado de lujo"
-            width={200}
-            height={200}
-            className='mx-auto'
-          />
-          <h1 className="text-5xl font-bold text-white mb-4">
-            {t('welcomeTitle')}
-          </h1>
-          <p className="text-xl text-gray-200">
-            {t('welcomeSubtitle')}
-          </p>
+          <div className="relative inline-block mb-8">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-black/50 blur-3xl -z-10 rounded-full"></div>
+            <Image
+              src="/images/aera2.png"
+              alt="Interior de jet privado de lujo"
+              width={200}
+              height={200}
+              className='mx-auto relative z-10'
+            />
+          </div>
+          <div className="relative inline-block max-w-2xl">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-black/50 blur-3xl -z-10 rounded-full"></div>
+            <h1 className="text-5xl font-bold text-white mb-4 drop-shadow-md">
+              {t('welcomeTitle')}
+            </h1>
+            <p className="text-xl text-gray-200 drop-shadow-md">
+              {t('welcomeSubtitle')}
+            </p>
+          </div>
         </div>
       </section>
 
@@ -375,7 +381,7 @@ const PresentationPageContent = () => {
                         {feature.icon}
                         <CardTitle>{feature.title}</CardTitle>
                       </CardHeader>
-                      <CardContent className="flex-grow">
+                      <CardContent className="flex-grow flex flex-col justify-center">
                         <p>
                           {feature.description}
                         </p>
