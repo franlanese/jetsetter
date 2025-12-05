@@ -82,7 +82,7 @@ const PresentationPageContent = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch(`/contact`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
