@@ -75,12 +75,31 @@
     "submitting": "Enviando..."
   },
   "footer": {
-    "brandDesc": "A plataforma integral para a gestão da aviação privada.",
+    "brandDesc": "A plataforma abrangente para gestão de aviação privada.",
     "product": "Produto",
     "demo": "Demo",
     "support": "Suporte Técnico",
-    "connect": "Conecte-se com Zonodev",
+    "connect": "Conecte-se com a Zonodev",
     "terms": "Termos de Serviço",
     "privacy": "Política de Privacidade"
+  },
+  "faq": {
+    "title": "Perguntas Frequentes",
+    "q1": {
+      "question": "Já tenho um site básico, o que o Aera acrescentaria?",
+      "answer": "<strong>O Aera impulsiona sua presença digital oferecendo uma experiência mais ágil e moderna para seus clientes:</strong>\n\n\t• Pagamentos online, otimizados para reduzir atritos e aumentar conversões.\n\n\t• Autogestão de voos, com histórico de voos realizados, reservados e solicitados.\n\n\t• Notificações automáticas por e-mail, melhorando a comunicação em cada etapa.\n\n<strong>Para sua operação interna, o Aera permite:</strong>\n\n\t• Publicar Empty Legs, acompanhados de campanhas de e-mail marketing personalizadas.\n\n\t• Gerenciar sua frota, clientes e pilotos a partir de um único painel centralizado.\n\n\t• Escalar sem limites, já que o Aera cresce junto com o seu negócio."
+    },
+    "q2": {
+      "question": "Não tenho um site",
+      "answer": "Cuidamos de implementar e personalizar completamente o Aera para o seu negócio, sem a necessidade de você ter um site prévio."
+    },
+    "q3": {
+      "question": "Não tenho um domínio",
+      "answer": "Cuidamos de gerenciar tanto o domínio quanto a hospedagem do seu site, oferecendo uma solução integral."
+    },
+    "q4": {
+      "question": "Quero um e-mail comercial",
+      "answer": "Fornecemos uma caixa de e-mail comercial com seu domínio para fortalecer a imagem profissional da sua marca."
+    }
   }
 }

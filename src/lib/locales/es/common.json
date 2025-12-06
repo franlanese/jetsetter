@@ -82,5 +82,24 @@
         "connect": "Conecta con Zonodev",
         "terms": "Términos de Servicio",
         "privacy": "Política de Privacidad"
+    },
+    "faq": {
+        "title": "Preguntas Frecuentes",
+        "q1": {
+            "question": "Ya tengo una web básica, ¿qué aportaría Aera?",
+            "answer": "<strong>Aera potencia tu presencia digital ofreciendo una experiencia más ágil y moderna para tus clientes:</strong>\n\n\t• Pagos online, optimizados para reducir fricciones y aumentar conversiones.\n\n\t• Autogestión de vuelos, con historial de vuelos realizados, reservados y solicitados.\n\n\t• Notificaciones automáticas por email, mejorando la comunicación en cada etapa.\n\n<strong>Para tu operación interna, Aera te permite:</strong>\n\n\t• Publicar Empty Legs, acompañados de campañas de email marketing personalizadas.\n\n\t• Gestionar tu flota, clientes y pilotos desde un único panel centralizado.\n\n\t• Escalar sin límites, ya que Aera crece junto a tu negocio."
+        },
+        "q2": {
+            "question": "No tengo una web",
+            "answer": "Nos encargamos de implementar y personalizar completamente Aera para tu negocio, sin necesidad de que tengas una web previa."
+        },
+        "q3": {
+            "question": "No tengo un dominio",
+            "answer": "Nos ocupamos de gestionar tanto el dominio como el hosting de tu página web, brindándote una solución integral."
+        },
+        "q4": {
+            "question": "Quiero un mail comercial",
+            "answer": "Te proporcionamos una casilla de correo comercial con tu dominio para fortalecer la imagen profesional de tu marca."
+        }
     }
 }
