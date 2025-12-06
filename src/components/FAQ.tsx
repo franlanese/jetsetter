@@ -13,10 +13,6 @@ export const FAQ = () => {
 
     const faqs = [
         {
-            question: t('faq.q1.question'),
-            answer: t('faq.q1.answer'),
-        },
-        {
             question: t('faq.q2.question'),
             answer: t('faq.q2.answer'),
         },
@@ -27,6 +23,10 @@ export const FAQ = () => {
         {
             question: t('faq.q4.question'),
             answer: t('faq.q4.answer'),
+        },
+        {
+            question: t('faq.q1.question'),
+            answer: t('faq.q1.answer'),
         },
     ];
 
@@ -46,7 +46,7 @@ export const FAQ = () => {
                             <AccordionTrigger className="text-left text-lg md:text-xl font-bold text-white px-6 py-5 hover:no-underline hover:bg-white/5 data-[state=open]:bg-white/5 transition-colors">
                                 {faq.question}
                             </AccordionTrigger>
-                            <AccordionContent className="text-gray-300 whitespace-pre-wrap text-lg px-6 pb-6 pt-4">
+                            <AccordionContent className="text-gray-400 whitespace-pre-wrap text-lg px-6 pb-6 pt-4">
                                 <div dangerouslySetInnerHTML={{ __html: faq.answer }} />
                             </AccordionContent>
                         </AccordionItem>
