@@ -44,7 +44,7 @@ export const FAQ = () => {
                             className="border-none rounded-lg bg-[hsl(205,79%,15%)] overflow-hidden"
                         >
                             <AccordionTrigger className="text-left text-lg md:text-xl font-bold text-white px-6 py-5 hover:no-underline hover:bg-white/5 data-[state=open]:bg-white/5 transition-colors">
-                                {faq.question}
+                                <span dangerouslySetInnerHTML={{ __html: faq.question }} />
                             </AccordionTrigger>
                             <AccordionContent className="text-gray-400 whitespace-pre-wrap text-lg px-6 pb-6 pt-4">
                                 <div dangerouslySetInnerHTML={{ __html: faq.answer }} />
