@@ -23,7 +23,8 @@
     "company": "Company",
     "aboutUs": "About Us",
     "contact": "Contact",
-    "getStarted": "Get Started"
+    "getStarted": "Get Started",
+    "faq": "FAQ"
   },
   "features": {
     "dashboard": {
@@ -82,5 +83,24 @@
     "connect": "Connect with Zonodev",
     "terms": "Terms of Service",
     "privacy": "Privacy Policy"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "q1": {
+      "question": "I already have a basic website, what would Aera add?",
+      "answer": "<strong>Aera boosts your digital presence by offering a more agile and modern experience for your clients:</strong>\n\t• Online payments, optimized to reduce friction and increase conversions.\n\t• Flight self-management, with a history of flights taken, booked, and requested.\n\t• Automatic email notifications, improving communication at every stage.\n\n<strong>For your internal operation, Aera allows you to:</strong>\n\t• Publish Empty Legs, accompanied by personalized email marketing campaigns.\n\t• Manage your fleet, clients, and pilots from a single centralized panel.\n\t• Scale without limits, as Aera grows with your business."
+    },
+    "q2": {
+      "question": "I don't have a website <span class='font-normal text-gray-400 text-base ml-2'>(Implementation without prior site)</span>",
+      "answer": "We take care of implementing and fully customizing Aera for your business, without the need for you to have a previous website."
+    },
+    "q3": {
+      "question": "I don't have a domain <span class='font-normal text-gray-400 text-base ml-2'>(Domain and hosting)</span>",
+      "answer": "We take care of managing both the domain and hosting of your website, providing you with a comprehensive solution."
+    },
+    "q4": {
+      "question": "I want a commercial email <span class='font-normal text-gray-400 text-base ml-2'>(Corporate email)</span>",
+      "answer": "We provide you with a commercial email box with your domain to strengthen the professional image of your brand."
+    }
   }
 }

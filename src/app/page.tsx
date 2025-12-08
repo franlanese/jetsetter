@@ -21,6 +21,7 @@ import 'swiper/css/pagination';
 import { Navigation, Pagination } from 'swiper/modules';
 import DotGrid from '@/components/DotGridBG';
 import { ImageViewerDialog } from '@/components/ImageViewerDialog';
+import { FAQ } from '@/components/FAQ';
 
 const PresentationPageContent = () => {
   const { t } = useTranslation();
@@ -129,7 +130,8 @@ const PresentationPageContent = () => {
       textColor: 'hsl(205, 79%, 7%)',
       links: [
         { label: t('nav.features'), href: '#features', ariaLabel: 'Funcionalidades' },
-        { label: t('nav.demo'), href: '#demo', ariaLabel: 'Ver Demo' }
+        { label: t('nav.demo'), href: '#demo', ariaLabel: 'Ver Demo' },
+        { label: t('nav.faq'), href: '#faq', ariaLabel: 'FAQ' }
       ]
     },
     {
@@ -439,6 +441,9 @@ const PresentationPageContent = () => {
             </div>
           </div>
         </section>
+
+        {/* FAQ Section */}
+        <FAQ />
 
         <div className="container mx-auto px-4 pb-12">
 
