@@ -23,7 +23,8 @@
         "company": "Compañía",
         "aboutUs": "Sobre Nosotros",
         "contact": "Contacto",
-        "getStarted": "Comenzar"
+        "getStarted": "Comenzar",
+        "faq": "FAQ"
     },
     "features": {
         "dashboard": {

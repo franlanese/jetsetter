@@ -130,7 +130,8 @@ const PresentationPageContent = () => {
       textColor: 'hsl(205, 79%, 7%)',
       links: [
         { label: t('nav.features'), href: '#features', ariaLabel: 'Funcionalidades' },
-        { label: t('nav.demo'), href: '#demo', ariaLabel: 'Ver Demo' }
+        { label: t('nav.demo'), href: '#demo', ariaLabel: 'Ver Demo' },
+        { label: t('nav.faq'), href: '#faq', ariaLabel: 'FAQ' }
       ]
     },
     {

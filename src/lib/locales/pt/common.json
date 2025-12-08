@@ -23,7 +23,8 @@
     "company": "Empresa",
     "aboutUs": "Sobre Nós",
     "contact": "Contato",
-    "getStarted": "Começar"
+    "getStarted": "Começar",
+    "faq": "FAQ"
   },
   "features": {
     "dashboard": {
@@ -90,15 +91,15 @@
       "answer": "<strong>O Aera impulsiona sua presença digital oferecendo uma experiência mais ágil e moderna para seus clientes:</strong>\n\t• Pagamentos online, otimizados para reduzir atritos e aumentar conversões.\n\t• Autogestão de voos, com histórico de voos realizados, reservados e solicitados.\n\t• Notificações automáticas por e-mail, melhorando a comunicação em cada etapa.\n\n<strong>Para sua operação interna, o Aera permite:</strong>\n\t• Publicar Empty Legs, acompanhados de campanhas de e-mail marketing personalizadas.\n\t• Gerenciar sua frota, clientes e pilotos a partir de um único painel centralizado.\n\t• Escalar sem limites, já que o Aera cresce junto com o seu negócio."
     },
     "q2": {
-      "question": "Não tenho um site",
+      "question": "Não tenho um site <span class='font-normal text-gray-400 text-base ml-2'>(Implementação sem site prévio)</span>",
       "answer": "Cuidamos de implementar e personalizar completamente o Aera para o seu negócio, sem a necessidade de você ter um site prévio."
     },
     "q3": {
-      "question": "Não tenho um domínio",
+      "question": "Não tenho um domínio <span class='font-normal text-gray-400 text-base ml-2'>(Domínio e hospedagem)</span>",
       "answer": "Cuidamos de gerenciar tanto o domínio quanto a hospedagem do seu site, oferecendo uma solução integral."
     },
     "q4": {
-      "question": "Quero um e-mail comercial",
+      "question": "Quero um e-mail comercial <span class='font-normal text-gray-400 text-base ml-2'>(E-mail corporativo)</span>",
       "answer": "Fornecemos uma caixa de e-mail comercial com seu domínio para fortalecer a imagem profissional da sua marca."
     }
   }
