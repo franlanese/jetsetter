@@ -18,7 +18,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import { Navigation, Pagination } from 'swiper/modules';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import DotGrid from '@/components/DotGridBG';
 import { ImageViewerDialog } from '@/components/ImageViewerDialog';
 import { FAQ } from '@/components/FAQ';
@@ -290,7 +290,12 @@ const PresentationPageContent = () => {
               </CardHeader>
               <CardContent>
                 <Swiper
-                  modules={[Navigation, Pagination]}
+                  modules={[Navigation, Pagination, Autoplay]}
+                  autoplay={{
+                    delay: 4000,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true
+                  }}
                   spaceBetween={50}
                   slidesPerView={1}
                   onSwiper={(swiper) => setSwiper(swiper)}
@@ -300,10 +305,10 @@ const PresentationPageContent = () => {
                   <SwiperSlide className="relative w-full h-full">
                     <div
                       className="relative w-full h-full cursor-pointer"
-                      onClick={() => handleImageClick('/images/CapturaDemo1.2.png', 'Plataforma Web')}
+                      onClick={() => handleImageClick('/images/WebPasajeros.png', 'Plataforma Web')}
                     >
                       <Image
-                        src="/images/CapturaDemo1.2.png"
+                        src="/images/WebPasajeros.png"
                         alt="Plataforma Web"
                         fill
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
