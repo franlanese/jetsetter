@@ -18,7 +18,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import { Navigation, Pagination, Autoplay, FreeMode } from 'swiper/modules';
 import DotGrid from '@/components/DotGridBG';
 import { ImageViewerDialog } from '@/components/ImageViewerDialog';
 import { FAQ } from '@/components/FAQ';
@@ -44,7 +44,9 @@ const PresentationPageContent = () => {
   const handleHeaderClick = (index: number) => {
     setSelectedIndex(index);
     if (swiper) {
-      swiper.slideTo(index);
+      // Map header index to slide index (0 -> 0, 1 -> 3, 2 -> 6)
+      const targetSlide = index * 3;
+      swiper.slideTo(targetSlide);
     }
   };
 
@@ -257,7 +259,7 @@ const PresentationPageContent = () => {
         <div className="container mx-auto px-4 py-12">
           {/* New Section */}
           <section className="mb-20">
-            <Card className="max-w-6xl mx-auto bg-secondary/50">
+            <Card className="w-[95%] max-w-7xl mx-auto bg-secondary/50">
               <CardHeader>
                 <CardTitle className="text-center text-2xl md:text-3xl lg:text-4xl leading-tight">
                   <GradientText
@@ -290,58 +292,99 @@ const PresentationPageContent = () => {
               </CardHeader>
               <CardContent>
                 <Swiper
-                  modules={[Navigation, Pagination, Autoplay]}
+                  modules={[Navigation, Pagination, Autoplay, FreeMode]}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                   autoplay={{
-                    delay: 4000,
+                    delay: 3500,
                     disableOnInteraction: false,
                     pauseOnMouseEnter: true
                   }}
-                  spaceBetween={50}
-                  slidesPerView={1}
+                  spaceBetween={30}
+                  slidesPerView={'auto'}
+                  freeMode={true}
+                  grabCursor={true}
                   onSwiper={(swiper) => setSwiper(swiper)}
-                  onSlideChange={(swiper) => setSelectedIndex(swiper.activeIndex)}
-                  className="w-full aspect-[1920/911] rounded-lg"
+                  onSlideChange={(swiper) => {
+                    const index = swiper.activeIndex;
+                    if (index < 3) setSelectedIndex(0);
+                    else if (index < 6) setSelectedIndex(1);
+                    else setSelectedIndex(2);
+                  }}
+                  className="w-full aspect-[1920/600] rounded-lg"
                 >
-                  <SwiperSlide className="relative w-full h-full">
-                    <div
-                      className="relative w-full h-full cursor-pointer"
-                      onClick={() => handleImageClick('/images/WebPasajeros.png', 'Plataforma Web')}
-                    >
-                      <Image
-                        src="/images/WebPasajeros.png"
-                        alt="Plataforma Web"
-                        fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
-                        className="object-contain rounded-lg"
-                      />
+                  {/* Pasajeros Group */}
+                  <SwiperSlide className="relative !w-auto h-full">
+                    <div className="w-full h-full cursor-pointer p-2" onClick={() => handleImageClick('/images/WebPasajeros.png', 'Plataforma Web')}>
+                      <img src="/images/UserPhoto1.webp" alt="Pasajero 1" className="h-full w-auto mx-auto object-contain rounded-lg" />
                     </div>
                   </SwiperSlide>
-                  <SwiperSlide className="relative w-full h-full">
-                    <div
-                      className="relative w-full h-full cursor-pointer"
-                      onClick={() => handleImageClick('/images/CapturaPanelControl.png', 'Panel de Control')}
-                    >
-                      <Image
-                        src="/images/CapturaPanelControl.png"
-                        alt="Panel de Control"
-                        fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
-                        className="object-contain bg-slate-900 rounded-lg"
-                      />
+                  <SwiperSlide className="relative !w-auto h-full">
+                    <div className="w-full h-full cursor-pointer p-2" onClick={() => handleImageClick('/images/WebPasajeros.png', 'Plataforma Web')}>
+                      <img src="/images/WebPasajeros.png" alt="Plataforma Web" className="h-full w-auto mx-auto object-contain rounded-lg" />
                     </div>
                   </SwiperSlide>
-                  <SwiperSlide className="relative w-full h-full">
-                    <div
-                      className="relative w-full h-full cursor-pointer"
-                      onClick={() => handleImageClick('/images/Cessna-citation-xls+.png', 'Modular y Escalable')}
-                    >
-                      <Image
-                        src="/images/Cessna-citation-xls+.png"
-                        alt="Modular y Escalable"
-                        fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
-                        className="object-contain bg-slate-900 rounded-lg"
-                      />
+                  <SwiperSlide className="relative !w-auto h-full">
+                    <div className="w-full h-full cursor-pointer p-2" onClick={() => handleImageClick('/images/WebPasajeros.png', 'Plataforma Web')}>
+                      <img src="/images/UserPhoto2.webp" alt="Pasajero 2" className="h-full w-auto mx-auto object-contain rounded-lg" />
+                    </div>
+                  </SwiperSlide>
+
+                  {/* Admin Group */}
+                  <SwiperSlide className="relative !w-auto h-full">
+                    <div className="w-full h-full cursor-pointer p-2" onClick={() => handleImageClick('/images/CapturaPanelControl.png', 'Panel de Control')}>
+                      <img src="/images/AdminPhoto1.webp" alt="Admin 1" className="h-full w-auto mx-auto object-contain rounded-lg" />
+                    </div>
+                  </SwiperSlide>
+                  <SwiperSlide className="relative !w-auto h-full">
+                    <div className="w-full h-full cursor-pointer p-2" onClick={() => handleImageClick('/images/CapturaPanelControl.png', 'Panel de Control')}>
+                      <img src="/images/CapturaPanelControl.png" alt="Panel de Control" className="h-full w-auto mx-auto object-contain bg-slate-900 rounded-lg" />
+                    </div>
+                  </SwiperSlide>
+                  <SwiperSlide className="relative !w-auto h-full">
+                    <div className="w-full h-full cursor-pointer p-2" onClick={() => handleImageClick('/images/CapturaPanelControl.png', 'Panel de Control')}>
+                      <img src="/images/AdminPhoto2.webp" alt="Admin 2" className="h-full w-auto mx-auto object-contain rounded-lg" />
+                    </div>
+                  </SwiperSlide>
+
+                  {/* Modular Group */}
+                  <SwiperSlide className="relative !w-auto h-full">
+                    <div className="w-full h-full cursor-pointer p-2" onClick={() => handleImageClick('/images/Cessna-citation-xls+.png', 'Modular y Escalable')}>
+                      <img src="/images/Cessna-citation-xls+.png" alt="Modular 1" className="h-full w-auto mx-auto object-contain bg-slate-900 rounded-lg" />
+                    </div>
+                  </SwiperSlide>
+                  <SwiperSlide className="relative !w-auto h-full">
+                    <div className="w-full h-full cursor-pointer p-2" onClick={() => handleImageClick('/images/Cessna-citation-xls+.png', 'Modular y Escalable')}>
+                      <img src="/images/Cessna-citation-xls+.png" alt="Modular 2" className="h-full w-auto mx-auto object-contain bg-slate-900 rounded-lg" />
+                    </div>
+                  </SwiperSlide>
+                  <SwiperSlide className="relative !w-auto h-full">
+                    <div className="w-full h-full cursor-pointer p-2" onClick={() => handleImageClick('/images/Cessna-citation-xls+.png', 'Modular y Escalable')}>
+                      <img src="/images/Cessna-citation-xls+.png" alt="Modular 3" className="h-full w-auto mx-auto object-contain bg-slate-900 rounded-lg" />
                     </div>
                   </SwiperSlide>
                 </Swiper>
