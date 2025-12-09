@@ -87,19 +87,19 @@
     "title": "Perguntas Frequentes",
     "q1": {
       "question": "Já tenho um site básico, o que o Aera acrescentaria?",
-      "answer": "<strong>O Aera impulsiona sua presença digital oferecendo uma experiência mais ágil e moderna para seus clientes:</strong>\n\t• Pagamentos online, otimizados para reduzir atritos e aumentar conversões.\n\t• Autogestão de voos, com histórico de voos realizados, reservados e solicitados.\n\t• Notificações automáticas por e-mail, melhorando a comunicação em cada etapa.\n\n<strong>Para sua operação interna, o Aera permite:</strong>\n\t• Publicar Empty Legs, acompanhados de campanhas de e-mail marketing personalizadas.\n\t• Gerenciar sua frota, clientes e pilotos a partir de um único painel centralizado.\n\t• Escalar sem limites, já que o Aera cresce junto com o seu negócio."
+      "answer": "<strong>O Aera impulsiona sua presença digital oferecendo uma experiência mais ágil e moderna para seus clientes:</strong>\n\t• Orçamento automatizado e pagamentos integrados para reduzir atritos e aumentar as conversões.\n\t• Autogestão de voos, com histórico de voos realizados, reservados e solicitados.\n\t• Notificações automáticas por e-mail, melhorando a comunicação em cada etapa.\n\n<strong>Para sua operação interna, o Aera permite:</strong>\n\t• Publicar Empty Legs, acompanhados de campanhas de e-mail marketing personalizadas.\n\t• Gerenciar sua frota, clientes e pilotos a partir de um único painel centralizado.\n\t• Escalar sem limites, já que o Aera cresce junto com o seu negócio."
     },
     "q2": {
-      "question": "Não tenho um site <span class='font-normal text-gray-400 text-base ml-2'>(Implementação sem site prévio)</span>",
-      "answer": "Cuidamos de implementar e personalizar completamente o Aera para o seu negócio, sem a necessidade de você ter um site prévio."
+      "question": "Posso usar o Aera se ainda não tiver um site?<br><span class='font-normal text-gray-400 text-base'>(Implementação sem site prévio)</span>",
+      "answer": "Sim. Cuidamos da implementação e personalização completa do Aera para o seu negócio, sem a necessidade de você ter um site prévio."
     },
     "q3": {
-      "question": "Não tenho um domínio <span class='font-normal text-gray-400 text-base ml-2'>(Domínio e hospedagem)</span>",
-      "answer": "Cuidamos de gerenciar tanto o domínio quanto a hospedagem do seu site, oferecendo uma solução integral."
+      "question": "Posso contratar o Aera se não tiver um domínio próprio?<br><span class='font-normal text-gray-400 text-base'>(Domínio e hospedagem)</span>",
+      "answer": "Sim. Ajudamos você a registrar um domínio e configurar a hospedagem necessária para sua página."
     },
     "q4": {
-      "question": "Quero um e-mail comercial <span class='font-normal text-gray-400 text-base ml-2'>(E-mail corporativo)</span>",
-      "answer": "Fornecemos uma caixa de e-mail comercial com seu domínio para fortalecer a imagem profissional da sua marca."
+      "question": "Posso obter um e-mail comercial com meu domínio?<br><span class='font-normal text-gray-400 text-base'>(E-mail corporativo)</span>",
+      "answer": "Sim. Fornecemos uma caixa de e-mail profissional personalizada com seu domínio."
     }
   }
 }
