@@ -458,9 +458,15 @@ const PresentationPageContent = () => {
               <CardContent className="p-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                   {/* Left Column: Branding */}
-                  <div className="flex flex-col items-center space-y-6 text-center">
+                  {/* Left Column: Branding */}
+                  <a
+                    href="https://zonodev.ar"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex flex-col items-center space-y-6 text-center cursor-pointer transition-transform duration-300 hover:scale-[1.02]"
+                  >
                     <div className="flex flex-col items-center gap-6">
-                      <div className="relative h-40 w-40 rounded-full overflow-hidden shadow-md border-4 border-white/10">
+                      <div className="relative h-40 w-40 rounded-full overflow-hidden shadow-md border-4 border-white/10 transition-all duration-300 group-hover:scale-105 group-hover:shadow-[0_0_25px_rgba(56,95,173,0.6)] group-hover:border-primary/50">
                         <Image
                           src="/images/zonodevBG.png"
                           alt="Zonodev Logo"
@@ -468,14 +474,12 @@ const PresentationPageContent = () => {
                           className="object-cover"
                         />
                       </div>
-                      <h3 className="text-3xl font-bold">{t('poweredBy.title')}</h3>
+                      <h3 className="text-3xl font-bold group-hover:text-primary transition-colors">{t('poweredBy.title')}</h3>
                     </div>
-                    <p className="text-lg text-muted-foreground leading-relaxed">
+                    <p className="text-lg text-muted-foreground leading-relaxed max-w-lg mx-auto group-hover:text-foreground/80 transition-colors">
                       {t('poweredBy.desc')}
-                      <br />
-                      {t('poweredBy.devBy')} <a href="https://zonodev.ar" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-medium">zonodev.ar </a> {'  <3'}
                     </p>
-                  </div>
+                  </a>
 
                   {/* Right Column: Contact Form */}
                   <div className="md:bg-background/50 md:p-6 md:rounded-xl md:border md:shadow-sm">
