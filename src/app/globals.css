@@ -4,10 +4,12 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
   font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
 }
 
 :root {
@@ -369,7 +371,8 @@ body {
 
 @media (max-width: 768px) {
   .card-nav-container {
-    width: 100%;
+    width: auto;
+    flex: 1;
     top: 0;
     display: block;
     /* Reset flex */
