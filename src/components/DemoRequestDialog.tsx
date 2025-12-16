@@ -14,8 +14,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import { useRouter } from 'next/navigation';
-import { submitForm } from "@/app/actions";
-
+import { submitDemoRequest } from "@/app/actions"; // función que conecta con Laravel
 interface DemoRequestDialogProps {
   children: React.ReactNode;
   open?: boolean;
@@ -34,27 +33,24 @@ export function DemoRequestDialog({ children, open: externalOpen, onOpenChange: 
   const setIsOpen = externalOnOpenChange || setInternalOpen;
 
   const handleSubmit = async () => {
-    if (!name || !email) {
-      setError("Nombre y correo electrónico son obligatorios.");
-      return;
-    }
-    // Simple email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      setError("Por favor, ingrese un correo electrónico válido.");
-      return;
-    }
-
+    
     setError("");
-    setIsOpen(false);
 
+    // Validaciones locales de React
     const formData = new FormData()
-
     formData.append("nombre", name);
     formData.append("email", email);
     formData.append("empresa", company)
-    await submitForm(formData)
-    //router.push('/demo');
+
+    // Llamo a la nueva función que conecta con Laravel
+    const response = await submitDemoRequest(formData);
+
+    // Si la función nos devuelve algo, es porque FALLÓ (si hubiera éxito, habría hecho redirect)
+    if (response && !response.success) {
+        setError(response.message);
+        // NO cerramos el modal, mostramos el error
+    }
+    
   };
 
   const handleOpenChange = (open: boolean) => {
