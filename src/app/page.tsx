@@ -326,47 +326,47 @@ const PresentationPageContent = () => {
                   >
                     {/* Pasajeros Group */}
                     <SwiperSlide className="relative !w-auto h-full">
-                      <div className="w-full h-full cursor-pointer p-2" onClick={() => handleImageClick('/images/carrusel/WebPasajeros.png', 'Plataforma Web')}>
-                        <img src="/images/carrusel/UserPhoto1.webp" alt="Pasajero 1" className="h-full w-auto mx-auto object-contain rounded-lg" />
+                      <div className="w-full h-full cursor-pointer p-2" onClick={() => handleImageClick('/images/WebPasajeros.png', 'Plataforma Web')}>
+                        <img src="/images/UserPhoto1.webp" alt="Pasajero 1" className="h-full w-auto mx-auto object-contain rounded-lg" />
                       </div>
                     </SwiperSlide>
                     <SwiperSlide className="relative !w-auto h-full">
-                      <div className="w-full h-full cursor-pointer p-2" onClick={() => handleImageClick('/images/carrusel/WebPasajeros.png', 'Plataforma Web')}>
-                        <img src="/images/carrusel/WebPasajeros.png" alt="Plataforma Web" className="h-full w-auto mx-auto object-contain rounded-lg" />
+                      <div className="w-full h-full cursor-pointer p-2" onClick={() => handleImageClick('/images/WebPasajeros.png', 'Plataforma Web')}>
+                        <img src="/images/WebPasajeros.png" alt="Plataforma Web" className="h-full w-auto mx-auto object-contain rounded-lg" />
                       </div>
                     </SwiperSlide>
                     <SwiperSlide className="relative !w-auto h-full">
-                      <div className="w-full h-full cursor-pointer p-2" onClick={() => handleImageClick('/images/carrusel/WebPasajeros.png', 'Plataforma Web')}>
-                        <img src="/images/carrusel/UserPhoto2.webp" alt="Pasajero 2" className="h-full w-auto mx-auto object-contain rounded-lg" />
+                      <div className="w-full h-full cursor-pointer p-2" onClick={() => handleImageClick('/images/WebPasajeros.png', 'Plataforma Web')}>
+                        <img src="/images/UserPhoto2.webp" alt="Pasajero 2" className="h-full w-auto mx-auto object-contain rounded-lg" />
                       </div>
                     </SwiperSlide>
 
                     {/* Admin Group */}
                     <SwiperSlide className="relative !w-auto h-full">
-                      <div className="w-full h-full cursor-pointer p-2" onClick={() => handleImageClick('/images/carrusel/DiseñoPanelControl.png', 'Panel de Control')}>
-                        <img src="/images/carrusel/AdminPhoto1.webp" alt="Admin 1" className="h-full w-auto mx-auto object-contain rounded-lg" />
+                      <div className="w-full h-full cursor-pointer p-2" onClick={() => handleImageClick('/images/DiseñoPanelControl.png', 'Panel de Control')}>
+                        <img src="/images/AdminPhoto1.webp" alt="Admin 1" className="h-full w-auto mx-auto object-contain rounded-lg" />
                       </div>
                     </SwiperSlide>
                     <SwiperSlide className="relative !w-auto h-full">
-                      <div className="w-full h-full cursor-pointer p-2" onClick={() => handleImageClick('/images/carrusel/DiseñoPanelControl.png', 'Panel de Control')}>
-                        <img src="/images/carrusel/DiseñoPanelControl.png" alt="Panel de Control" className="h-full w-auto mx-auto object-contain bg-slate-900 rounded-lg" />
+                      <div className="w-full h-full cursor-pointer p-2" onClick={() => handleImageClick('/images/DiseñoPanelControl.png', 'Panel de Control')}>
+                        <img src="/images/DiseñoPanelControl.png" alt="Panel de Control" className="h-full w-auto mx-auto object-contain bg-slate-900 rounded-lg" />
                       </div>
                     </SwiperSlide>
                     <SwiperSlide className="relative !w-auto h-full">
-                      <div className="w-full h-full cursor-pointer p-2" onClick={() => handleImageClick('/images/carrusel/DiseñoPanelControl.png', 'Panel de Control')}>
-                        <img src="/images/carrusel/AdminPhoto2.webp" alt="Admin 2" className="h-full w-auto mx-auto object-contain rounded-lg" />
+                      <div className="w-full h-full cursor-pointer p-2" onClick={() => handleImageClick('/images/DiseñoPanelControl.png', 'Panel de Control')}>
+                        <img src="/images/AdminPhoto2.webp" alt="Admin 2" className="h-full w-auto mx-auto object-contain rounded-lg" />
                       </div>
                     </SwiperSlide>
 
                     {/* Modular Group */}
                     <SwiperSlide className="relative !w-auto h-full">
-                      <div className="w-full h-full cursor-pointer p-2" onClick={() => handleImageClick('/images/carrusel/ModularZonodev.png', 'Diseño Modular')}>
-                        <img src="/images/carrusel/ModularZonodev.png" alt="Diseño Modular" className="h-full w-auto mx-auto object-contain rounded-lg" />
+                      <div className="w-full h-full cursor-pointer p-2" onClick={() => handleImageClick('/images/ModularZonodev.png', 'Diseño Modular')}>
+                        <img src="/images/ModularZonodev.png" alt="Diseño Modular" className="h-full w-auto mx-auto object-contain rounded-lg" />
                       </div>
                     </SwiperSlide>
                     <SwiperSlide className="relative !w-auto h-full">
-                      <div className="w-full h-full cursor-pointer p-2" onClick={() => handleImageClick('/images/carrusel/EscalaZonodev.png', 'Escalabilidad')}>
-                        <img src="/images/carrusel/EscalaZonodev.png" alt="Escalabilidad" className="h-full w-auto mx-auto object-contain rounded-lg" />
+                      <div className="w-full h-full cursor-pointer p-2" onClick={() => handleImageClick('/images/EscalaZonodev.png', 'Escalabilidad')}>
+                        <img src="/images/EscalaZonodev.png" alt="Escalabilidad" className="h-full w-auto mx-auto object-contain rounded-lg" />
                       </div>
                     </SwiperSlide>
                   </Swiper>
@@ -395,9 +395,9 @@ const PresentationPageContent = () => {
                   >
                     {/* Pasajeros Group - Slide 0: User Photo 1 (Standalone) */}
                     <SwiperSlide className="relative !w-full h-full">
-                      <div className="w-full h-full cursor-pointer p-2" onClick={() => handleImageClick('/images/carrusel/WebPasajeros.png', 'Plataforma Web')}>
+                      <div className="w-full h-full cursor-pointer p-2" onClick={() => handleImageClick('/images/WebPasajeros.png', 'Plataforma Web')}>
                         <div className="relative w-full h-full">
-                          <Image src="/images/carrusel/UserPhoto1.webp" alt="Pasajero 1" fill className="object-cover rounded-lg" />
+                          <Image src="/images/UserPhoto1.webp" alt="Pasajero 1" fill className="object-cover rounded-lg" />
                         </div>
                       </div>
                     </SwiperSlide>
@@ -405,20 +405,20 @@ const PresentationPageContent = () => {
                     {/* Pasajeros Group - Slide 1: Web (Top) + User Photo 2 (Bottom) */}
                     <SwiperSlide className="relative !w-full h-full">
                       <div className="flex flex-col h-full gap-2">
-                        <div className="flex-1 w-full cursor-pointer relative" onClick={() => handleImageClick('/images/carrusel/WebPasajeros.png', 'Plataforma Web')}>
-                          <img src="/images/carrusel/WebPasajeros.png" alt="Plataforma Web" className="h-full w-auto mx-auto object-contain rounded-lg" />
+                        <div className="flex-1 w-full cursor-pointer relative" onClick={() => handleImageClick('/images/WebPasajeros.png', 'Plataforma Web')}>
+                          <img src="/images/WebPasajeros.png" alt="Plataforma Web" className="h-full w-auto mx-auto object-contain rounded-lg" />
                         </div>
-                        <div className="flex-1 w-full cursor-pointer relative" onClick={() => handleImageClick('/images/carrusel/WebPasajeros.png', 'Plataforma Web')}>
-                          <Image src="/images/carrusel/UserPhoto2.webp" alt="Pasajero 2" fill className="object-cover rounded-lg" />
+                        <div className="flex-1 w-full cursor-pointer relative" onClick={() => handleImageClick('/images/WebPasajeros.png', 'Plataforma Web')}>
+                          <Image src="/images/UserPhoto2.webp" alt="Pasajero 2" fill className="object-cover rounded-lg" />
                         </div>
                       </div>
                     </SwiperSlide>
 
                     {/* Admin Group - Slide 2: Admin Photo 1 (Standalone) */}
                     <SwiperSlide className="relative !w-full h-full">
-                      <div className="w-full h-full cursor-pointer p-2" onClick={() => handleImageClick('/images/carrusel/DiseñoPanelControl.png', 'Panel de Control')}>
+                      <div className="w-full h-full cursor-pointer p-2" onClick={() => handleImageClick('/images/DiseñoPanelControl.png', 'Panel de Control')}>
                         <div className="relative w-full h-full">
-                          <Image src="/images/carrusel/AdminPhoto1.webp" alt="Admin 1" fill className="object-cover rounded-lg" />
+                          <Image src="/images/AdminPhoto1.webp" alt="Admin 1" fill className="object-cover rounded-lg" />
                         </div>
                       </div>
                     </SwiperSlide>
@@ -426,24 +426,24 @@ const PresentationPageContent = () => {
                     {/* Admin Group - Slide 3: Web (Top) + Admin Photo 2 (Bottom) */}
                     <SwiperSlide className="relative !w-full h-full">
                       <div className="flex flex-col h-full gap-2">
-                        <div className="flex-1 w-full cursor-pointer relative" onClick={() => handleImageClick('/images/carrusel/DiseñoPanelControl.png', 'Panel de Control')}>
-                          <img src="/images/carrusel/DiseñoPanelControl.png" alt="Panel de Control" className="h-full w-auto mx-auto object-contain bg-slate-900 rounded-lg" />
+                        <div className="flex-1 w-full cursor-pointer relative" onClick={() => handleImageClick('/images/DiseñoPanelControl.png', 'Panel de Control')}>
+                          <img src="/images/DiseñoPanelControl.png" alt="Panel de Control" className="h-full w-auto mx-auto object-contain bg-slate-900 rounded-lg" />
                         </div>
-                        <div className="flex-1 w-full cursor-pointer relative" onClick={() => handleImageClick('/images/carrusel/DiseñoPanelControl.png', 'Panel de Control')}>
-                          <Image src="/images/carrusel/AdminPhoto2.webp" alt="Admin 2" fill className="object-cover rounded-lg" />
+                        <div className="flex-1 w-full cursor-pointer relative" onClick={() => handleImageClick('/images/DiseñoPanelControl.png', 'Panel de Control')}>
+                          <Image src="/images/AdminPhoto2.webp" alt="Admin 2" fill className="object-cover rounded-lg" />
                         </div>
                       </div>
                     </SwiperSlide>
 
                     {/* Modular Group - Keep as individual slides */}
                     <SwiperSlide className="relative !w-full h-full">
-                      <div className="w-full h-full cursor-pointer p-2" onClick={() => handleImageClick('/images/carrusel/ModularZonodev.png', 'Diseño Modular')}>
-                        <img src="/images/carrusel/ModularZonodev.png" alt="Diseño Modular" className="h-full w-auto mx-auto object-contain rounded-lg" />
+                      <div className="w-full h-full cursor-pointer p-2" onClick={() => handleImageClick('/images/ModularZonodev.png', 'Diseño Modular')}>
+                        <img src="/images/ModularZonodev.png" alt="Diseño Modular" className="h-full w-auto mx-auto object-contain rounded-lg" />
                       </div>
                     </SwiperSlide>
                     <SwiperSlide className="relative !w-full h-full">
-                      <div className="w-full h-full cursor-pointer p-2" onClick={() => handleImageClick('/images/carrusel/EscalaZonodev.png', 'Escalabilidad')}>
-                        <img src="/images/carrusel/EscalaZonodev.png" alt="Escalabilidad" className="h-full w-auto mx-auto object-contain rounded-lg" />
+                      <div className="w-full h-full cursor-pointer p-2" onClick={() => handleImageClick('/images/EscalaZonodev.png', 'Escalabilidad')}>
+                        <img src="/images/EscalaZonodev.png" alt="Escalabilidad" className="h-full w-auto mx-auto object-contain rounded-lg" />
                       </div>
                     </SwiperSlide>
                   </Swiper>
