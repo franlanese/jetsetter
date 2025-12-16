@@ -343,17 +343,17 @@ const PresentationPageContent = () => {
 
                     {/* Admin Group */}
                     <SwiperSlide className="relative !w-auto h-full">
-                      <div className="w-full h-full cursor-pointer p-2" onClick={() => handleImageClick('/images/CapturaPanelControl.png', 'Panel de Control')}>
+                      <div className="w-full h-full cursor-pointer p-2" onClick={() => handleImageClick('/images/DiseñoPanelControl.png', 'Panel de Control')}>
                         <img src="/images/AdminPhoto1.webp" alt="Admin 1" className="h-full w-auto mx-auto object-contain rounded-lg" />
                       </div>
                     </SwiperSlide>
                     <SwiperSlide className="relative !w-auto h-full">
-                      <div className="w-full h-full cursor-pointer p-2" onClick={() => handleImageClick('/images/CapturaPanelControl.png', 'Panel de Control')}>
-                        <img src="/images/CapturaPanelControl.png" alt="Panel de Control" className="h-full w-auto mx-auto object-contain bg-slate-900 rounded-lg" />
+                      <div className="w-full h-full cursor-pointer p-2" onClick={() => handleImageClick('/images/DiseñoPanelControl.png', 'Panel de Control')}>
+                        <img src="/images/DiseñoPanelControl.png" alt="Panel de Control" className="h-full w-auto mx-auto object-contain bg-slate-900 rounded-lg" />
                       </div>
                     </SwiperSlide>
                     <SwiperSlide className="relative !w-auto h-full">
-                      <div className="w-full h-full cursor-pointer p-2" onClick={() => handleImageClick('/images/CapturaPanelControl.png', 'Panel de Control')}>
+                      <div className="w-full h-full cursor-pointer p-2" onClick={() => handleImageClick('/images/DiseñoPanelControl.png', 'Panel de Control')}>
                         <img src="/images/AdminPhoto2.webp" alt="Admin 2" className="h-full w-auto mx-auto object-contain rounded-lg" />
                       </div>
                     </SwiperSlide>
@@ -421,7 +421,7 @@ const PresentationPageContent = () => {
 
                     {/* Admin Group - Slide 2: Admin Photo 1 (Standalone) */}
                     <SwiperSlide className="relative !w-full h-full">
-                      <div className="w-full h-full cursor-pointer p-2" onClick={() => handleImageClick('/images/CapturaPanelControl.png', 'Panel de Control')}>
+                      <div className="w-full h-full cursor-pointer p-2" onClick={() => handleImageClick('/images/DiseñoPanelControl.png', 'Panel de Control')}>
                         <div className="relative w-full h-full">
                           <Image src="/images/AdminPhoto1.webp" alt="Admin 1" fill className="object-cover rounded-lg" />
                         </div>
@@ -431,10 +431,10 @@ const PresentationPageContent = () => {
                     {/* Admin Group - Slide 3: Web (Top) + Admin Photo 2 (Bottom) */}
                     <SwiperSlide className="relative !w-full h-full">
                       <div className="flex flex-col h-full gap-2">
-                        <div className="flex-1 w-full cursor-pointer relative" onClick={() => handleImageClick('/images/CapturaPanelControl.png', 'Panel de Control')}>
-                          <img src="/images/CapturaPanelControl.png" alt="Panel de Control" className="h-full w-auto mx-auto object-contain bg-slate-900 rounded-lg" />
+                        <div className="flex-1 w-full cursor-pointer relative" onClick={() => handleImageClick('/images/DiseñoPanelControl.png', 'Panel de Control')}>
+                          <img src="/images/DiseñoPanelControl.png" alt="Panel de Control" className="h-full w-auto mx-auto object-contain bg-slate-900 rounded-lg" />
                         </div>
-                        <div className="flex-1 w-full cursor-pointer relative" onClick={() => handleImageClick('/images/CapturaPanelControl.png', 'Panel de Control')}>
+                        <div className="flex-1 w-full cursor-pointer relative" onClick={() => handleImageClick('/images/DiseñoPanelControl.png', 'Panel de Control')}>
                           <Image src="/images/AdminPhoto2.webp" alt="Admin 2" fill className="object-cover rounded-lg" />
                         </div>
                       </div>
