@@ -70,3 +70,8 @@ export async function submitDemoRequest(formData: FormData) {
   // Esto lanza un error interno de Next.js para cambiar de página, así que va al final
   redirect('/demo')
 }
+
+export async function checkDemoCookie() {
+  const cookieStore = await cookies()
+  return cookieStore.has('form_completed')
+}

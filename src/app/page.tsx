@@ -1,6 +1,8 @@
 'use client';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { checkDemoCookie } from '@/app/actions';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -32,6 +34,20 @@ const PresentationPageContent = () => {
   const [isDemoDialogOpen, setIsDemoDialogOpen] = useState(false);
   const [imageViewerOpen, setImageViewerOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState({ src: '', alt: '' });
+  const [demoUnlocked, setDemoUnlocked] = useState(false);
+  const router = useRouter();
+
+  useEffect(() => {
+    checkDemoCookie().then(setDemoUnlocked);
+  }, []);
+
+  const handleDemoRequest = () => {
+    if (demoUnlocked) {
+      router.push('/demo');
+    } else {
+      setIsDemoDialogOpen(true);
+    }
+  };
 
   // Contact form state
   const [formData, setFormData] = useState({
@@ -224,7 +240,7 @@ const PresentationPageContent = () => {
           buttonBgColor="hsl(45, 48%, 91%)"
           buttonTextColor="hsl(205, 79%, 7%)"
           languageSelector={<LanguageSwitcher />}
-          onDemoClick={() => setIsDemoDialogOpen(true)}
+          onDemoClick={handleDemoRequest}
         />
       </div>
       {/* Hero Section - Overlay and text colors are already dark-theme friendly */}
@@ -537,14 +553,13 @@ const PresentationPageContent = () => {
                 <p className="text-lg mb-8 max-w-lg">
                   {t('ctaSubtitle')}
                 </p>
-                <DemoRequestDialog open={isDemoDialogOpen} onOpenChange={setIsDemoDialogOpen}>
-                  <Button
-                    style={{ width: 250, height: 60, fontSize: 20 }}
-                    className="bg-[hsl(205,79%,7%)] text-[hsl(45,48%,91%)] hover:bg-[hsl(205,79%,7%)]/90"
-                  >
-                    {t('ctaButton')}
-                  </Button>
-                </DemoRequestDialog>
+                <Button
+                  style={{ width: 250, height: 60, fontSize: 20 }}
+                  className="bg-[hsl(205,79%,7%)] text-[hsl(45,48%,91%)] hover:bg-[hsl(205,79%,7%)]/90"
+                  onClick={handleDemoRequest}
+                >
+                  {t('ctaButton')}
+                </Button>
               </div>
             </div>
           </div>
@@ -732,11 +747,9 @@ const PresentationPageContent = () => {
                   <Globe className="w-5 h-5" />
                 </a>
               </div>
-              <DemoRequestDialog open={isDemoDialogOpen} onOpenChange={setIsDemoDialogOpen}>
-                <Button className="w-full">
-                  {t('nav.getStarted')}
-                </Button>
-              </DemoRequestDialog>
+              <Button className="w-full" onClick={handleDemoRequest}>
+                {t('nav.getStarted')}
+              </Button>
             </div>
           </div>
 
@@ -751,6 +764,9 @@ const PresentationPageContent = () => {
         open={imageViewerOpen}
         onOpenChange={setImageViewerOpen}
       />
+      <DemoRequestDialog open={isDemoDialogOpen} onOpenChange={setIsDemoDialogOpen}>
+        <span className="hidden"></span>
+      </DemoRequestDialog>
     </div >
   );
 };
