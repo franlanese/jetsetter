@@ -10,6 +10,7 @@ export default function VideoComponent({ videoUrl }) {
                 autoPlay
                 muted
                 loop
+                playsInline
                 controls={false}
                 suppressHydrationWarning
             >

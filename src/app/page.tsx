@@ -474,16 +474,29 @@ const PresentationPageContent = () => {
             {/* Background glow */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] md:w-3/4 h-3/4 bg-sky-500/10 blur-[100px] md:blur-[120px] rounded-full pointer-events-none" />
 
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-              {/* Text Content */}
-              <div className="lg:col-span-5 flex flex-col justify-center space-y-6 relative z-20 order-2 lg:order-1 px-4 md:px-0">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 lg:gap-8 items-center">
+              {/* Título solo para móvil */}
+              <div className="lg:hidden flex flex-col justify-center items-center space-y-4 px-4 md:px-0 order-1 mt-4 text-center">
                 <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-500/10 text-sky-400 border border-sky-500/20 w-fit text-sm font-medium">
                   <SearchCheck className="w-4 h-4" />
                   <span>Optimización de conversión</span>
                 </div>
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.1] md:leading-[1.1]">
+                <h2 className="text-center text-4xl md:text-5xl font-bold text-white leading-[1.1]">
                   Convierte visitas en <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-600">vuelos reales</span>
                 </h2>
+              </div>
+
+              {/* Text Content */}
+              <div className="order-3 lg:order-2 lg:col-span-5 flex flex-col justify-center space-y-6 relative z-20 px-4 md:px-0 mt-2 lg:mt-0">
+                <div className="hidden lg:flex flex-col space-y-6">
+                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-500/10 text-sky-400 border border-sky-500/20 w-fit text-sm font-medium">
+                    <SearchCheck className="w-4 h-4" />
+                    <span>Optimización de conversión</span>
+                  </div>
+                  <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.1] md:leading-[1.1]">
+                    Convierte visitas en <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-600">vuelos reales</span>
+                  </h2>
+                </div>
                 <p className="text-lg text-slate-300 leading-relaxed max-w-lg">
                   Un flujo simple para que cada consulta llegue clara, rápida y accionable a tu equipo de ventas.
                 </p>
@@ -502,7 +515,7 @@ const PresentationPageContent = () => {
               </div>
 
               {/* Bento Video Container */}
-              <div className="lg:col-span-7 relative order-1 lg:order-2 px-4 md:px-8 lg:px-0 mt-8 lg:mt-0">
+              <div className="lg:col-span-7 relative order-2 lg:order-1 px-4 md:px-8 lg:px-0 mt-8 lg:mt-0">
                 {/* Main Video Box */}
                 <div className="relative rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl bg-slate-900/50 backdrop-blur-sm z-10 p-2 md:p-3">
                   <div className="rounded-2xl overflow-hidden relative">
@@ -546,12 +559,23 @@ const PresentationPageContent = () => {
           </section>
 
           <section className="py-16 md:py-24 relative mt-12 md:mt-20">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] md:w-3/4 h-3/4 bg-emerald-500/10 blur-[100px] md:blur-[120px] rounded-full pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] md:w-3/4 h-3/4 bg-sky-500/10 blur-[100px] md:blur-[120px] rounded-full pointer-events-none" />
 
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-2 lg:gap-16 items-center">
+
+              {/* Título solo para móvil */}
+              <div className="lg:hidden flex flex-col justify-center items-center space-y-6 px-4 md:px-0 order-1 mt-2 text-center">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-500/10 text-sky-400 border border-sky-500/20 w-fit text-sm font-medium">
+                  <Plane className="w-4 h-4" />
+                  <span>Red de Empty Legs</span>
+                </div>
+                <h2 className="text-center text-4xl md:text-5xl font-bold text-white leading-[1.1]">
+                  La visibilidad que tus <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-600">empty legs</span> necesitan
+                </h2>
+              </div>
 
               {/* Bento Video Container */}
-              <div className="lg:col-span-7 relative px-4 md:px-8 lg:px-0 mt-8 lg:mt-0">
+              <div className="lg:col-span-7 relative px-4 md:px-8 lg:px-0 mt-8 lg:mt-0 order-2 lg:order-1">
                 <div className="relative rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl bg-slate-900/50 backdrop-blur-sm z-10 p-2 md:p-3">
                   <div className="rounded-2xl overflow-hidden relative">
                     <div className="absolute inset-0 border border-white/10 rounded-2xl z-10 pointer-events-none"></div>
@@ -587,14 +611,16 @@ const PresentationPageContent = () => {
               </div>
 
               {/* Text Content */}
-              <div className="lg:col-span-5 flex flex-col justify-center space-y-6 relative z-20 px-4 md:px-0">
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 w-fit text-sm font-medium">
-                  <Plane className="w-4 h-4" />
-                  <span>Red de Empty Legs</span>
+              <div className="lg:col-span-5 flex flex-col justify-center space-y-6 relative z-20 px-4 md:px-0 order-3 lg:order-none mt-2 lg:mt-0">
+                <div className="hidden lg:flex flex-col space-y-6">
+                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-500/10 text-sky-400 border border-sky-500/20 w-fit text-sm font-medium">
+                    <Plane className="w-4 h-4" />
+                    <span>Red de Empty Legs</span>
+                  </div>
+                  <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.1] md:leading-[1.1]">
+                    La visibilidad que tus <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-600">empty legs</span> necesitan
+                  </h2>
                 </div>
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.1] md:leading-[1.1]">
-                  La visibilidad que tus <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-500">empty legs</span> necesitan
-                </h2>
                 <p className="text-lg text-slate-300 leading-relaxed max-w-lg">
                   Publica tus vuelos disponibles y llega a miles de pasajeros que buscan exactamente lo que ofreces, minimizando los vuelos en vacío.
                 </p>
@@ -602,8 +628,8 @@ const PresentationPageContent = () => {
                 <ul className="space-y-4 mt-4">
                   {['Integración automática', 'Notificaciones a pasajeros', 'Mayor rentabilidad'].map((item, i) => (
                     <li key={i} className="flex items-center gap-3 text-slate-200">
-                      <div className="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-500/20 flex items-center justify-center">
-                        <Plane className="w-3 h-3 text-emerald-400" />
+                      <div className="flex-shrink-0 w-6 h-6 rounded-full bg-sky-500/20 flex items-center justify-center">
+                        <Plane className="w-3 h-3 text-sky-400" />
                       </div>
                       <span className="font-medium">{item}</span>
                     </li>
