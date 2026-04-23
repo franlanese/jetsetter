@@ -5,22 +5,22 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, PlaneTakeoff , DollarSign} from 'lucide-react';
+import { ArrowRight, PlaneTakeoff, DollarSign } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 
 import allEmptyLegs from '@/data/emptyLegs.json';
 
 export default function Home() {
   const isMobile = useIsMobile();
-  const emptyLegs = allEmptyLegs.slice(0, isMobile ? 2 : 3);
+  const emptyLegs = allEmptyLegs.slice(0, isMobile ? 2 : 4);
 
   return (
     <div className="flex flex-col items-center">
       <section className="w-full py-6 md:py-16 lg:py-28 bg-card relative">
         <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent z-10"></div>
-        <Image 
-          src="/images/jetinterior.jpg" 
-          alt="Interior de jet privado de lujo" 
+        <Image
+          src="/images/jetinterior.jpg"
+          alt="Interior de jet privado de lujo"
           fill
           objectFit="cover"
           className="opacity-20"
@@ -29,16 +29,16 @@ export default function Home() {
         />
         <div className="px-4 md:px-6 text-center relative z-20">
           <div className="max-w-3xl mx-auto">
-            <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl font-headline" style={{textShadow: '0 2px 4px rgba(0,0,0,0.1)'}}>
+            <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl font-headline" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
               Vuelos Charter en Avión Privado
             </h1>
-            <p className="mt-4 text-md text-gray-300 md:text-xl text-center" style={{textShadow: '0 1px 3px rgba(0,0,0,0.1)'}}>
+            <p className="mt-4 text-md text-gray-300 md:text-xl text-center" style={{ textShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
               Vuelos privados a medida en Argentina. Cotice y reserve con facilidad.
             </p>
           </div>
         </div>
       </section>
-      
+
       <div className="container z-30 px-4 md:px-6">
         <FlightSearchForm />
       </div>
@@ -60,20 +60,20 @@ export default function Home() {
                 <CardHeader>
                   <div className="flex items-center justify-between">
                     <CardTitle className="text-xl">{leg.from} <ArrowRight className="inline-block mx-2 h-5 w-5" /> {leg.to}</CardTitle>
-                    <PlaneTakeoff className="h-6 w-6 text-muted-foreground"/>
+                    <PlaneTakeoff className="h-6 w-6 text-muted-foreground" />
                   </div>
                 </CardHeader>
                 <CardContent className="grid gap-2 flex-grow">
                   <p className="text-sm text-muted-foreground">{leg.aircraft}</p>
                   <p className="text-sm font-medium">{new Date(leg.date).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
-                <div className="flex items-center">
-                  <DollarSign className="w-5 h-5 mr-1 text-primary" />
-                  <p className="text-2xl font-bold mr-2 text-primary">
-                    {leg.price.toLocaleString('es-ES')}
-                  </p>
-                  <p className="text-xs text-primary">por asiento</p>
-                </div>
-                  
+                  <div className="flex items-center">
+                    <DollarSign className="w-5 h-5 mr-1 text-primary" />
+                    <p className="text-2xl font-bold mr-2 text-primary">
+                      {leg.price.toLocaleString('es-ES')}
+                    </p>
+                    <p className="text-xs text-primary">por asiento</p>
+                  </div>
+
                 </CardContent>
                 <div className="p-6 pt-0">
                   <Button asChild className="w-full mt-2">

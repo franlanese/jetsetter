@@ -6,9 +6,11 @@ export function middleware(request: NextRequest) {
   const hasCompletedForm = request.cookies.get('form_completed')
 
   // 2. Si NO tiene la cookie, redirigir al formulario
+  /*
   if (!hasCompletedForm) {
     return NextResponse.redirect(new URL('/', request.url))
   }
+  */
 
   // 3. Si tiene la cookie, permitir el paso
   return NextResponse.next()

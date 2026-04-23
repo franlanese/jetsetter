@@ -24,6 +24,8 @@ import { Navigation, Pagination, Autoplay, FreeMode } from 'swiper/modules';
 import DotGrid from '@/components/DotGridBG';
 import { ImageViewerDialog } from '@/components/ImageViewerDialog';
 import { FAQ } from '@/components/FAQ';
+import Video1 from "@/components/VideoComponent"
+import VideoComponent from '@/components/VideoComponent';
 
 const PresentationPageContent = () => {
   const { t } = useTranslation();
@@ -468,6 +470,149 @@ const PresentationPageContent = () => {
             </Card>
           </section>
 
+          <section className="py-16 md:py-24 relative">
+            {/* Background glow */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] md:w-3/4 h-3/4 bg-sky-500/10 blur-[100px] md:blur-[120px] rounded-full pointer-events-none" />
+
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+              {/* Text Content */}
+              <div className="lg:col-span-5 flex flex-col justify-center space-y-6 relative z-20 order-2 lg:order-1 px-4 md:px-0">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-500/10 text-sky-400 border border-sky-500/20 w-fit text-sm font-medium">
+                  <SearchCheck className="w-4 h-4" />
+                  <span>Optimización de conversión</span>
+                </div>
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.1] md:leading-[1.1]">
+                  Convierte visitas en <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-600">vuelos reales</span>
+                </h2>
+                <p className="text-lg text-slate-300 leading-relaxed max-w-lg">
+                  Un flujo simple para que cada consulta llegue clara, rápida y accionable a tu equipo de ventas.
+                </p>
+
+                {/* Feature list */}
+                <ul className="space-y-4 mt-4">
+                  {['Cotizaciones instantáneas', 'Gestión de leads integrada', 'Sin intermediarios'].map((item, i) => (
+                    <li key={i} className="flex items-center gap-3 text-slate-200">
+                      <div className="flex-shrink-0 w-6 h-6 rounded-full bg-sky-500/20 flex items-center justify-center">
+                        <SearchCheck className="w-3 h-3 text-sky-400" />
+                      </div>
+                      <span className="font-medium">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Bento Video Container */}
+              <div className="lg:col-span-7 relative order-1 lg:order-2 px-4 md:px-8 lg:px-0 mt-8 lg:mt-0">
+                {/* Main Video Box */}
+                <div className="relative rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl bg-slate-900/50 backdrop-blur-sm z-10 p-2 md:p-3">
+                  <div className="rounded-2xl overflow-hidden relative">
+                    <div className="absolute inset-0 border border-white/10 rounded-2xl z-10 pointer-events-none"></div>
+                    <VideoComponent videoUrl={"video1.mp4"} />
+                  </div>
+                </div>
+
+                {/* Floating Card 1: Top Left */}
+                {/*<div className="absolute -top-6 -left-2 md:-top-8 md:-left-8 z-20 bg-slate-900/80 backdrop-blur-md border border-white/10 p-4 rounded-2xl shadow-xl flex items-center gap-4 transform transition duration-500 hover:-translate-y-2">
+                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-green-500/20 flex items-center justify-center text-green-400">
+                    <BadgePercent className="w-5 h-5 md:w-6 md:h-6" />
+                  </div>
+                  <div>
+                    <p className="text-xs md:text-sm text-slate-400 font-medium">Tasa de Cierre</p>
+                    <p className="text-lg md:text-xl font-bold text-white">+45%</p>
+                  </div>
+                </div>*/}
+
+                {/* Floating Card 2: Bottom Right */}
+                {/*<div className="absolute -bottom-6 -right-2 md:-bottom-8 md:-right-8 z-20 bg-slate-900/80 backdrop-blur-md border border-white/10 p-4 rounded-2xl shadow-xl flex items-center gap-4 transform transition duration-500 hover:-translate-y-2">
+                  <div className="flex -space-x-3">
+                    {[
+                      '/images/UserPhoto1.webp',
+                      '/images/UserPhoto2.webp',
+                      '/images/AdminPhoto1.webp'
+                    ].map((src, i) => (
+                      <div key={i} className="w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-slate-900 bg-slate-700 overflow-hidden relative">
+                        <Image src={src} alt="User" fill className="object-cover" />
+                      </div>
+                    ))}
+                  </div>
+                  <div>
+                    <p className="text-xs md:text-sm font-medium text-white">Nuevos leads</p>
+                    <p className="text-[10px] md:text-xs text-sky-400">En tiempo real</p>
+                  </div>
+                </div>
+                */}
+              </div>
+            </div>
+          </section>
+
+          <section className="py-16 md:py-24 relative mt-12 md:mt-20">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] md:w-3/4 h-3/4 bg-emerald-500/10 blur-[100px] md:blur-[120px] rounded-full pointer-events-none" />
+
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+
+              {/* Bento Video Container */}
+              <div className="lg:col-span-7 relative px-4 md:px-8 lg:px-0 mt-8 lg:mt-0">
+                <div className="relative rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl bg-slate-900/50 backdrop-blur-sm z-10 p-2 md:p-3">
+                  <div className="rounded-2xl overflow-hidden relative">
+                    <div className="absolute inset-0 border border-white/10 rounded-2xl z-10 pointer-events-none"></div>
+                    <VideoComponent videoUrl={"video2.mp4"} />
+                  </div>
+                </div>
+
+                {/* Floating Card: Bottom Left */}
+                {/*<div className="absolute -bottom-6 -left-2 md:-bottom-8 md:-left-8 z-20 bg-slate-900/80 backdrop-blur-md border border-white/10 p-4 md:p-5 rounded-2xl shadow-xl w-[200px] md:w-xs transform transition duration-500 hover:-translate-y-2">
+                  <div className="flex items-center justify-between mb-2">
+                    <p className="text-xs md:text-sm text-slate-400 font-medium">Vuelo Disponible</p>
+                    <span className="px-2 py-0.5 rounded-full bg-red-500/20 text-red-400 text-[10px] md:text-xs font-bold animate-pulse">EN VIVO</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-white">
+                    <span className="font-bold text-sm md:text-base">BUE</span>
+                    <Plane className="w-3 h-3 md:w-4 md:h-4 text-slate-500" />
+                    <span className="font-bold text-sm md:text-base">MIA</span>
+                  </div>
+                  <p className="text-[10px] md:text-xs text-emerald-400 mt-2 font-medium">Publicado hace 5 min</p>
+                </div>
+                */}
+                {/* Floating Card: Top Right */}
+                {/*<div className="absolute -top-6 -right-2 md:-top-8 md:-right-8 z-20 bg-slate-900/80 backdrop-blur-md border border-white/10 p-4 rounded-2xl shadow-xl flex items-center gap-4 transform transition duration-500 hover:-translate-y-2">
+                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400">
+                    <Globe className="w-5 h-5 md:w-6 md:h-6" />
+                  </div>
+                  <div>
+                    <p className="text-xs md:text-sm text-slate-400 font-medium">Alcance Global</p>
+                    <p className="text-lg md:text-xl font-bold text-white">24/7</p>
+                  </div>
+                </div>
+                */}
+              </div>
+
+              {/* Text Content */}
+              <div className="lg:col-span-5 flex flex-col justify-center space-y-6 relative z-20 px-4 md:px-0">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 w-fit text-sm font-medium">
+                  <Plane className="w-4 h-4" />
+                  <span>Red de Empty Legs</span>
+                </div>
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.1] md:leading-[1.1]">
+                  La visibilidad que tus <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-500">empty legs</span> necesitan
+                </h2>
+                <p className="text-lg text-slate-300 leading-relaxed max-w-lg">
+                  Publica tus vuelos disponibles y llega a miles de pasajeros que buscan exactamente lo que ofreces, minimizando los vuelos en vacío.
+                </p>
+
+                <ul className="space-y-4 mt-4">
+                  {['Integración automática', 'Notificaciones a pasajeros', 'Mayor rentabilidad'].map((item, i) => (
+                    <li key={i} className="flex items-center gap-3 text-slate-200">
+                      <div className="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-500/20 flex items-center justify-center">
+                        <Plane className="w-3 h-3 text-emerald-400" />
+                      </div>
+                      <span className="font-medium">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+            </div>
+          </section>
           {/* Features Section - Adjust card background for contrast */}
           <section className="mb-20 scroll-mt-28" id="features">
             <h2 className="text-4xl font-bold text-center mb-12">

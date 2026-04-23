@@ -49,3 +49,10 @@ build/
 
 # Otros
 *.tsbuildinfo     # info del compilador de TypeScript
+
+# next-video
+videos/*
+!videos/*.json
+!videos/*.js
+!videos/*.ts
+public/_next-video

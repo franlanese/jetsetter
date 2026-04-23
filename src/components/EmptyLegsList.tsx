@@ -18,6 +18,8 @@ import {
   DollarSign,
   MapPin,
   Search,
+  Minus,
+  Plus,
 } from 'lucide-react';
 import Image from 'next/image';
 import { Input } from './ui/input';
@@ -323,20 +325,34 @@ export default function EmptyLegsList() {
                   Seleccione la cantidad de asientos que desea reservar.
                 </DialogDescription>
               </DialogHeader>
-              <div className="grid gap-4 py-4">
-                <div className="grid grid-cols-4 items-center gap-4">
-                  <Label htmlFor="seats" className="text-right">
-                    Asientos
-                  </Label>
-                  <Input
-                    id="seats"
-                    type="number"
-                    value={selectedSeats}
-                    onChange={(e) => setSelectedSeats(parseInt(e.target.value, 10))}
-                    min={1}
-                    max={selectedLeg.seats}
-                    className="col-span-3"
-                  />
+              <div className="flex flex-col items-center justify-center py-6 space-y-5">
+                <div className="flex items-center gap-6 bg-secondary/30 p-2 rounded-full border border-primary/20 shadow-sm">
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="h-12 w-12 rounded-full bg-background border-primary/30 hover:bg-primary hover:text-primary-foreground transition-all duration-200"
+                    onClick={() => setSelectedSeats(Math.max(1, selectedSeats - 1))}
+                    disabled={selectedSeats <= 1}
+                  >
+                    <Minus className="h-5 w-5" />
+                  </Button>
+
+                  <div className="w-12 text-center">
+                    <span className="text-4xl font-bold text-primary">{selectedSeats}</span>
+                  </div>
+
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="h-12 w-12 rounded-full bg-background border-primary/30 hover:bg-primary hover:text-primary-foreground transition-all duration-200"
+                    onClick={() => setSelectedSeats(Math.min(selectedLeg.seats, selectedSeats + 1))}
+                    disabled={selectedSeats >= selectedLeg.seats}
+                  >
+                    <Plus className="h-5 w-5" />
+                  </Button>
+                </div>
+                <div className="text-sm font-medium text-muted-foreground px-3 py-1 rounded-full">
+                  Máximo {selectedLeg.seats} asientos disponibles
                 </div>
               </div>
               <DialogFooter>
