@@ -245,10 +245,13 @@ const PresentationPageContent = () => {
           onDemoClick={handleDemoRequest}
         />
       </div>
-      {/* Hero Section - Overlay and text colors are already dark-theme friendly */}
-      <section className="relative w-full pt-20 pb-32 md:pt-32 md:pb-48 lg:pt-40 lg:pb-64 text-center">
-        <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-110 z-10"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-20 z-10"></div>
+      {/* Hero Section */}
+      <section className="relative w-full pt-20 pb-16 md:pt-40 md:pb-24 lg:pt-48 lg:pb-32 text-center overflow-x-clip">
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent opacity-100 z-10"></div>
+        {/* Glowing orbs */}
+        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-sky-500/20 blur-[120px] rounded-full pointer-events-none z-10 mix-blend-screen" />
+        <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-blue-600/10 blur-[150px] rounded-full pointer-events-none z-10 mix-blend-screen" />
+
         <div className="absolute inset-0 overflow-hidden z-0">
           <DotGrid
             baseColor="#385fad"
@@ -261,25 +264,50 @@ const PresentationPageContent = () => {
             returnDuration={1}
           />
         </div>
-        <div className="relative z-20 max-w-3xl mx-auto px-4">
-          <div className="relative inline-block mb-8">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-black/50 blur-3xl -z-10 rounded-full"></div>
+        <div className="relative z-20 max-w-4xl mx-auto px-4 flex flex-col items-center">
+
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sky-500/10 text-sky-400 border border-sky-500/20 text-sm font-medium mb-4 md:mb-8 backdrop-blur-md shadow-[0_0_20px_rgba(14,165,233,0.2)]">
+            <Rocket className="w-4 h-4" />
+            <span>El primer software de gestión para la aviación privada</span>
+          </div>
+
+          <div className="relative inline-block md:mb-10 transition-transform duration-700 hover:scale-110">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] bg-sky-500/20 blur-3xl -z-10 rounded-full animate-pulse"></div>
             <Image
               src="/images/aera2.png"
-              alt="Interior de jet privado de lujo"
-              width={200}
-              height={200}
-              className='mx-auto relative z-10'
+              alt="Logo Aera"
+              width={180}
+              height={180}
+              className="mx-auto relative z-10 drop-shadow-[0_0_30px_rgba(255,255,255,0.2)]"
             />
           </div>
-          <div className="relative inline-block max-w-2xl">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-black/50 blur-3xl -z-10 rounded-full"></div>
-            <h1 className="text-5xl font-bold text-white mb-4 drop-shadow-md">
+
+          <div className="relative inline-block w-full">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-white via-slate-200 to-slate-500 mb-8 tracking-tight drop-shadow-2xl">
               {t('welcomeTitle')}
             </h1>
-            <p className="text-xl text-gray-200 drop-shadow-md">
+            <p className="text-xl md:text-2xl text-slate-300 max-w-2xl mx-auto leading-relaxed font-light">
               {t('welcomeSubtitle')}
             </p>
+          </div>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-12 w-full sm:w-auto">
+            <Button
+              onClick={handleDemoRequest}
+              className="w-full sm:w-auto bg-sky-500 hover:bg-sky-400 text-white px-8 py-7 rounded-full text-lg shadow-[0_0_40px_rgba(14,165,233,0.4)] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_60px_rgba(14,165,233,0.6)] border-0"
+            >
+              Agendar Demo
+            </Button>
+            <Button
+              variant="outline"
+              className="w-full sm:w-auto px-8 py-7 rounded-full text-lg border-white/10 hover:bg-white/10 text-white backdrop-blur-md transition-all duration-300 hover:scale-105 bg-slate-900/50"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
+              Descubrir Funciones
+            </Button>
           </div>
         </div>
       </section>
@@ -287,189 +315,6 @@ const PresentationPageContent = () => {
       <main className="w-full">
         <div className="container mx-auto px-4 py-12">
           {/* New Section */}
-          <section className="mb-20">
-            <Card className="w-[95%] max-w-7xl mx-auto bg-secondary/50">
-              <CardHeader>
-                <CardTitle className="text-center text-2xl md:text-3xl lg:text-4xl leading-tight">
-                  <GradientText
-                    colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
-                    onClick={() => handleHeaderClick(0)}
-                    isActive={selectedIndex === 0}
-                    isDimmed={selectedIndex !== null && selectedIndex !== 0}
-                  >
-                    {t('hero.passengerPlatform')}
-                  </GradientText>
-
-                  <GradientText
-                    colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
-                    onClick={() => handleHeaderClick(1)}
-                    isActive={selectedIndex === 1}
-                    isDimmed={selectedIndex !== null && selectedIndex !== 1}
-                  >
-                    {t('hero.adminPanel')}
-                  </GradientText>
-
-                  <GradientText
-                    colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
-                    onClick={() => handleHeaderClick(2)}
-                    isActive={selectedIndex === 2}
-                    isDimmed={selectedIndex !== null && selectedIndex !== 2}
-                  >
-                    {t('hero.modular')}
-                  </GradientText>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                {/* Desktop Swiper - Original 3-column Layout */}
-                <div className="hidden md:block">
-                  <Swiper
-                    modules={[Navigation, Pagination, Autoplay, FreeMode]}
-                    autoplay={{
-                      delay: 3500,
-                      disableOnInteraction: false,
-                      pauseOnMouseEnter: true
-                    }}
-                    spaceBetween={30}
-                    slidesPerView={'auto'}
-                    freeMode={true}
-                    grabCursor={true}
-                    onSwiper={setDesktopSwiper}
-                    onSlideChange={(swiper) => {
-                      const index = swiper.activeIndex;
-                      if (index < 3) setSelectedIndex(0);
-                      else if (index < 6) setSelectedIndex(1);
-                      else setSelectedIndex(2);
-                    }}
-                    className="w-full aspect-[1920/600] rounded-lg"
-                  >
-                    {/* Pasajeros Group */}
-                    <SwiperSlide className="relative !w-auto h-full">
-                      <div className="w-full h-full cursor-pointer p-2" onClick={() => handleImageClick('/images/WebPasajeros.png', 'Plataforma Web')}>
-                        <img src="/images/UserPhoto1.webp" alt="Pasajero 1" className="h-full w-auto mx-auto object-contain rounded-lg" />
-                      </div>
-                    </SwiperSlide>
-                    <SwiperSlide className="relative !w-auto h-full">
-                      <div className="w-full h-full cursor-pointer p-2" onClick={() => handleImageClick('/images/WebPasajeros.png', 'Plataforma Web')}>
-                        <img src="/images/WebPasajeros.png" alt="Plataforma Web" className="h-full w-auto mx-auto object-contain rounded-lg" />
-                      </div>
-                    </SwiperSlide>
-                    <SwiperSlide className="relative !w-auto h-full">
-                      <div className="w-full h-full cursor-pointer p-2" onClick={() => handleImageClick('/images/WebPasajeros.png', 'Plataforma Web')}>
-                        <img src="/images/UserPhoto2.webp" alt="Pasajero 2" className="h-full w-auto mx-auto object-contain rounded-lg" />
-                      </div>
-                    </SwiperSlide>
-
-                    {/* Admin Group */}
-                    <SwiperSlide className="relative !w-auto h-full">
-                      <div className="w-full h-full cursor-pointer p-2" onClick={() => handleImageClick('/images/DiseñoPanelControl.png', 'Panel de Control')}>
-                        <img src="/images/AdminPhoto1.webp" alt="Admin 1" className="h-full w-auto mx-auto object-contain rounded-lg" />
-                      </div>
-                    </SwiperSlide>
-                    <SwiperSlide className="relative !w-auto h-full">
-                      <div className="w-full h-full cursor-pointer p-2" onClick={() => handleImageClick('/images/DiseñoPanelControl.png', 'Panel de Control')}>
-                        <img src="/images/DiseñoPanelControl.png" alt="Panel de Control" className="h-full w-auto mx-auto object-contain bg-slate-900 rounded-lg" />
-                      </div>
-                    </SwiperSlide>
-                    <SwiperSlide className="relative !w-auto h-full">
-                      <div className="w-full h-full cursor-pointer p-2" onClick={() => handleImageClick('/images/DiseñoPanelControl.png', 'Panel de Control')}>
-                        <img src="/images/AdminPhoto2.webp" alt="Admin 2" className="h-full w-auto mx-auto object-contain rounded-lg" />
-                      </div>
-                    </SwiperSlide>
-
-                    {/* Modular Group */}
-                    <SwiperSlide className="relative !w-auto h-full">
-                      <div className="w-full h-full cursor-pointer p-2" onClick={() => handleImageClick('/images/ModularZonodev.png', 'Diseño Modular')}>
-                        <img src="/images/ModularZonodev.png" alt="Diseño Modular" className="h-full w-auto mx-auto object-contain rounded-lg" />
-                      </div>
-                    </SwiperSlide>
-                    <SwiperSlide className="relative !w-auto h-full">
-                      <div className="w-full h-full cursor-pointer p-2" onClick={() => handleImageClick('/images/EscalaZonodev.png', 'Escalabilidad')}>
-                        <img src="/images/EscalaZonodev.png" alt="Escalabilidad" className="h-full w-auto mx-auto object-contain rounded-lg" />
-                      </div>
-                    </SwiperSlide>
-                  </Swiper>
-                </div>
-
-                {/* Mobile Swiper - Stacked Layout */}
-                <div className="block md:hidden">
-                  <Swiper
-                    modules={[Navigation, Pagination, Autoplay, FreeMode]}
-                    autoplay={{
-                      delay: 3500,
-                      disableOnInteraction: false,
-                      pauseOnMouseEnter: true
-                    }}
-                    spaceBetween={20}
-                    slidesPerView={1}
-                    grabCursor={true}
-                    onSwiper={setMobileSwiper}
-                    onSlideChange={(swiper) => {
-                      const index = swiper.activeIndex;
-                      if (index < 2) setSelectedIndex(0); // Slide 0 & 1 -> Pasajeros
-                      else if (index < 4) setSelectedIndex(1); // Slide 2 & 3 -> Admin
-                      else setSelectedIndex(2); // Slide 4+ -> Modular
-                    }}
-                    className="w-full h-[45vh] rounded-lg"
-                  >
-                    {/* Pasajeros Group - Slide 0: User Photo 1 (Standalone) */}
-                    <SwiperSlide className="relative !w-full h-full">
-                      <div className="w-full h-full cursor-pointer p-2" onClick={() => handleImageClick('/images/WebPasajeros.png', 'Plataforma Web')}>
-                        <div className="relative w-full h-full">
-                          <Image src="/images/UserPhoto1.webp" alt="Pasajero 1" fill className="object-cover rounded-lg" />
-                        </div>
-                      </div>
-                    </SwiperSlide>
-
-                    {/* Pasajeros Group - Slide 1: Web (Top) + User Photo 2 (Bottom) */}
-                    <SwiperSlide className="relative !w-full h-full">
-                      <div className="flex flex-col h-full gap-2">
-                        <div className="flex-1 w-full cursor-pointer relative" onClick={() => handleImageClick('/images/WebPasajeros.png', 'Plataforma Web')}>
-                          <img src="/images/WebPasajeros.png" alt="Plataforma Web" className="h-full w-auto mx-auto object-contain rounded-lg" />
-                        </div>
-                        <div className="flex-1 w-full cursor-pointer relative" onClick={() => handleImageClick('/images/WebPasajeros.png', 'Plataforma Web')}>
-                          <Image src="/images/UserPhoto2.webp" alt="Pasajero 2" fill className="object-cover rounded-lg" />
-                        </div>
-                      </div>
-                    </SwiperSlide>
-
-                    {/* Admin Group - Slide 2: Admin Photo 1 (Standalone) */}
-                    <SwiperSlide className="relative !w-full h-full">
-                      <div className="w-full h-full cursor-pointer p-2" onClick={() => handleImageClick('/images/DiseñoPanelControl.png', 'Panel de Control')}>
-                        <div className="relative w-full h-full">
-                          <Image src="/images/AdminPhoto1.webp" alt="Admin 1" fill className="object-cover rounded-lg" />
-                        </div>
-                      </div>
-                    </SwiperSlide>
-
-                    {/* Admin Group - Slide 3: Web (Top) + Admin Photo 2 (Bottom) */}
-                    <SwiperSlide className="relative !w-full h-full">
-                      <div className="flex flex-col h-full gap-2">
-                        <div className="flex-1 w-full cursor-pointer relative" onClick={() => handleImageClick('/images/DiseñoPanelControl.png', 'Panel de Control')}>
-                          <img src="/images/DiseñoPanelControl.png" alt="Panel de Control" className="h-full w-auto mx-auto object-contain bg-slate-900 rounded-lg" />
-                        </div>
-                        <div className="flex-1 w-full cursor-pointer relative" onClick={() => handleImageClick('/images/DiseñoPanelControl.png', 'Panel de Control')}>
-                          <Image src="/images/AdminPhoto2.webp" alt="Admin 2" fill className="object-cover rounded-lg" />
-                        </div>
-                      </div>
-                    </SwiperSlide>
-
-                    {/* Modular Group - Keep as individual slides */}
-                    <SwiperSlide className="relative !w-full h-full">
-                      <div className="w-full h-full cursor-pointer p-2" onClick={() => handleImageClick('/images/ModularZonodev.png', 'Diseño Modular')}>
-                        <img src="/images/ModularZonodev.png" alt="Diseño Modular" className="h-full w-auto mx-auto object-contain rounded-lg" />
-                      </div>
-                    </SwiperSlide>
-                    <SwiperSlide className="relative !w-full h-full">
-                      <div className="w-full h-full cursor-pointer p-2" onClick={() => handleImageClick('/images/EscalaZonodev.png', 'Escalabilidad')}>
-                        <img src="/images/EscalaZonodev.png" alt="Escalabilidad" className="h-full w-auto mx-auto object-contain rounded-lg" />
-                      </div>
-                    </SwiperSlide>
-                  </Swiper>
-                </div>
-              </CardContent>
-            </Card>
-          </section>
-
           <section className="py-16 md:py-24 relative">
             {/* Background glow */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] md:w-3/4 h-3/4 bg-sky-500/10 blur-[100px] md:blur-[120px] rounded-full pointer-events-none" />
@@ -639,12 +484,13 @@ const PresentationPageContent = () => {
 
             </div>
           </section>
-          {/* Features Section - Adjust card background for contrast */}
-          <section className="mb-20 scroll-mt-28" id="features">
-            <h2 className="text-4xl font-bold text-center mb-12">
+          {/* Features Section */}
+          <section className="mb-20 scroll-mt-28 relative mt-12 md:mt-20" id="features">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] md:w-3/4 h-3/4 bg-sky-500/10 blur-[100px] md:blur-[120px] rounded-full pointer-events-none" />
+            <h2 className="text-4xl font-bold text-center mb-12 relative z-10 text-white">
               {t('featuresTitle')}
             </h2>
-            <div className="relative group px-4 md:px-12">
+            <div className="relative group px-4 md:px-12 z-10">
               <Swiper
                 modules={[Navigation, Pagination]}
                 spaceBetween={50}
@@ -672,18 +518,18 @@ const PresentationPageContent = () => {
                 className="pb-16"
               >
                 {features.map((feature, index) => (
-                  <SwiperSlide key={index} className="!h-auto">
-                    <Card className="h-full flex flex-col text-center hover:shadow-lg transition-shadow bg-secondary/50">
-                      <CardHeader>
+                  <SwiperSlide key={index} className="!h-auto p-2">
+                    <div className="h-full flex flex-col text-center hover:shadow-2xl transition-all duration-300 rounded-[2rem] border border-white/10 bg-slate-900/50 backdrop-blur-sm p-6 md:p-8 group hover:-translate-y-1">
+                      <div className="mb-4">
                         {feature.icon}
-                        <CardTitle>{feature.title}</CardTitle>
-                      </CardHeader>
-                      <CardContent className="flex-grow flex flex-col justify-center">
-                        <p>
+                      </div>
+                      <h3 className="text-xl font-semibold text-white mb-3">{feature.title}</h3>
+                      <div className="flex-grow flex flex-col justify-center">
+                        <p className="text-slate-300">
                           {feature.description}
                         </p>
-                      </CardContent>
-                    </Card>
+                      </div>
+                    </div>
                   </SwiperSlide>
                 ))}
               </Swiper>
@@ -703,9 +549,9 @@ const PresentationPageContent = () => {
           </section>
         </div>
 
-        {/* CTA Section - Text will inherit foreground color */}
-        <section className="py-16 mb-20 scroll-mt-28 bg-[hsl(45,48%,91%)] text-[hsl(205,79%,7%)]" id="demo">
-          <div className="container mx-auto px-4">
+        {/* CTA Section */}
+        <section className="py-16 mb-20 scroll-mt-28 bg-[hsl(45,48%,91%)] text-[hsl(205,79%,7%)] relative" id="demo">
+          <div className="container mx-auto px-4 relative z-10">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-24 items-center">
               {/* Left Column: Image */}
               <div className="relative md:-mt-24 z-10 flex justify-center md:justify-end">
@@ -721,12 +567,12 @@ const PresentationPageContent = () => {
               {/* Right Column: Text */}
               <div className="text-left">
                 <h2 className="text-3xl md:text-4xl font-bold mb-6">{t('ctaTitle')}</h2>
-                <p className="text-lg mb-8 max-w-lg">
+                <p className="text-lg mb-8 max-w-lg opacity-90">
                   {t('ctaSubtitle')}
                 </p>
                 <Button
                   style={{ width: 250, height: 60, fontSize: 20 }}
-                  className="bg-[hsl(205,79%,7%)] text-[hsl(45,48%,91%)] hover:bg-[hsl(205,79%,7%)]/90"
+                  className="bg-[hsl(205,79%,7%)] text-[hsl(45,48%,91%)] hover:bg-[hsl(205,79%,7%)]/90 shadow-xl border-0"
                   onClick={handleDemoRequest}
                 >
                   {t('ctaButton')}
@@ -742,109 +588,107 @@ const PresentationPageContent = () => {
         <div className="container mx-auto px-4 pb-12">
 
           {/* Powered by Zonodev Section */}
-          <section className="mb-10 scroll-mt-28" id="powered-by-zonodev">
-            <Card className="max-w-6xl mx-auto bg-secondary/50">
-              <CardContent className="p-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                  {/* Left Column: Branding */}
-                  {/* Left Column: Branding */}
-                  <a
-                    href="https://zonodev.ar"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group flex flex-col items-center space-y-6 text-center cursor-pointer transition-transform duration-300 hover:scale-[1.02]"
-                  >
-                    <div className="flex flex-col items-center gap-6">
-                      <div className="relative h-40 w-40 rounded-full overflow-hidden shadow-md border-4 border-white/10 transition-all duration-300 group-hover:scale-105 group-hover:shadow-[0_0_25px_rgba(56,95,173,0.6)] group-hover:border-primary/50">
-                        <Image
-                          src="/images/zonodevBG.png"
-                          alt="Zonodev Logo"
-                          fill
-                          className="object-cover"
-                        />
-                      </div>
-                      <h3 className="text-3xl font-bold group-hover:text-primary transition-colors">{t('poweredBy.title')}</h3>
+          <section className="mb-10 scroll-mt-28 relative mt-12 md:mt-20" id="powered-by-zonodev">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] md:w-3/4 h-3/4 bg-sky-500/10 blur-[100px] md:blur-[120px] rounded-full pointer-events-none" />
+            <div className="relative rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl bg-slate-900/50 backdrop-blur-sm z-10 p-8 md:p-12 max-w-6xl mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                {/* Left Column: Branding */}
+                <a
+                  href="https://zonodev.ar"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex flex-col items-center space-y-6 text-center cursor-pointer transition-transform duration-300 hover:scale-[1.02]"
+                >
+                  <div className="flex flex-col items-center gap-6">
+                    <div className="relative h-40 w-40 rounded-full overflow-hidden shadow-md border-4 border-white/10 transition-all duration-300 group-hover:scale-105 group-hover:shadow-[0_0_25px_rgba(56,95,173,0.6)] group-hover:border-sky-500/50">
+                      <Image
+                        src="/images/zonodevBG.png"
+                        alt="Zonodev Logo"
+                        fill
+                        className="object-cover"
+                      />
                     </div>
-                    <p className="text-lg text-muted-foreground leading-relaxed max-w-lg mx-auto group-hover:text-foreground/80 transition-colors">
-                      {t('poweredBy.desc')}
-                    </p>
-                  </a>
+                    <h3 className="text-3xl font-bold group-hover:text-sky-400 text-white transition-colors">{t('poweredBy.title')}</h3>
+                  </div>
+                  <p className="text-lg text-slate-300 leading-relaxed max-w-lg mx-auto group-hover:text-white transition-colors">
+                    {t('poweredBy.desc')}
+                  </p>
+                </a>
 
-                  {/* Right Column: Contact Form */}
-                  <div className="md:bg-background/50 md:p-6 md:rounded-xl md:border md:shadow-sm">
-                    <h4 className="text-xl font-semibold mb-6 flex items-center justify-center md:justify-start gap-2">
-                      <Mail className="w-5 h-5" />
-                      {t('contact.title')}
-                    </h4>
-                    <form onSubmit={handleFormSubmit} className="space-y-4">
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div className="space-y-2">
-                          <Label htmlFor="name">{t('contact.name')}</Label>
-                          <Input
-                            id="name"
-                            placeholder="Tu nombre"
-                            className="placeholder:text-muted-foreground/30"
-                            value={formData.name}
-                            onChange={handleFormChange}
-                            required
-                          />
-                        </div>
-                        <div className="space-y-2">
-                          <Label htmlFor="email">{t('contact.email')}</Label>
-                          <Input
-                            id="email"
-                            type="email"
-                            placeholder="tu@email.com"
-                            className="placeholder:text-muted-foreground/30"
-                            value={formData.email}
-                            onChange={handleFormChange}
-                            required
-                          />
-                        </div>
-                      </div>
+                {/* Right Column: Contact Form */}
+                <div className="md:bg-slate-800/50 md:p-8 md:rounded-[2rem] md:border md:border-white/10 md:shadow-xl">
+                  <h4 className="text-xl font-semibold mb-6 flex items-center justify-center md:justify-start gap-2 text-white">
+                    <Mail className="w-5 h-5" />
+                    {t('contact.title')}
+                  </h4>
+                  <form onSubmit={handleFormSubmit} className="space-y-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="space-y-2">
-                        <Label htmlFor="company">{t('contact.company')}</Label>
+                        <Label htmlFor="name" className="text-slate-200">{t('contact.name')}</Label>
                         <Input
-                          id="company"
-                          placeholder="Nombre de tu empresa"
-                          className="placeholder:text-muted-foreground/30"
-                          value={formData.company}
-                          onChange={handleFormChange}
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="message">{t('contact.message')}</Label>
-                        <Textarea
-                          id="message"
-                          placeholder="Escribe tu mensaje aquí..."
-                          className="min-h-[120px] resize-none placeholder:text-muted-foreground/30"
-                          value={formData.message}
+                          id="name"
+                          placeholder="Tu nombre"
+                          className="bg-slate-900/50 border-white/10 text-white placeholder:text-slate-500 focus-visible:ring-sky-500"
+                          value={formData.name}
                           onChange={handleFormChange}
                           required
                         />
                       </div>
-                      <Button
-                        type="submit"
-                        className="w-full text-lg py-6"
-                        disabled={isSubmitting}
-                      >
-                        {isSubmitting ? (
-                          <>
-                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                            {t('contact.submitting')}
-                          </>
-                        ) : (
-                          <>
-                            <Send className="mr-2 h-4 w-4" />
-                            {t('contact.submit')}
-                          </>
-                        )}
-                      </Button>
-                    </form>
-                  </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="email" className="text-slate-200">{t('contact.email')}</Label>
+                        <Input
+                          id="email"
+                          type="email"
+                          placeholder="tu@email.com"
+                          className="bg-slate-900/50 border-white/10 text-white placeholder:text-slate-500 focus-visible:ring-sky-500"
+                          value={formData.email}
+                          onChange={handleFormChange}
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="company" className="text-slate-200">{t('contact.company')}</Label>
+                      <Input
+                        id="company"
+                        placeholder="Nombre de tu empresa"
+                        className="bg-slate-900/50 border-white/10 text-white placeholder:text-slate-500 focus-visible:ring-sky-500"
+                        value={formData.company}
+                        onChange={handleFormChange}
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="message" className="text-slate-200">{t('contact.message')}</Label>
+                      <Textarea
+                        id="message"
+                        placeholder="Escribe tu mensaje aquí..."
+                        className="min-h-[120px] resize-none bg-slate-900/50 border-white/10 text-white placeholder:text-slate-500 focus-visible:ring-sky-500"
+                        value={formData.message}
+                        onChange={handleFormChange}
+                        required
+                      />
+                    </div>
+                    <Button
+                      type="submit"
+                      className="w-full text-lg py-6 bg-sky-500 hover:bg-sky-600 text-white border-0 shadow-lg"
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                          {t('contact.submitting')}
+                        </>
+                      ) : (
+                        <>
+                          <Send className="mr-2 h-4 w-4" />
+                          {t('contact.submit')}
+                        </>
+                      )}
+                    </Button>
+                  </form>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </section>
         </div>
       </main >
