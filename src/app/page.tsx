@@ -1,5 +1,6 @@
 'use client';
 import { useState, useRef, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { checkDemoCookie } from '@/app/actions';
@@ -246,7 +247,7 @@ const PresentationPageContent = () => {
         />
       </div>
       {/* Hero Section */}
-      <section className="relative w-full pt-20 pb-16 md:pt-40 md:pb-24 lg:pt-48 lg:pb-32 text-center overflow-x-clip">
+      <section className="relative w-full pt-20 pb-16 md:pt-40 md:pb-24 lg:pt-28 lg:pb-32 text-center overflow-x-clip">
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent opacity-100 z-10"></div>
         {/* Glowing orbs */}
         <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-sky-500/20 blur-[120px] rounded-full pointer-events-none z-10 mix-blend-screen" />
@@ -266,23 +267,23 @@ const PresentationPageContent = () => {
         </div>
         <div className="relative z-20 max-w-4xl mx-auto px-4 flex flex-col items-center">
 
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sky-500/10 text-sky-400 border border-sky-500/20 text-sm font-medium mb-4 md:mb-8 backdrop-blur-md shadow-[0_0_20px_rgba(14,165,233,0.2)]">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sky-500/10 text-sky-400 border border-sky-500/20 text-sm font-medium mb-4 md:mb-8 backdrop-blur-md shadow-[0_0_20px_rgba(14,165,233,0.2)] opacity-0 animate-fade-in-up [animation-delay:100ms]">
             <Rocket className="w-4 h-4" />
-            <span>El primer software de gestión para la aviación privada</span>
+            <span>El primer software de gestión para aviación privada</span>
           </div>
 
-          <div className="relative inline-block md:mb-10 transition-transform duration-700 hover:scale-110">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] bg-sky-500/20 blur-3xl -z-10 rounded-full animate-pulse"></div>
+          <div className="relative inline-block md:mb-10 transition-transform duration-700 hover:scale-110 opacity-0 animate-fade-in-up [animation-delay:300ms]">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] bg-sky-1000/20 blur-3xl -z-10 rounded-full animate-pulse"></div>
             <Image
               src="/images/aera2.png"
               alt="Logo Aera"
-              width={180}
-              height={180}
+              width={250}
+              height={250}
               className="mx-auto relative z-10 drop-shadow-[0_0_30px_rgba(255,255,255,0.2)]"
             />
           </div>
 
-          <div className="relative inline-block w-full">
+          <div className="relative inline-block w-full opacity-0 animate-fade-in-up [animation-delay:500ms]">
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-white via-slate-200 to-slate-500 mb-8 tracking-tight drop-shadow-2xl">
               {t('welcomeTitle')}
             </h1>
@@ -291,7 +292,7 @@ const PresentationPageContent = () => {
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-12 w-full sm:w-auto">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-12 w-full sm:w-auto opacity-0 animate-fade-in-up [animation-delay:700ms]">
             <Button
               onClick={handleDemoRequest}
               className="w-full sm:w-auto bg-sky-500 hover:bg-sky-400 text-white px-8 py-7 rounded-full text-lg shadow-[0_0_40px_rgba(14,165,233,0.4)] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_60px_rgba(14,165,233,0.6)] border-0"
@@ -332,7 +333,13 @@ const PresentationPageContent = () => {
               </div>
 
               {/* Text Content */}
-              <div className="order-3 lg:order-2 lg:col-span-5 flex flex-col justify-center space-y-6 relative z-20 px-4 md:px-0 mt-2 lg:mt-0">
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="order-3 lg:order-2 lg:col-span-5 flex flex-col justify-center space-y-6 relative z-20 px-4 md:px-0 mt-2 lg:mt-0"
+              >
                 <div className="hidden lg:flex flex-col space-y-6">
                   <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-500/10 text-sky-400 border border-sky-500/20 w-fit text-sm font-medium">
                     <SearchCheck className="w-4 h-4" />
@@ -357,10 +364,16 @@ const PresentationPageContent = () => {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </motion.div>
 
               {/* Bento Video Container */}
-              <div className="lg:col-span-7 relative order-2 lg:order-1 px-4 md:px-8 lg:px-0 mt-8 lg:mt-0">
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+                className="lg:col-span-6 relative order-2 lg:order-1 px-4 md:px-8 lg:px-0 mt-8 lg:mt-0"
+              >
                 {/* Main Video Box */}
                 <div className="relative rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl bg-slate-900/50 backdrop-blur-sm z-10 p-2 md:p-3">
                   <div className="rounded-2xl overflow-hidden relative">
@@ -399,7 +412,7 @@ const PresentationPageContent = () => {
                   </div>
                 </div>
                 */}
-              </div>
+              </motion.div>
             </div>
           </section>
 
@@ -420,7 +433,13 @@ const PresentationPageContent = () => {
               </div>
 
               {/* Bento Video Container */}
-              <div className="lg:col-span-7 relative px-4 md:px-8 lg:px-0 mt-8 lg:mt-0 order-2 lg:order-1">
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="lg:col-span-6 relative px-4 md:px-8 lg:px-0 mt-8 lg:mt-0 order-2 lg:order-1"
+              >
                 <div className="relative rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl bg-slate-900/50 backdrop-blur-sm z-10 p-2 md:p-3">
                   <div className="rounded-2xl overflow-hidden relative">
                     <div className="absolute inset-0 border border-white/10 rounded-2xl z-10 pointer-events-none"></div>
@@ -453,10 +472,16 @@ const PresentationPageContent = () => {
                   </div>
                 </div>
                 */}
-              </div>
+              </motion.div>
 
               {/* Text Content */}
-              <div className="lg:col-span-5 flex flex-col justify-center space-y-6 relative z-20 px-4 md:px-0 order-3 lg:order-none mt-2 lg:mt-0">
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+                className="lg:col-span-5 flex flex-col justify-center space-y-6 relative z-20 px-4 md:px-0 order-3 lg:order-none mt-2 lg:mt-0"
+              >
                 <div className="hidden lg:flex flex-col space-y-6">
                   <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-500/10 text-sky-400 border border-sky-500/20 w-fit text-sm font-medium">
                     <Plane className="w-4 h-4" />
@@ -480,10 +505,104 @@ const PresentationPageContent = () => {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </motion.div>
 
             </div>
           </section>
+
+          {/* Slider Section */}
+          <section className="py-16 md:py-24 relative mt-12 md:mt-20">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] md:w-3/4 h-3/4 bg-sky-500/10 blur-[100px] md:blur-[120px] rounded-full pointer-events-none" />
+
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 lg:gap-8 items-center">
+              {/* Título solo para móvil */}
+              <div className="lg:hidden flex flex-col justify-center items-center space-y-4 px-4 md:px-0 order-1 mt-4 text-center">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-500/10 text-sky-400 border border-sky-500/20 w-fit text-sm font-medium">
+                  <LayoutDashboard className="w-4 h-4" />
+                  <span>Control Total</span>
+                </div>
+                <h2 className="text-center text-4xl md:text-5xl font-bold text-white leading-[1.1]">
+                  Administra tu flota desde <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-600">un solo lugar</span>
+                </h2>
+              </div>
+
+              {/* Text Content */}
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="order-3 lg:order-2 lg:col-span-5 flex flex-col justify-center space-y-6 relative z-20 px-4 md:px-0 mt-2 lg:mt-0"
+              >
+                <div className="hidden lg:flex flex-col space-y-6">
+                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-500/10 text-sky-400 border border-sky-500/20 w-fit text-sm font-medium">
+                    <LayoutDashboard className="w-4 h-4" />
+                    <span>Control Total</span>
+                  </div>
+                  <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.1] md:leading-[1.1]">
+                    Administra tu flota desde <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-600">un solo lugar</span>
+                  </h2>
+                </div>
+                <p className="text-lg text-slate-300 leading-relaxed max-w-lg">
+                  Accede a todas las herramientas que necesitas para gestionar usuarios, reservas, cotizaciones y más con nuestro panel de administración intuitivo.
+                </p>
+
+                {/* Feature list */}
+                <ul className="space-y-4 mt-4">
+                  {['Gestión centralizada', 'Métricas en tiempo real', 'Control de acceso seguro'].map((item, i) => (
+                    <li key={i} className="flex items-center gap-3 text-slate-200">
+                      <div className="flex-shrink-0 w-6 h-6 rounded-full bg-sky-500/20 flex items-center justify-center">
+                        <LayoutDashboard className="w-3 h-3 text-sky-400" />
+                      </div>
+                      <span className="font-medium">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+
+              {/* Slider Container */}
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+                className="lg:col-span-6 relative order-2 lg:order-1 px-4 md:px-8 lg:px-0 mt-8 lg:mt-0"
+              >
+                <div className="relative rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl bg-slate-900/50 backdrop-blur-sm z-10 p-2 md:p-3">
+                  <div className="rounded-2xl overflow-hidden relative">
+                    <div className="absolute inset-0 border border-white/10 rounded-2xl z-10 pointer-events-none"></div>
+                    <div className="w-full overflow-hidden rounded-3xl shadow-xl">
+                      <Swiper
+                        modules={[Autoplay, Pagination]}
+                        spaceBetween={0}
+                        slidesPerView={1}
+                        loop={true}
+                        autoplay={{ delay: 3000, disableOnInteraction: false }}
+                        pagination={{ clickable: true }}
+                        className="w-full aspect-square bg-slate-900 p-20"
+                      >
+                        {[
+                          '/screenshotadmin1.png',
+                          '/screenshotadmin2.png',
+                          '/screenshotadmin3.png'
+                        ].map((src, i) => (
+                          <SwiperSlide key={i} className="relative w-full h-full">
+                            <Image
+                              src={src}
+                              alt={`Admin Screenshot ${i + 1}`}
+                              fill
+                              className="object-cover"
+                            />
+                          </SwiperSlide>
+                        ))}
+                      </Swiper>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </section>
+
           {/* Features Section */}
           <section className="mb-20 scroll-mt-28 relative mt-12 md:mt-20" id="features">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] md:w-3/4 h-3/4 bg-sky-500/10 blur-[100px] md:blur-[120px] rounded-full pointer-events-none" />
