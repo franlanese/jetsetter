@@ -14,8 +14,54 @@
   "techText": "Aera is built on a foundation of cutting-edge web technologies to ensure a fast, secure, and scalable user experience.",
   "ctaTitle": "Ready to fly?",
   "ctaSubtitle": "Explore the application and discover the new era of private travel.",
-  "ctaButton": "Go to Demo",
+  "ctaButton": "Request Demo",
   "footerRights": "All rights reserved.",
+  "sections": {
+    "conversion": {
+      "tag": "Conversion Optimization",
+      "titlePart1": "Turn visits into ",
+      "titlePart2": "real flights",
+      "desc": "A simple flow so every inquiry reaches your sales team clearly, quickly, and actionably.",
+      "list": [
+        "Instant quotes",
+        "Integrated lead management",
+        "No intermediaries"
+      ]
+    },
+    "emptyLegs": {
+      "tag": "Empty Legs Network",
+      "titlePart1": "The visibility your ",
+      "titlePart2": "empty legs",
+      "titlePart3": " need",
+      "desc": "Publish your available flights and reach thousands of passengers looking for exactly what you offer, minimizing empty flights.",
+      "list": [
+        "Automatic integration",
+        "Passenger notifications",
+        "Higher profitability"
+      ]
+    },
+    "control": {
+      "tag": "Total Control",
+      "titlePart1": "Manage your fleet from ",
+      "titlePart2": "a single place",
+      "desc": "Access all the tools you need to manage users, bookings, quotes and more with our intuitive administration panel.",
+      "list": [
+        "Centralized management",
+        "Real-time metrics",
+        "Multi-platform availability"
+      ]
+    }
+  },
+  "demoDialog": {
+    "title": "Request Demo",
+    "titleSuccess": "Request Sent!",
+    "desc": "Fill out the form to request more information or a demonstration.",
+    "successHeading": "Thanks for your interest!",
+    "successDesc": "We have received your data correctly. Our team will contact you shortly to coordinate the demonstration.",
+    "close": "Close",
+    "submitting": "Sending...",
+    "errorFields": "Please fill in the required fields."
+  },
   "nav": {
     "whyAera": "Why Aera?",
     "features": "Features",

@@ -12,10 +12,10 @@ export async function submitForm(formData: FormData) {
   const nombre = formData.get('nombre')
   console.log("Procesando formulario para:", nombre)
 
-  cookieStore.set('form_completed', 'true', { 
+  cookieStore.set('form_completed', 'true', {
     httpOnly: true,
     path: '/',
-    maxAge: TEN_YEARS 
+    maxAge: TEN_YEARS
   })
 
   // 3. Redirigir
@@ -37,7 +37,7 @@ export async function submitDemoRequest(formData: FormData) {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
-        'x-api-key': process.env.LARAVEL_API_KEY || '', 
+        'x-api-key': process.env.LARAVEL_API_KEY || '',
       },
       body: JSON.stringify(rawData),
     });
@@ -46,29 +46,19 @@ export async function submitDemoRequest(formData: FormData) {
 
     // Si Laravel dice error (ej: duplicado), devolvemos el error al front para que lo muestre
     if (!res.ok) {
-        return { 
-            success: false, 
-            message: data.message || 'Error al procesar la solicitud.' 
-        };
+      return {
+        success: false,
+        message: data.message || 'Error al procesar la solicitud.'
+      };
     }
 
   } catch (error) {
+    console.error(error);
     return { success: false, message: 'No se pudo conectar con el servidor.' };
   }
 
-  // 3. SI LARAVEL DIO OK: Ejecutamos la lógica del frontender (Cookies + Redirect)
-  
-  const cookieStore = await cookies()
-  const TEN_YEARS = 60 * 60 * 24 * 365 * 10
-
-  cookieStore.set('form_completed', 'true', { 
-    httpOnly: true,
-    path: '/',
-    maxAge: TEN_YEARS 
-  })
-
-  // Esto lanza un error interno de Next.js para cambiar de página, así que va al final
-  redirect('/demo')
+  // 3. SI LARAVEL DIO OK: Devolver éxito en lugar de redirigir a la demo
+  return { success: true, message: 'Solicitud enviada correctamente.' };
 }
 
 export async function checkDemoCookie() {

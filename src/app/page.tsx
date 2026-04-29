@@ -3,14 +3,13 @@ import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { checkDemoCookie } from '@/app/actions';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { Rocket, Plane, History, Code, BadgePercent, SearchCheck, LayoutDashboard, Monitor, Mail, Calculator, UserCheck, Globe, Blocks, Linkedin, ChevronLeft, ChevronRight, Loader2, Send } from 'lucide-react';
+import { Rocket, Plane, Instagram, History, Code, BadgePercent, SearchCheck, LayoutDashboard, Monitor, Mail, Calculator, UserCheck, Globe, Blocks, Linkedin, ChevronLeft, ChevronRight, Loader2, Send } from 'lucide-react';
 import { useTranslation } from '@/context/LanguageContext';
 import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 import { DemoRequestDialog } from '@/components/DemoRequestDialog';
@@ -37,19 +36,10 @@ const PresentationPageContent = () => {
   const [isDemoDialogOpen, setIsDemoDialogOpen] = useState(false);
   const [imageViewerOpen, setImageViewerOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState({ src: '', alt: '' });
-  const [demoUnlocked, setDemoUnlocked] = useState(false);
   const router = useRouter();
 
-  useEffect(() => {
-    checkDemoCookie().then(setDemoUnlocked);
-  }, []);
-
   const handleDemoRequest = () => {
-    if (demoUnlocked) {
-      router.push('/demo');
-    } else {
-      setIsDemoDialogOpen(true);
-    }
+    setIsDemoDialogOpen(true);
   };
 
   // Contact form state
@@ -158,8 +148,8 @@ const PresentationPageContent = () => {
   const navItems: CardNavItem[] = [
     {
       label: t('nav.whyAera'),
-      bgColor: 'hsl(45, 48%, 91%)',
-      textColor: 'hsl(205, 79%, 7%)',
+      bgColor: 'rgba(255, 255, 255, 0.01)',
+      textColor: '#f8fafc',
       links: [
         { label: t('nav.features'), href: '#features', ariaLabel: 'Funcionalidades' },
         { label: t('nav.demo'), href: '#demo', ariaLabel: 'Ver Demo' },
@@ -168,8 +158,8 @@ const PresentationPageContent = () => {
     },
     {
       label: t('nav.company'),
-      bgColor: 'hsl(190, 60%, 92%)',
-      textColor: 'hsl(205, 79%, 7%)',
+      bgColor: 'rgba(255, 255, 255, 0.01)',
+      textColor: '#f8fafc',
       links: [
         { label: t('nav.aboutUs'), href: 'https://zonodev.ar/', ariaLabel: 'Sobre Nosotros', target: '_blank' },
         { label: 'Linkedin', href: 'https://www.linkedin.com/company/zonodev/', ariaLabel: 'Linkedin', target: '_blank' },
@@ -179,6 +169,7 @@ const PresentationPageContent = () => {
   ];
 
   const features = [
+    /*
     {
       icon: <LayoutDashboard className="mx-auto h-12 w-12 text-blue-400 mb-4" />,
       title: t('features.dashboard.title'),
@@ -189,6 +180,7 @@ const PresentationPageContent = () => {
       title: t('features.clientPlatform.title'),
       description: t('features.clientPlatform.desc')
     },
+    */
     {
       icon: <Mail className="mx-auto h-12 w-12 text-purple-400 mb-4" />,
       title: t('features.emailMarketing.title'),
@@ -219,7 +211,7 @@ const PresentationPageContent = () => {
   return (
     <div className="min-h-screen">
       <div className="top-nav-row">
-        <div className="nav-side-box" style={{ backgroundColor: 'hsl(205, 79%, 7%)', padding: '0 1rem' }}>
+        <div className="nav-side-box" style={{ backgroundColor: 'rgba(15, 23, 42, 0.5)', padding: '0 1rem' }}>
           <Link
             href="/"
             onClick={(e) => {
@@ -238,10 +230,10 @@ const PresentationPageContent = () => {
         </div>
         <CardNav
           items={navItems}
-          baseColor="hsl(205, 79%, 7%)"
-          menuColor="hsl(45, 48%, 91%)"
-          buttonBgColor="hsl(45, 48%, 91%)"
-          buttonTextColor="hsl(205, 79%, 7%)"
+          baseColor="rgba(15, 23, 42, 0.5)"
+          menuColor="#f8fafc"
+          buttonBgColor="#0ea5e9"
+          buttonTextColor="#f8fafc"
           languageSelector={<LanguageSwitcher />}
           onDemoClick={handleDemoRequest}
         />
@@ -316,19 +308,18 @@ const PresentationPageContent = () => {
       <main className="w-full">
         <div className="container mx-auto px-4 py-12">
           {/* New Section */}
-          <section className="py-16 md:py-24 relative">
+          <section className="py-16 md:py-24 relative" id="features">
             {/* Background glow */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] md:w-3/4 h-3/4 bg-sky-500/10 blur-[100px] md:blur-[120px] rounded-full pointer-events-none" />
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 lg:gap-8 items-center">
-              {/* Título solo para móvil */}
               <div className="lg:hidden flex flex-col justify-center items-center space-y-4 px-4 md:px-0 order-1 mt-4 text-center">
                 <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-500/10 text-sky-400 border border-sky-500/20 w-fit text-sm font-medium">
                   <SearchCheck className="w-4 h-4" />
-                  <span>Optimización de conversión</span>
+                  <span>{t('sections.conversion.tag')}</span>
                 </div>
                 <h2 className="text-center text-4xl md:text-5xl font-bold text-white leading-[1.1]">
-                  Convierte visitas en <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-600">vuelos reales</span>
+                  {t('sections.conversion.titlePart1')}<span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-600">{t('sections.conversion.titlePart2')}</span>
                 </h2>
               </div>
 
@@ -343,19 +334,23 @@ const PresentationPageContent = () => {
                 <div className="hidden lg:flex flex-col space-y-6">
                   <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-500/10 text-sky-400 border border-sky-500/20 w-fit text-sm font-medium">
                     <SearchCheck className="w-4 h-4" />
-                    <span>Optimización de conversión</span>
+                    <span>{t('sections.conversion.tag')}</span>
                   </div>
                   <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.1] md:leading-[1.1]">
-                    Convierte visitas en <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-600">vuelos reales</span>
+                    {t('sections.conversion.titlePart1')}<span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-600">{t('sections.conversion.titlePart2')}</span>
                   </h2>
                 </div>
                 <p className="text-lg text-slate-300 leading-relaxed max-w-lg">
-                  Un flujo simple para que cada consulta llegue clara, rápida y accionable a tu equipo de ventas.
+                  {t('sections.conversion.desc')}
                 </p>
 
                 {/* Feature list */}
                 <ul className="space-y-4 mt-4">
-                  {['Cotizaciones instantáneas', 'Gestión de leads integrada', 'Sin intermediarios'].map((item, i) => (
+                  {[
+                    t('sections.conversion.list.0'),
+                    t('sections.conversion.list.1'),
+                    t('sections.conversion.list.2')
+                  ].map((item, i) => (
                     <li key={i} className="flex items-center gap-3 text-slate-200">
                       <div className="flex-shrink-0 w-6 h-6 rounded-full bg-sky-500/20 flex items-center justify-center">
                         <SearchCheck className="w-3 h-3 text-sky-400" />
@@ -425,10 +420,10 @@ const PresentationPageContent = () => {
               <div className="lg:hidden flex flex-col justify-center items-center space-y-6 px-4 md:px-0 order-1 mt-2 text-center">
                 <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-500/10 text-sky-400 border border-sky-500/20 w-fit text-sm font-medium">
                   <Plane className="w-4 h-4" />
-                  <span>Red de Empty Legs</span>
+                  <span>{t('sections.emptyLegs.tag')}</span>
                 </div>
                 <h2 className="text-center text-4xl md:text-5xl font-bold text-white leading-[1.1]">
-                  La visibilidad que tus <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-600">empty legs</span> necesitan
+                  {t('sections.emptyLegs.titlePart1')}<span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-600">{t('sections.emptyLegs.titlePart2')}</span>{t('sections.emptyLegs.titlePart3')}
                 </h2>
               </div>
 
@@ -485,18 +480,22 @@ const PresentationPageContent = () => {
                 <div className="hidden lg:flex flex-col space-y-6">
                   <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-500/10 text-sky-400 border border-sky-500/20 w-fit text-sm font-medium">
                     <Plane className="w-4 h-4" />
-                    <span>Red de Empty Legs</span>
+                    <span>{t('sections.emptyLegs.tag')}</span>
                   </div>
                   <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.1] md:leading-[1.1]">
-                    La visibilidad que tus <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-600">empty legs</span> necesitan
+                    {t('sections.emptyLegs.titlePart1')}<span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-600">{t('sections.emptyLegs.titlePart2')}</span>{t('sections.emptyLegs.titlePart3')}
                   </h2>
                 </div>
                 <p className="text-lg text-slate-300 leading-relaxed max-w-lg">
-                  Publica tus vuelos disponibles y llega a miles de pasajeros que buscan exactamente lo que ofreces, minimizando los vuelos en vacío.
+                  {t('sections.emptyLegs.desc')}
                 </p>
 
                 <ul className="space-y-4 mt-4">
-                  {['Integración automática', 'Notificaciones a pasajeros', 'Mayor rentabilidad'].map((item, i) => (
+                  {[
+                    t('sections.emptyLegs.list.0'),
+                    t('sections.emptyLegs.list.1'),
+                    t('sections.emptyLegs.list.2')
+                  ].map((item, i) => (
                     <li key={i} className="flex items-center gap-3 text-slate-200">
                       <div className="flex-shrink-0 w-6 h-6 rounded-full bg-sky-500/20 flex items-center justify-center">
                         <Plane className="w-3 h-3 text-sky-400" />
@@ -519,10 +518,10 @@ const PresentationPageContent = () => {
               <div className="lg:hidden flex flex-col justify-center items-center space-y-4 px-4 md:px-0 order-1 mt-4 text-center">
                 <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-500/10 text-sky-400 border border-sky-500/20 w-fit text-sm font-medium">
                   <LayoutDashboard className="w-4 h-4" />
-                  <span>Control Total</span>
+                  <span>{t('sections.control.tag')}</span>
                 </div>
                 <h2 className="text-center text-4xl md:text-5xl font-bold text-white leading-[1.1]">
-                  Administra tu flota desde <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-600">un solo lugar</span>
+                  {t('sections.control.titlePart1')}<span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-600">{t('sections.control.titlePart2')}</span>
                 </h2>
               </div>
 
@@ -537,19 +536,23 @@ const PresentationPageContent = () => {
                 <div className="hidden lg:flex flex-col space-y-6">
                   <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-500/10 text-sky-400 border border-sky-500/20 w-fit text-sm font-medium">
                     <LayoutDashboard className="w-4 h-4" />
-                    <span>Control Total</span>
+                    <span>{t('sections.control.tag')}</span>
                   </div>
                   <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.1] md:leading-[1.1]">
-                    Administra tu flota desde <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-600">un solo lugar</span>
+                    {t('sections.control.titlePart1')}<span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-600">{t('sections.control.titlePart2')}</span>
                   </h2>
                 </div>
                 <p className="text-lg text-slate-300 leading-relaxed max-w-lg">
-                  Accede a todas las herramientas que necesitas para gestionar usuarios, reservas, cotizaciones y más con nuestro panel de administración intuitivo.
+                  {t('sections.control.desc')}
                 </p>
 
                 {/* Feature list */}
                 <ul className="space-y-4 mt-4">
-                  {['Gestión centralizada', 'Métricas en tiempo real', 'Control de acceso seguro'].map((item, i) => (
+                  {[
+                    t('sections.control.list.0'),
+                    t('sections.control.list.1'),
+                    t('sections.control.list.2')
+                  ].map((item, i) => (
                     <li key={i} className="flex items-center gap-3 text-slate-200">
                       <div className="flex-shrink-0 w-6 h-6 rounded-full bg-sky-500/20 flex items-center justify-center">
                         <LayoutDashboard className="w-3 h-3 text-sky-400" />
@@ -604,7 +607,7 @@ const PresentationPageContent = () => {
           </section>
 
           {/* Features Section */}
-          <section className="mb-20 scroll-mt-28 relative mt-12 md:mt-20" id="features">
+          <section className="mb-20 scroll-mt-28 relative mt-12 md:mt-20">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] md:w-3/4 h-3/4 bg-sky-500/10 blur-[100px] md:blur-[120px] rounded-full pointer-events-none" />
             <h2 className="text-4xl font-bold text-center mb-12 relative z-10 text-white">
               {t('featuresTitle')}
@@ -626,7 +629,7 @@ const PresentationPageContent = () => {
                     spaceBetween: 20,
                   },
                   768: {
-                    slidesPerView: 3,
+                    slidesPerView: 2,
                     spaceBetween: 40,
                   },
                   1024: {
@@ -880,10 +883,16 @@ const PresentationPageContent = () => {
                 >
                   <Globe className="w-5 h-5" />
                 </a>
+                <a
+                  href="https://www.instagram.com/zonodev/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 bg-background rounded-full hover:bg-primary/10 transition-colors"
+                  aria-label="Instagram"
+                >
+                  <Instagram className="w-5 h-5" />
+                </a>
               </div>
-              <Button className="w-full" onClick={handleDemoRequest}>
-                {t('nav.getStarted')}
-              </Button>
             </div>
           </div>
 

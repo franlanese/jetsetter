@@ -2,7 +2,7 @@
     "intro1": "Vuelos Charter en Avión Privado",
     "welcomeTitle": "Bienvenido a Aera",
     "welcomeSubtitle": "El asistente digital para tu empresa de aviación privada. Gestiona vuelos y reservas con una facilidad sin precedentes.",
-    "featuresTitle": "Funcionalidades Principales",
+    "featuresTitle": "Otras Funcionalidades",
     "feature1Title": "Búsqueda Inteligente de Vuelos",
     "feature1Text": "Nuestro sistema permite buscar y filtrar vuelos privados en tiempo real, conectándote con una red global de operadores.",
     "feature2Title": "Ofertas \"Empty Legs\"",
@@ -14,8 +14,54 @@
     "techText": "Aera está construido sobre una base de tecnologías web de vanguardia para garantizar una experiencia de usuario rápida, segura y escalable.",
     "ctaTitle": "¿Listo para volar?",
     "ctaSubtitle": "Explora la aplicación y descubre la nueva era de los viajes privados.",
-    "ctaButton": "Ir a la Demo",
+    "ctaButton": "Solicitar Demo",
     "footerRights": "Todos los derechos reservados.",
+    "sections": {
+        "conversion": {
+            "tag": "Optimización de conversión",
+            "titlePart1": "Convierte visitas en ",
+            "titlePart2": "vuelos reales",
+            "desc": "Un flujo simple para que cada consulta llegue clara, rápida y accionable a tu equipo de ventas.",
+            "list": [
+                "Cotizaciones instantáneas",
+                "Gestión de leads integrada",
+                "Sin intermediarios"
+            ]
+        },
+        "emptyLegs": {
+            "tag": "Red de Empty Legs",
+            "titlePart1": "La visibilidad que tus ",
+            "titlePart2": "empty legs",
+            "titlePart3": " necesitan",
+            "desc": "Publica tus vuelos disponibles y llega a miles de pasajeros que buscan exactamente lo que ofreces, minimizando los vuelos en vacío.",
+            "list": [
+                "Integración automática",
+                "Notificaciones a pasajeros",
+                "Mayor rentabilidad"
+            ]
+        },
+        "control": {
+            "tag": "Control Total",
+            "titlePart1": "Administra tu flota desde ",
+            "titlePart2": "un solo lugar",
+            "desc": "Accede a todas las herramientas que necesitas para gestionar usuarios, reservas, cotizaciones y más con nuestro panel de administración intuitivo.",
+            "list": [
+                "Gestión centralizada",
+                "Métricas en tiempo real",
+                "Disponibilidad multi plataforma"
+            ]
+        }
+    },
+    "demoDialog": {
+        "title": "Solicitar Demo",
+        "titleSuccess": "¡Solicitud Enviada!",
+        "desc": "Complete el formulario para solicitar más información o una demostración.",
+        "successHeading": "¡Gracias por tu interés!",
+        "successDesc": "Hemos recibido tus datos correctamente. Nuestro equipo se pondrá en contacto contigo a la brevedad para coordinar la demostración.",
+        "close": "Cerrar",
+        "submitting": "Enviando...",
+        "errorFields": "Por favor completa los campos requeridos."
+    },
     "nav": {
         "whyAera": "¿Por qué Aera?",
         "features": "Funcionalidades",

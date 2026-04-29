@@ -14,8 +14,54 @@
   "techText": "A Aera é construída sobre uma base de tecnologias web de ponta para garantir uma experiência de usuário rápida, segura e escalável.",
   "ctaTitle": "Pronto para voar?",
   "ctaSubtitle": "Explore o aplicativo e descubra a nova era das viagens privadas.",
-  "ctaButton": "Ir para o Demo",
+  "ctaButton": "Solicitar Demo",
   "footerRights": "Todos os direitos reservados.",
+  "sections": {
+    "conversion": {
+      "tag": "Otimização de conversão",
+      "titlePart1": "Transforme visitas em ",
+      "titlePart2": "voos reais",
+      "desc": "Um fluxo simples para que cada consulta chegue clara, rápida e acionável para sua equipe de vendas.",
+      "list": [
+        "Cotações instantâneas",
+        "Gestão de leads integrada",
+        "Sem intermediários"
+      ]
+    },
+    "emptyLegs": {
+      "tag": "Rede de Empty Legs",
+      "titlePart1": "A visibilidade que seus ",
+      "titlePart2": "empty legs",
+      "titlePart3": " precisam",
+      "desc": "Publique seus voos disponíveis e alcance milhares de passageiros que procuram exatamente o que você oferece, minimizando os voos vazios.",
+      "list": [
+        "Integração automática",
+        "Notificações aos passageiros",
+        "Maior rentabilidade"
+      ]
+    },
+    "control": {
+      "tag": "Controle Total",
+      "titlePart1": "Gerencie sua frota de ",
+      "titlePart2": "um único lugar",
+      "desc": "Acesse todas as ferramentas que você precisa para gerenciar usuários, reservas, cotações e muito mais com nosso painel de administração intuitivo.",
+      "list": [
+        "Gestão centralizada",
+        "Métricas em tempo real",
+        "Disponibilidade multiplataforma"
+      ]
+    }
+  },
+  "demoDialog": {
+    "title": "Solicitar Demo",
+    "titleSuccess": "Solicitação Enviada!",
+    "desc": "Preencha o formulário para solicitar mais informações ou uma demonstração.",
+    "successHeading": "Obrigado pelo seu interesse!",
+    "successDesc": "Recebemos seus dados corretamente. Nossa equipe entrará em contato em breve para coordenar a demonstração.",
+    "close": "Fechar",
+    "submitting": "Enviando...",
+    "errorFields": "Por favor, preencha os campos obrigatórios."
+  },
   "nav": {
     "whyAera": "Por que Aera?",
     "features": "Funcionalidades",
