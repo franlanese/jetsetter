@@ -183,11 +183,6 @@ const CardNav: React.FC<CardNavProps> = ({
                         <div className="hamburger-line" />
                         <div className="hamburger-line" />
                     </div>
-
-                    <div className="logo-container">
-                        {/* Logo removed */}
-                    </div>
-
                     <div className="card-nav-actions mobile-only">
                     </div>
                 </div>

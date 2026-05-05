@@ -30,7 +30,7 @@ export const LanguageSwitcher = () => {
       <div className="hidden md:block">
         <DropdownMenu modal={false}>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="flex items-center gap-2 px-2 h-10 rounded-lg border border-input bg-background hover:bg-accent hover:text-accent-foreground">
+            <Button variant="ghost" className="flex items-center gap-2 px-4 h-[44px] rounded-[0.75rem] border border-white/10 bg-[rgba(15,23,42,0.5)] hover:bg-[rgba(15,23,42,0.7)] text-white hover:text-white backdrop-blur-[12px] shadow-[0_4px_6px_rgba(0,0,0,0.1)]">
               <Image
                 src={currentLanguage.flag}
                 alt={currentLanguage.name}
@@ -42,12 +42,12 @@ export const LanguageSwitcher = () => {
               <ChevronDown className="h-4 w-4 opacity-50" />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
+          <DropdownMenuContent align="end" className="bg-[rgba(15,23,42,0.9)] border-white/10 backdrop-blur-[12px] text-white">
             {languages.map((lang) => (
               <DropdownMenuItem
                 key={lang.code}
                 onClick={() => handleLanguageChange(lang.code)}
-                className="flex items-center gap-2 cursor-pointer"
+                className="flex items-center gap-2 cursor-pointer focus:bg-white/10 focus:text-white"
               >
                 <Image
                   src={lang.flag}
